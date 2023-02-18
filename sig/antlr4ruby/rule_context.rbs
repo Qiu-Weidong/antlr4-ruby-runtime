@@ -2,5 +2,26 @@
 module Antlr4ruby
   class RuleContext
     include Tree::_RuleNode
+    @parent: RuleContext
+    @invoking_state: Integer
+
+    attr_accessor invoking_state: Integer
+    attr_accessor parent: RuleContext
+
+    def initialize: (?RuleContext, ?Integer) -> void
+
+    def depth: -> Integer
+
+    def enter_rule: (Tree::_ParseTreeListener) -> void
+
+    def exit_rule: (Tree::_ParseTreeListener) -> void
+
+    def get_alt_number: -> Integer
+
+    def get_rule_index: -> Integer
+
+    def is_empty: -> bool
+
+    def set_alt_number: (Integer) -> void
   end
 end

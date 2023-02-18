@@ -5,10 +5,12 @@ module Antlr4ruby
     class Interval
       INTERVAL_POOL_MAX_VALUE: Integer
       INVALID: Interval
-      @@cache: Array[Interval]
+      # @@cache: Array[Interval]
 
       @a: Integer
       @b: Integer
+
+      # @@cache: Array[Interval]
 
       def initialize: (Integer, Integer) -> void
 
