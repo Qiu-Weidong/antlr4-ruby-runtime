@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-# require_relative '../misc/interval'
+# 已完成
 
 module Antlr4ruby
   module Tree
@@ -39,7 +39,7 @@ module Antlr4ruby
         unless @symbol
           return Misc::Interval.INVALID
         end
-        token_index = self.symbol.get_token_index()
+        token_index = self.symbol.get_token_index
         Misc::Interval.new(token_index, token_index)
       end
 

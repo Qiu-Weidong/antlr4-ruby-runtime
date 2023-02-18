@@ -12,7 +12,7 @@ module Antlr4ruby
       @symbol: _Token
       @parent: _ParseTree
 
-      attr_accessor parent: _Token
+      attr_accessor parent: _ParseTree
       attr_accessor symbol: _Token
 
       def initialize: (_Token) -> void
