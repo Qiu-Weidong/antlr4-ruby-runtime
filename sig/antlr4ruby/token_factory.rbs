@@ -1,0 +1,8 @@
+
+
+module Antlr4ruby
+  interface _TokenFactory[Symbol]
+    def create: (Integer, String, ?Misc::Pair[_TokenSource, _CharStream],
+      ?Integer, ?Integer, ?Integer, ?Integer, ?Integer) -> Symbol
+  end
+end

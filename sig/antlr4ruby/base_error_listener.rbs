@@ -1,0 +1,6 @@
+
+module Antlr4ruby
+  class BaseErrorListener
+    include _ANTLRErrorListener
+  end
+end

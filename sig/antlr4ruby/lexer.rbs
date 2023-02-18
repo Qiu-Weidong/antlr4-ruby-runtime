@@ -1,0 +1,7 @@
+
+module Antlr4ruby
+  # @abstract
+  class Lexer < Recognizer[Integer, ATN::LexerATNSimulator]
+    include _TokenSource
+  end
+end

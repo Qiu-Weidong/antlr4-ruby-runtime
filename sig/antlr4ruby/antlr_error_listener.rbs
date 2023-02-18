@@ -1,0 +1,25 @@
+
+
+module Antlr4ruby
+  interface _ANTLRErrorListener
+    def syntax_error: (
+        Recognizer[untyped, untyped], Object, Integer, Integer, String, RecognitionException
+      ) -> void
+
+    # 后面这些看情况取舍
+    def report_ambiguity:(
+        Parser, DFA::DFA, Integer, Integer, bool, # todo BitSet
+        ATN::ATNConfigSet
+      ) -> void
+
+    def report_attempting_full_context:(
+        Parser, DFA::DFA, Integer, Integer, # todo BitSet
+        ATN::ATNConfigSet
+      ) -> void
+
+    def reportContextSensitivity: (
+        Parser, DFA::DFA, Integer, Integer, Integer, ATN::ATNConfigSet
+      ) -> void
+  end
+end
+

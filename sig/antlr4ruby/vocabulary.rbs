@@ -1,0 +1,15 @@
+module Antlr4ruby
+  interface _Vocabulary
+    def get_max_token_type: -> Integer
+
+    def get_literal_name: (Integer) -> String
+
+    def get_symbolic_name: (Integer) -> String
+
+    def get_display_name: (Integer) -> String
+  end
+
+  class Vocabulary
+    include _Vocabulary
+  end
+end

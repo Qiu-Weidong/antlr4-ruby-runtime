@@ -1,0 +1,6 @@
+
+module Antlr4ruby
+  # @abstract
+  class Recognizer[Symbol, ATNInterpreter]
+  end
+end

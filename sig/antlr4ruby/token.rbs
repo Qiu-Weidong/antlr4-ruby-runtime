@@ -1,0 +1,26 @@
+
+module Antlr4ruby
+  module Token
+    INVALID_TYPE: Integer
+    EPSILON: Integer
+    MIN_USER_TOKEN_TYPE: Integer
+    EOF: Integer
+    DEFAULT_CHANNEL: Integer
+    HIDDEN_CHANNEL: Integer
+    MIN_USER_CHANNEL_VALUE: Integer
+  end
+
+  interface _Token
+    # 好像没法设置为 private
+    def get_text: -> String
+    def get_type: -> Integer
+    def get_line: -> Integer
+    def get_char_position_in_line: -> Integer
+    def get_channel: -> Integer
+    def get_token_index: -> Integer
+    def get_start_index: -> Integer
+    def get_stop_index: -> Integer
+    def get_token_source: -> _TokenSource
+    def get_input_stream: -> _CharStream
+  end
+end

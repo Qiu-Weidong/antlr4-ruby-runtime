@@ -1,0 +1,16 @@
+
+
+module Antlr4ruby
+  module Tree
+    class AbstractParseTreeVisitor[T]
+      include _ParseTreeVisitor[T]
+
+      def aggregate_result: (T, T) -> T
+
+      def default_result: -> T
+
+      def should_visit_next_child: (_RuleNode, T) -> bool
+    end
+  end
+end
+

@@ -1,0 +1,7 @@
+
+
+module Antlr4ruby
+  interface _EqualityComparator
+
+  end
+end

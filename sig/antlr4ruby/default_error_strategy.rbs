@@ -1,0 +1,6 @@
+
+module Antlr4ruby
+  class DefaultErrorStrategy
+    include _ANTLRErrorStrategy
+  end
+end

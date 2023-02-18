@@ -1,0 +1,14 @@
+
+
+module Antlr4ruby
+  module Misc
+    class Pair[A, B]
+      @first: A
+      @second: B
+
+      def initialize: (A, B) -> void
+
+    end
+  end
+end
+

@@ -1,0 +1,12 @@
+
+module Antlr4ruby
+  interface _TokenSource
+    def next_token: -> _Token
+    def get_line: -> Integer
+    def get_char_position_in_line: -> Integer
+    def get_input_stream: -> _CharStream
+    def get_source_name: -> String
+    def set_token_factory: (_TokenFactory[untyped]) -> void
+    def get_token_factory: -> _TokenFactory[untyped]
+  end
+end

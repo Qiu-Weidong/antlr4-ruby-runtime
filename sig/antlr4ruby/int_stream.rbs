@@ -1,0 +1,19 @@
+
+module Antlr4ruby
+  module IntStream
+    EOF: Integer
+    UNKNOWN_SOURCE_NAME: String
+  end
+
+  interface _IntStream
+    def comsume: -> void
+    def la: (Integer) -> Integer
+    def mark: -> Integer
+    def release: (Integer) -> void
+    def index: -> Integer
+    def seek: (Integer) -> void
+    def size: -> Integer
+
+    def get_source_name: -> String
+  end
+end

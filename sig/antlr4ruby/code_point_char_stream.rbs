@@ -1,0 +1,7 @@
+
+module Antlr4ruby
+  # @abstract
+  class CodePointCharStream
+    include _CharStream
+  end
+end

@@ -1,0 +1,12 @@
+
+module Antlr4ruby
+  interface _ANTLRErrorStrategy
+    def reset: (Parser) -> void
+    def recoverInline:(Parser) -> _Token
+    def recover: (Parser, RecognitionException) -> void
+    def sync: (Parser) -> void
+    def in_error_recovery_mode: (Parser) -> bool
+    def report_match: (Parser) -> void
+    def report_error: (Parser, RecognitionException) -> void
+  end
+end

@@ -1,0 +1,19 @@
+
+module Antlr4ruby
+  class CommonToken
+    include _WritableToken
+
+    @type: Integer
+    @line: Integer
+    @char_position_in_line: Integer
+    @channel: Integer
+    @text: String
+    @index: Integer
+    @start: Integer
+    @stop: Integer
+    @source: Misc::Pair[_TokenSource, _CharStream]
+    EMPTY_SOURCE: Misc::Pair[_TokenSource, _CharStream]
+
+    # todo 构造函数声明 toString(Recognizer<?, ?> r)
+  end
+end

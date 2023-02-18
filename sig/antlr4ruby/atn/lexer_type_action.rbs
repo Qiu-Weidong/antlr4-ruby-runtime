@@ -1,0 +1,10 @@
+
+
+
+module Antlr4ruby
+  module ATN
+    class LexerTypeAction
+      include _LexerAction
+    end
+  end
+end

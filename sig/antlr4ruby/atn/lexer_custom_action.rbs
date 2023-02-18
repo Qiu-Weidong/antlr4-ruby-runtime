@@ -1,0 +1,11 @@
+
+
+
+module Antlr4ruby
+  module ATN
+    # @final LexerAction
+    class LexerCustomAction
+      include _LexerAction
+    end
+  end
+end

@@ -1,0 +1,6 @@
+
+module Antlr4ruby
+  class RuleContext
+    include Tree::_RuleNode
+  end
+end

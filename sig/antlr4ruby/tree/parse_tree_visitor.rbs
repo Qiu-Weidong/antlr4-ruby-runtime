@@ -1,0 +1,15 @@
+
+
+module Antlr4ruby
+  module Tree
+    interface _ParseTreeVisitor[T]
+      def visit: (_ParseTree) -> T
+
+      def visit_children: (_RuleNode) -> T
+
+      def visit_terminal: (_TerminalNode) -> T
+
+      def visit_error_node: (_ErrorNode) -> T
+    end
+  end
+end

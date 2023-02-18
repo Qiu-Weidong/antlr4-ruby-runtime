@@ -1,0 +1,13 @@
+
+
+module Antlr4ruby
+  module Tree
+    interface _ParseTreeListener
+      def visit_terminal: (_TerminalNode) -> void
+      def visit_error_node: (_ErrorNode) -> void
+      def enter_every_rule: (ParserRuleContext) -> void
+      def exit_every_rule: (ParserRuleContext) -> void
+
+    end
+  end
+end

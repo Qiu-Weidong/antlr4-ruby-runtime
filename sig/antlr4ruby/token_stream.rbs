@@ -1,0 +1,15 @@
+
+module Antlr4ruby
+  interface _TokenStream
+    include _IntStream
+
+    def lt: (Integer) -> _Token
+    def get: (Integer) -> _Token
+    def get_token_source: -> _TokenSource
+
+    def get_text: -> String
+    def get_text_with_interval:(Misc::Interval) -> String
+    def get_text_with_rule_context: (RuleContext) -> String
+    def get_text_in_range: (_Token, _Token) -> String
+  end
+end
