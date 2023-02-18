@@ -1,3 +1,5 @@
+# 已完成
+
 module Antlr4ruby
   module Tree
     class ParseTreeWalker
@@ -26,7 +28,9 @@ module Antlr4ruby
       end
 
       def exit_rule(listener, rule)
-        # todo
+        ctx = rule.get_rule_context
+        listener.exit_every_rule(ctx)
+        ctx.exit_rule(listener)
       end
     end
   end

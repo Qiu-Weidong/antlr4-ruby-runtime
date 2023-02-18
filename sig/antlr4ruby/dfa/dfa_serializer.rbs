@@ -4,6 +4,12 @@
 module Antlr4ruby
   module DFA
     class DFASerializer
+      @dfa: DFA
+      @vocabulary: Vocabulary
+
+      def get_edge_label: (Integer) -> String
+
+      def get_state_string: (DFAState) -> String
     end
   end
 end

@@ -4,6 +4,50 @@
 module Antlr4ruby
   module DFA
     class DFAState
+      BASIC: Integer
+      BLOCK_END: Integer
+      BLOCK_START: Integer
+      INITIAL_NUM_TRANSITIONS: Integer
+      INVALID_TYPE: Integer
+      LOOP_END: Integer
+      PLUS_BLOCK_START: Integer
+      PLUS_LOOP_BACK: Integer
+      RULE_START: Integer
+      RULE_STOP: Integer
+      STAR_BLOCK_START: Integer
+      STAR_LOOP_BACK: Integer
+      STAR_LOOP_ENTRY: Integer
+      TOKEN_START: Integer
+
+      @state_number: Integer
+      @configs: ATN::ATNConfigSet
+      @edges: Array[DFAState]
+      @is_accept_state: bool
+      @prediction: Integer
+      @lexer_action_executor: ATN::LexerActionExecutor
+      @requires_full_context: bool
+
+      class PredPrediction
+        @pred: ATN::SemanticContext
+        @alt: Integer
+
+        def initialize: (ATN::SemanticContext, Integer) -> void
+      end
+
+      @predicates: Array[PredPrediction]
+
+      attr_accessor configs: ATN::ATNConfigSet
+      attr_accessor edges: Array[DFAState]
+      attr_accessor is_accept_state: bool
+      attr_accessor lexer_action_executor: ATN::LexerActionExecutor
+      attr_accessor predicates: Array[PredPrediction]
+      attr_accessor prediction: Integer
+      attr_accessor requires_full_context: bool
+      attr_accessor state_number: Integer
+
+      def initialize: (Integer | ATN::ATNConfigSet | nil) -> void
+      def get_alt_set: -> Set[Integer]
+
     end
   end
 end

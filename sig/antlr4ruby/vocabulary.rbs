@@ -10,6 +10,27 @@ module Antlr4ruby
   end
 
   class Vocabulary
+    EMPTY_NAMES: Array[String]
+
+    EMPTY_VOCABULARY: Vocabulary
+
     include _Vocabulary
+
+    def self.from_token_names: (Array[String]) -> Vocabulary
+
+    attr_reader display_names: Array[String]
+    attr_reader literal_names: Array[String]
+
+    attr_reader max_token_type: Integer
+    attr_reader symbolic_names: Array[String]
+
+    def initialize: (Array[String], Array[String], ?Array[String]) -> void
+
+    # def display_name: (Integer) -> String
+    #
+    # def literal_name: (Integer) -> String
+    #
+    # def symbolic_name: (Integer) -> String
+
   end
 end

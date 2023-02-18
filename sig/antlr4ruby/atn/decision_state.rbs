@@ -5,6 +5,14 @@ module Antlr4ruby
   module ATN
     # @abstract
     class DecisionState < ATNState
+      @decision: Integer
+
+      @non_greedy: bool
+
+      attr_accessor decision: Integer
+      attr_accessor non_greedy: bool
+
+      def get_state_type: -> Integer
     end
   end
 end

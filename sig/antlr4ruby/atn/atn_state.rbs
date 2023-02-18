@@ -5,6 +5,7 @@ module Antlr4ruby
   module ATN
     # @abstract
     class ATNState
+      def get_state_type: -> Integer
     end
   end
 end

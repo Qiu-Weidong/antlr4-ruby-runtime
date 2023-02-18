@@ -26,11 +26,11 @@ module Antlr4ruby
       end
 
       # @!override
-      def visit_terminal(node)
+      def visit_terminal(_node)
         default_result
       end
 
-      def visit_error_node(node)
+      def visit_error_node(_node)
         default_result
       end
 
@@ -39,10 +39,10 @@ module Antlr4ruby
         nil
       end
 
-      def aggregate_result(aggregate, next_result)
+      def aggregate_result(_aggregate, next_result)
         next_result
       end
-      def should_visit_next_child(node, current_result)
+      def should_visit_next_child(_node, _current_result)
         true
       end
     end
