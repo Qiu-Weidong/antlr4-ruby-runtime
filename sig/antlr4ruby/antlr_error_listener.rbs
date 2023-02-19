@@ -1,4 +1,4 @@
-
+# 已完成
 
 module Antlr4ruby
   interface _ANTLRErrorListener
@@ -7,17 +7,15 @@ module Antlr4ruby
       ) -> void
 
     # 后面这些看情况取舍
-    def report_ambiguity:(
-        Parser, DFA::DFA, Integer, Integer, bool, # todo BitSet
-        ATN::ATNConfigSet
+    def report_ambiguity: (
+        Parser, DFA::DFA, Integer, Integer, bool, Misc::BitSet, ATN::ATNConfigSet
       ) -> void
 
-    def report_attempting_full_context:(
-        Parser, DFA::DFA, Integer, Integer, # todo BitSet
-        ATN::ATNConfigSet
+    def report_attempting_full_context: (
+        Parser, DFA::DFA, Integer, Integer, Misc::BitSet, ATN::ATNConfigSet
       ) -> void
 
-    def reportContextSensitivity: (
+    def report_context_sensitivity: (
         Parser, DFA::DFA, Integer, Integer, Integer, ATN::ATNConfigSet
       ) -> void
   end

@@ -2,5 +2,6 @@
 
 module Antlr4ruby
   class BailErrorStrategy < DefaultErrorStrategy
+    # 什么都不需要写
   end
 end

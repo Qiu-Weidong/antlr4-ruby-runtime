@@ -6,7 +6,7 @@ module Antlr4ruby
   end
 
   interface _IntStream
-    def comsume: -> void
+    def consume: -> void
     def la: (Integer) -> Integer
     def mark: -> Integer
     def release: (Integer) -> void

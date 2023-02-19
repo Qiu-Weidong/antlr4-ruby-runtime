@@ -4,7 +4,7 @@ module Antlr4ruby
     class AmbiguityInfo < DecisionEventInfo
       attr_accessor ambig_alts: Misc::BitSet
 
-
+      def initialize: (Integer, ATNConfigSet, Misc::BitSet, _TokenStream, Integer, Integer, bool) -> void
     end
   end
 end

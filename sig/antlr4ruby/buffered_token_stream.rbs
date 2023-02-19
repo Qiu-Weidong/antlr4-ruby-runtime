@@ -1,6 +1,51 @@
-
 module Antlr4ruby
   class BufferedTokenStream
     include _TokenStream
+
+    def initialize: (_TokenSource) -> void
+
+    def adjust_seek_index: (Integer) -> Integer
+
+    def fetch: (Integer) -> Integer
+
+    def fill: -> void
+
+    def filter_for_channel: (Integer, Integer, Integer) -> Array[_Token]
+
+    def get_hidden_tokens_to_left: (Integer, Integer) -> Array[_Token]
+
+    def get_hidden_tokens_to_right: (Integer, Integer) -> Array[_Token]
+
+    def get_text: () -> String
+      | (Misc::Interval) -> String
+      | (RuleContext) -> String
+
+    attr_accessor fetched_eof: bool
+    attr_accessor p: Integer
+    attr_accessor token_source: _TokenSource
+    attr_accessor tokens: Array[_Token]
+
+    def get_tokens:
+      () -> Array[_Token]
+      | (Integer, Integer) -> Array[_Token]
+      | (Integer, Integer, Set[Integer]) -> Array[_Token]
+      | (Integer, Integer, Integer) -> Array[_Token]
+
+    def lazy_init: -> void
+
+    def lb: (Integer) -> _Token
+
+    def next_token_on_channel: (Integer, Integer) -> Integer
+
+    def previous_token_on_channel: (Integer, Integer) -> Integer
+
+    def set_token_source: (_TokenSource) -> void
+
+    def setup: -> void
+
+    def sync: (Integer) -> bool
+
+    def get: (Integer) -> _Token
+      | (Integer, Integer) -> Array[_Token]
   end
 end

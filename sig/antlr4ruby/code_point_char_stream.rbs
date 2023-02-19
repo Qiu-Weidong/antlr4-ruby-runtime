@@ -3,5 +3,13 @@ module Antlr4ruby
   # @abstract
   class CodePointCharStream
     include _CharStream
+
+    def self.from_buffer: (CodePointBuffer, String)-> CodePointCharStream
+
+    attr_reader name: String
+    attr_accessor position: Integer
+    attr_reader size: Integer
+
+    def get_internal_storage: -> Object
   end
 end

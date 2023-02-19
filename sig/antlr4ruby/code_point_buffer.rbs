@@ -1,5 +1,20 @@
 
 module Antlr4ruby
   class CodePointBuffer
+    BYTE: Symbol
+    CHAR: Symbol
+    INT: Symbol
+
+    @type: Symbol
+
+    def array_offset: -> Integer
+
+    def get: (Integer) -> Integer
+
+    def get_type: -> Symbol
+
+    def position: (Integer?) -> void
+
+    def remaining: -> Integer
   end
 end

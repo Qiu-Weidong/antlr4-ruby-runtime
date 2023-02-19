@@ -2,5 +2,55 @@
 module Antlr4ruby
   class DefaultErrorStrategy
     include _ANTLRErrorStrategy
+
+    @error_recovery_mode: bool
+    @last_error_index: Integer
+    @last_error_states: Misc::IntervalSet
+    @next_tokens_context: ParserRuleContext
+    @next_tokens_state: Integer
+
+    attr_accessor error_recovery_mode: bool
+
+    attr_accessor last_error_index: Integer
+
+    attr_accessor last_error_states: Misc::IntervalSet
+
+    attr_accessor next_tokens_context: ParserRuleContext
+
+    attr_accessor next_tokens_state: Integer
+
+    def begin_error_condition: (Parser) -> void
+
+    def end_error_condition: (Parser) -> void
+
+    def report_no_viable_alternative: (Parser, NoViableAltException) -> void
+
+    def report_input_mismatch: (Parser, InputMismatchException) -> void
+
+    def report_failed_predicate: (Parser, FailedPredicateException) -> void
+
+    def report_unwanted_token: (Parser) -> void
+
+    def report_missing_token: (Parser) -> void
+
+    def single_token_insertion: (Parser) -> bool
+
+    def single_token_deletion: (Parser) -> _Token
+
+    def get_missing_symbol: (Parser) -> _Token
+
+    def get_expected_tokens: (Parser) -> Misc::IntervalSet
+
+    def get_token_error_display: (_Token) -> String
+
+    def get_symbol_text: (_Token) -> String
+
+    def get_symbol_type: (_Token) -> Integer
+
+    def escape_ws_and_quote: (String) -> String
+
+    def get_error_recovery_set: (Parser) -> Misc::IntervalSet
+
+    def consume_until: (Parser, Misc::IntervalSet) -> void
   end
 end
