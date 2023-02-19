@@ -2,5 +2,75 @@
 module Antlr4ruby
   # @abstract
   class Recognizer[Symbol, ATNInterpreter]
+    EOF: Integer
+
+    @@token_type_map_cache: Hash[Vocabulary, Hash[String, Integer]]
+    @@rule_index_map_cache: Hash[Array[String], Hash[String, Integer]]
+    @listeners: Array[_ANTLRErrorListener]
+
+    attr_accessor interpreter: ATNInterpreter
+
+    attr_accessor state_number: Integer
+
+    def action: (RuleContext, Integer, Integer) -> void
+
+    def add_error_listener: (_ANTLRErrorListener) -> void
+
+    def get_atn: -> ATN::ATN
+
+    def get_error_header: (RecognitionException) -> String
+
+    def get_error_listener_dispatch: -> _ANTLRErrorListener
+
+    def get_error_listeners: -> Array[_ANTLRErrorListener]
+
+    def get_grammar_file_name: -> String
+
+    def get_input_stream: -> _IntStream
+
+    def get_interpreter: -> ATNInterpreter
+
+    def get_parse_info: -> ATN::ParseInfo?
+
+    def get_rule_index_map: -> Hash[String, Integer]
+
+    def get_rule_names: -> Array[String]
+
+    def get_serialized_atn: -> String
+
+    def get_state: -> Integer
+
+    def get_token_factory: -> _TokenFactory[untyped]
+
+    def get_token_names: -> Array[String]
+
+    def get_token_type: -> Integer
+
+    def get_token_type_map: -> Hash[String, Integer]
+
+    def get_vocabulary: -> Vocabulary
+
+    def precpred: (RuleContext, Integer) -> bool
+
+    def remove_error_listener: (_ANTLRErrorListener) -> void
+
+    def remove_error_listeners: -> void
+
+    def sempred: (RuleContext, Integer, Integer) -> bool
+
+    def set_input_stream: (_IntStream) -> void
+
+    def set_interpreter: (ATNInterpreter) -> void
+
+    def set_state: (Integer) -> void
+
+    def set_token_factory: (_TokenFactory[untyped]) -> void
+
+    private
+
+    attr_accessor listeners:  Array[_ANTLRErrorListener]
+    
+    
+
   end
 end

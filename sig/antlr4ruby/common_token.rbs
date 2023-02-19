@@ -27,6 +27,10 @@ module Antlr4ruby
 
     def initialize: (type: Integer?, source: Misc::Pair[_TokenSource, _CharStream]?, channel: Integer?, start: Integer?, stop: Integer?, text: String?, old_token: _Token?) -> void
 
+    def set_start_index: (Integer) -> void
+
+    def set_stop_index: (Integer) -> void
+
     def to_s: (Recognizer[untyped, untyped]?) -> String
   end
 end

@@ -17,6 +17,70 @@ module Antlr4ruby
       # todo
     end
 
+    def get_type
+      @type
+    end
+
+    def set_line(line)
+      @line = line
+    end
+
+    def get_text
+      # todo
+    end
+
+    def set_text(text)
+      @text = text
+    end
+
+    def get_line
+      @line
+    end
+
+    def get_char_position_in_line
+      @char_position_in_line
+    end
+
+    def set_char_position_in_line(position)
+      @char_position_in_line = position
+    end
+
+    def get_channel
+      @channel
+    end
+
+    def set_channel(channel) @channel = channel; end
+
+    def set_type(ty) @type = ty; end
+
+    def get_start_index
+      @start
+    end
+
+    def set_start_index(start) @start = start; end
+
+    def get_stop_index
+      @stop
+    end
+
+    def set_stop_index(stop) @stop = stop; end
+
+    def get_token_index
+      @index
+    end
+
+    def set_token_index(index) @index = index; end
+
+    def get_token_source
+      source.first
+    end
+
+    def get_input_stream
+      source.second
+    end
+
+
+
 
   end
 end

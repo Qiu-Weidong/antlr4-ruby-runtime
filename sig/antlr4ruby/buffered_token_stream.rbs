@@ -33,7 +33,7 @@ module Antlr4ruby
 
     def lazy_init: -> void
 
-    def lb: (Integer) -> _Token
+    def lb: (Integer) -> _Token?
 
     def next_token_on_channel: (Integer, Integer) -> Integer
 

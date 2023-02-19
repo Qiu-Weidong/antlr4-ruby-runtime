@@ -3,6 +3,10 @@
 module Antlr4ruby
   module Misc
     class Pair[A, B]
+
+      attr_accessor first: A
+      attr_accessor second: B
+
       @first: A
       @second: B
 

@@ -1,6 +1,12 @@
 
 module Antlr4ruby
   class CommonTokenFactory
+    DEFAULT: CommonTokenFactory
+
     include _TokenFactory[CommonToken]
+
+    attr_reader copy_text: bool
+
+    def initialize: (bool) -> void
   end
 end

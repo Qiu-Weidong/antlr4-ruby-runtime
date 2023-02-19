@@ -1,5 +1,7 @@
 
 module Antlr4ruby
   class CommonTokenStream < BufferedTokenStream
+    attr_accessor channel: Integer
+    def initialize: (_TokenSource, Integer) -> void
   end
 end
