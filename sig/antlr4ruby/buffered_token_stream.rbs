@@ -16,9 +16,9 @@ module Antlr4ruby
 
     def get_hidden_tokens_to_right: (Integer, Integer) -> Array[_Token]
 
-    def get_text: () -> String
-      | (Misc::Interval) -> String
-      | (RuleContext) -> String
+    # def get_text: () -> String
+    #   | (Misc::Interval) -> String
+    #   | (RuleContext) -> String
 
     attr_accessor fetched_eof: bool
     attr_accessor p: Integer

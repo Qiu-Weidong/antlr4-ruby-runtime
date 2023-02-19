@@ -4,6 +4,13 @@ module Antlr4ruby
   class Recognizer
     EOF = -1
 
+    def initialize
+      super()
+
+      @listeners = [ConsoleErrorListener.INSTANCE]
+      @state_number = -1
+    end
+
 
     private
     @@token_type_map_cache = {}
@@ -86,8 +93,7 @@ module Antlr4ruby
     end
 
     def get_error_listener_dispatch
-      # todo
-      # ProxyErrorListener.new(get_error_listeners)
+      ProxyErrorListener.new(get_error_listeners)
     end
 
     def sempred(localctx, rule_index, action_index) true; end

@@ -3,11 +3,11 @@
 module Antlr4ruby
   module Tree
     interface _Tree
-      def get_parent: -> _Tree
+      def get_parent: -> _Tree?
       def get_payload: -> Object
-      def get_child: (Integer) -> _Tree
+      def get_child: (Integer) -> _Tree?
       def get_child_count: -> Integer
-      def to_string_tree:(?Parser) -> String
+      def to_string_tree:(Parser?) -> String
     end
   end
 end

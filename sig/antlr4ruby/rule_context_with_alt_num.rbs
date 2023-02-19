@@ -1,5 +1,8 @@
 
 module Antlr4ruby
   class RuleContextWithAltNum < ParserRuleContext
+    attr_accessor alt_num: Integer
+
+    # def rule_context_with_alt_num: -> void
   end
 end

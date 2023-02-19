@@ -3,12 +3,6 @@
 module Antlr4ruby
   # 简单点，不使用 Vocabulary 接口，直接定义 VocabularyImpl 类，命名为 Vocabulary
   class Vocabulary
-    EMPTY_NAMES = [].freeze
-    EMPTY_VOCABULARY = Vocabulary.new(EMPTY_NAMES, EMPTY_NAMES, EMPTY_NAMES)
-
-    attr_reader :literal_names, :symbolic_names,
-                :display_names, :max_token_type
-
     def initialize(literal_names, symbolic_names, display_names = [])
       super()
       @literal_names = literal_names || EMPTY_NAMES
@@ -17,6 +11,16 @@ module Antlr4ruby
       longer = literal_names.length > symbolic_names.length ? literal_names.length : symbolic_names.length
       @max_token_type = (longer > @display_names.length ? longer : @display_names.length) - 1
     end
+
+
+    private
+    EMPTY_NAMES = [].freeze
+
+    attr_reader :literal_names, :symbolic_names,
+                :display_names, :max_token_type
+
+    public
+    EMPTY_VOCABULARY = Vocabulary.new(EMPTY_NAMES, EMPTY_NAMES, EMPTY_NAMES)
 
     def get_literal_name(token_type)
       @literal_names[token_type]
@@ -31,6 +35,12 @@ module Antlr4ruby
     def get_display_name(token_type)
       @display_names[token_type] || get_literal_name(token_type) || get_symbolic_name(token_type) || token_type.to_s
     end
+
+    def get_max_token_type
+      @max_token_type
+    end
+
+
 
     class << self
       def from_token_names(token_names)

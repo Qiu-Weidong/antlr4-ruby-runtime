@@ -7,14 +7,16 @@ module Antlr4ruby
       include _SyntaxTree
 
       # @override
-      def get_parent: -> _ParseTree
+      def get_parent: -> _ParseTree?
 
       # @override
-      def get_child: (Integer) -> _ParseTree
+      def get_child: (Integer) -> _ParseTree?
 
       def set_parent: (RuleContext) -> void
       def get_text: -> String
       def accept: (_ParseTreeVisitor[untyped]) -> untyped
+
+      # def to_string_tree: (Parser) -> String
     end
   end
 end

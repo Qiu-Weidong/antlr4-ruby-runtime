@@ -2,7 +2,7 @@ module Antlr4ruby
   class RuleContext
     attr_accessor :parent, :invoking_state
 
-    def initialize(parent, invoking_state)
+    def initialize(parent = nil, invoking_state = -1)
       super()
       @parent, @invoking_state = parent, invoking_state
     end
@@ -59,7 +59,7 @@ module Antlr4ruby
     end
 
     def get_alt_number
-      # todo
+      ATN.INVALID_ALT_NUMBER
     end
 
     def set_alt_number(alt_number) end
@@ -70,9 +70,7 @@ module Antlr4ruby
     end
 
     # @override
-    def get_child(i)
-      nil
-    end
+    def get_child(i) nil; end
 
     # @override
     def get_child_count
@@ -84,16 +82,18 @@ module Antlr4ruby
       visitor.visit_children(self)
     end
 
-    def to_string_tree(recog)
-      # 参数可能是 parser、Array[String]、nil
+    def to_string_tree(recognizer)
+      # rule_names 为参数的形式舍弃
       # todo
     end
 
-    def to_s
+    def to_s(recognizer)
+      # 多余的形式舍弃掉
       # todo
     end
 
     def enter_rule(listener) end
+
     def exit_rule(listener) end
 
   end

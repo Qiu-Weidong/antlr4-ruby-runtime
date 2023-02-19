@@ -15,7 +15,7 @@ module Antlr4ruby
 
     attr_accessor stop: _Token
 
-    def initialize: (?ParserRuleContext, ?Integer) -> void
+    def initialize: (ParserRuleContext?, Integer) -> void
 
     def add_any_child: (untyped) -> Tree::_ParseTree
 
@@ -33,13 +33,15 @@ module Antlr4ruby
 
     def get_stop: -> _Token
 
-    def get_token: (Integer, Integer) -> Tree::TerminalNode
+    def get_token: (Integer, Integer) -> Tree::TerminalNode?
 
     def get_tokens: (Integer) -> Array[Tree::TerminalNode]
 
     def remove_last_child: -> void
 
     def to_info_string: (Parser) -> String
+
+    def get_parent: -> ParserRuleContext
 
   end
 end

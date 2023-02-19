@@ -8,6 +8,7 @@ module Antlr4ruby
     end
 
     protected
+
     attr_accessor :token_source, :tokens, :p, :fetched_eof
 
     def sync(i)
@@ -22,7 +23,9 @@ module Antlr4ruby
       # todo
     end
 
-    def adjust_seek_index(i)i; end
+    def adjust_seek_index(i)
+      i;
+    end
 
     def lazy_init
       # todo
@@ -44,9 +47,8 @@ module Antlr4ruby
       # todo
     end
 
-
-
     public
+
     def get_token_source
       @token_source
     end
@@ -85,7 +87,7 @@ module Antlr4ruby
       # todo
     end
 
-    def get_text(ctx_or_interval)
+    def get_text(rule_context: nil, interval: nil, start: nil, stop: nil)
       # todo
     end
 
@@ -108,8 +110,6 @@ module Antlr4ruby
     def get_hidden_tokens_to_left(token_index, channel = -1)
       # todo
     end
-
-
 
   end
 end

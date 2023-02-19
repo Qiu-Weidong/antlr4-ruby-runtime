@@ -2,5 +2,9 @@
 module Antlr4ruby
   class ProxyErrorListener
     include _ANTLRErrorListener
+
+    attr_reader delegates: Array[_ANTLRErrorListener]
+
+    def initialize: (Array[_ANTLRErrorListener]) -> void
   end
 end

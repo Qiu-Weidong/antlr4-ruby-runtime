@@ -24,7 +24,7 @@ module Antlr4ruby
     attr_reader max_token_type: Integer
     attr_reader symbolic_names: Array[String]
 
-    def initialize: (Array[String], Array[String], ?Array[String]) -> void
+    def initialize: (Array[String], Array[String], Array[String]) -> void
 
     # def display_name: (Integer) -> String
     #

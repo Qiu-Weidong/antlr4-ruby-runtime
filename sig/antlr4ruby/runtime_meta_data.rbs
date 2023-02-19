@@ -1,5 +1,12 @@
 
 module Antlr4ruby
   class RuntimeMetaData
+    VERSION: String
+
+    def self.check_version: (String, String) -> void
+
+    def self.get_major_minor_version: (String) -> String
+
+    def self.get_runtime_version: -> String
   end
 end

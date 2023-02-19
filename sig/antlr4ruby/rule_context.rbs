@@ -2,13 +2,13 @@
 module Antlr4ruby
   class RuleContext
     include Tree::_RuleNode
-    @parent: RuleContext
+    @parent: RuleContext?
     @invoking_state: Integer
 
     attr_accessor invoking_state: Integer
     attr_accessor parent: RuleContext
 
-    def initialize: (?RuleContext, ?Integer) -> void
+    def initialize: (RuleContext?, Integer) -> void
 
     def depth: -> Integer
 
@@ -23,5 +23,7 @@ module Antlr4ruby
     def is_empty: -> bool
 
     def set_alt_number: (Integer) -> void
+
+    def to_s: (Recognizer[untyped, untyped]?) -> String
   end
 end

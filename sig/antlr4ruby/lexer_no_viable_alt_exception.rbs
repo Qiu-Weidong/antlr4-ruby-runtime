@@ -1,5 +1,7 @@
 
 module Antlr4ruby
   class LexerNoViableAltException < RecognitionException
+    attr_reader start_index: Integer
+    attr_reader dead_end_configs: ATN::ATNConfigSet
   end
 end

@@ -8,13 +8,46 @@ module Antlr4ruby
       super()
       @recognizer, @input, @ctx = recognizer, input, ctx
       if recognizer
-        # @offending_state = recognizer.get_state
+        @offending_state = recognizer.get_state
       end
     end
 
     private
-    attr_reader :recognizer, :ctx, :input, :offending_token, :offending_state
+    attr_reader :recognizer, :ctx, :input
+    attr_accessor :offending_token, :offending_state
 
+    public
+    def get_offending_state
+      @offending_state
+    end
+
+    def set_offending_state(offending_state)
+      @offending_state = offending_state
+    end
+
+    def get_expected_tokens
+      # todo
+    end
+
+    def get_ctx
+      @ctx
+    end
+
+    def get_input_stream
+      @input
+    end
+
+    def get_offending_token
+      @offending_token
+    end
+
+    def set_offending_token(token)
+      @offending_token = token
+    end
+
+    def get_recognizer
+      @recognizer
+    end
 
   end
 end

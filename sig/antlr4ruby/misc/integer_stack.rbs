@@ -1,0 +1,12 @@
+module Antlr4ruby
+  module Misc
+    class IntegerStack
+
+
+
+    end
+  end
+end
+
+
+

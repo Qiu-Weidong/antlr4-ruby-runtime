@@ -6,7 +6,7 @@ module Antlr4ruby
     attr_accessor :children,
                   :start,:stop,
                   :exception
-    def initialize(parent, invoking_state)
+    def initialize(parent = nil, invoking_state = -1)
       super(parent, invoking_state)
     end
 
@@ -30,6 +30,9 @@ module Antlr4ruby
     def enter_rule(listener) end
 
     def exit_rule(listener) end
+
+
+
     def add_child(rule_invocation)
       if rule_invocation.instance_of?(Tree::TerminalNode)
         rule_invocation.set_parent(self)
@@ -60,6 +63,7 @@ module Antlr4ruby
 
     # @override
     def get_parent
+      # 这里会有一个警告，好像没什么办法强制类型转换
       super
     end
 
