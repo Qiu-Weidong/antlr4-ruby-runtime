@@ -5,6 +5,9 @@ module Antlr4ruby
   module ATN
     # @final
     class AtomTransition < Transition
+      attr_reader label: Integer
+
+      def initialize: (ATNState, Integer) -> void
     end
   end
 end

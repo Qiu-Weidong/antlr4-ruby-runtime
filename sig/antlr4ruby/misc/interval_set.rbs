@@ -1,0 +1,19 @@
+
+
+module Antlr4ruby
+  module Misc
+    class IntervalSet
+      include _IntSet
+
+      COMPLETE_CHAR_SET: IntervalSet
+      EMPTY_SET: IntervalSet
+
+      @intervals: Array[Interval]
+      @readonly: bool
+
+
+    end
+  end
+end
+
+

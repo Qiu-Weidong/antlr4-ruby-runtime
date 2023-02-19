@@ -2,6 +2,9 @@
 module Antlr4ruby
   module ATN
     class AmbiguityInfo < DecisionEventInfo
+      attr_accessor ambig_alts: Misc::BitSet
+
+
     end
   end
 end

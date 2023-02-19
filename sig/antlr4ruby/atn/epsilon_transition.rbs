@@ -5,6 +5,11 @@ module Antlr4ruby
   module ATN
     # @final
     class EpsilonTransition < Transition
+
+      def initialize: (ATNState, Integer) -> void
+      @outermost_precedence_return: Integer
+
+      attr_reader outermost_precedence_return: Integer
     end
   end
 end

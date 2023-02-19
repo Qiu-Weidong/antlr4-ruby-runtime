@@ -4,6 +4,7 @@
 module Antlr4ruby
   module ATN
     class DecisionEventInfo
+      attr_reader decision: Integer
     end
   end
 end

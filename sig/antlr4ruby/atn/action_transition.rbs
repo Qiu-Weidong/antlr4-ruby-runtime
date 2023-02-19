@@ -3,6 +3,15 @@ module Antlr4ruby
   module ATN
     # @final
     class ActionTransition < Transition
+      @rule_index: Integer
+      @action_index: Integer
+      @is_ctx_dependent: bool
+
+      attr_reader action_index: Integer
+      attr_reader is_ctx_dependent: Integer
+      attr_reader rule_index: Integer
+
+      def initialize:(ATNState, Integer, Integer, Integer)-> void
     end
   end
 end
