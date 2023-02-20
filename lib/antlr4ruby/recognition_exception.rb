@@ -1,11 +1,9 @@
 
 module Antlr4ruby
-  # todo 继承运行时异常
-  class RecognitionException
+  class RecognitionException < RuntimeError
 
     def initialize(recognizer, input, ctx, msg="RecognitionException")
-      # todo 为 super 添加参数
-      super()
+      super(msg)
       @recognizer, @input, @ctx = recognizer, input, ctx
       if recognizer
         @offending_state = recognizer.get_state

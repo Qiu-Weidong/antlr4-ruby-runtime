@@ -1,5 +1,7 @@
 
 module Antlr4ruby
   class InputMismatchException < RecognitionException
+
+    def initialize: (Parser, Integer?, ParserRuleContext?) -> void
   end
 end

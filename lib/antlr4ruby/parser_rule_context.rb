@@ -5,8 +5,9 @@ module Antlr4ruby
     EMPTY = ParserRuleContext.new(nil, -1)
 
     attr_accessor :children,
-                  :start,:stop,
+                  :start, :stop,
                   :exception
+
     def initialize(parent = nil, invoking_state = -1)
       super(parent, invoking_state)
     end
@@ -20,19 +21,17 @@ module Antlr4ruby
 
       if ctx.children
         self.children = []
-        ctx.children.each { |child|
+        ctx.children.each do |child|
           if child.instance_of?(ErrorNode)
             add_child(child)
           end
-        }
+        end
       end
     end
 
     def enter_rule(listener) end
 
     def exit_rule(listener) end
-
-
 
     def add_child(rule_invocation)
       if rule_invocation.instance_of?(Tree::TerminalNode)
@@ -46,7 +45,6 @@ module Antlr4ruby
       add_any_child(error_node)
     end
 
-
     def add_any_child(t)
       unless @children
         @children = []
@@ -54,7 +52,6 @@ module Antlr4ruby
       @children.push(t)
       t
     end
-
 
     def remove_last_child
       if @children
@@ -113,6 +110,7 @@ module Antlr4ruby
 
       nil
     end
+
     def get_tokens(token_type)
       unless children
         return []
@@ -134,13 +132,14 @@ module Antlr4ruby
     def get_child_count
       @children.length || 0
     end
+
     # @override
     def get_source_interval
       unless @start
         return Misc::Interval::INVALID
       end
       if !@stop || stop.get_token_index < start.get_token_index
-        return Misc::Interval.of(start.get_token_index, stop.get_token_index-1)
+        return Misc::Interval.of(start.get_token_index, stop.get_token_index - 1)
       end
       Misc::Interval.of(start.get_token_index, stop.get_token_index)
     end
@@ -148,12 +147,13 @@ module Antlr4ruby
     def get_start
       @start
     end
+
     def get_stop
       @stop
     end
 
     def to_info_string(recognizer)
-      rules = recognizer.get_rule_invocation_stack(self )
+      rules = recognizer.get_rule_invocation_stack(self)
       rules.reverse!
       "parser_rule_context#{rules}{start=#{start}, stop=#{stop}}"
     end

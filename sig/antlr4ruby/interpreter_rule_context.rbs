@@ -1,5 +1,6 @@
 
 module Antlr4ruby
   class InterpreterRuleContext < ParserRuleContext
+    attr_accessor rule_index: Integer
   end
 end

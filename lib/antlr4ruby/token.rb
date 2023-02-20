@@ -1,10 +1,6 @@
-
-
 module Antlr4ruby
   module Token
-    INVALID_TYPE = 0
-    EPSILON = -2
-    MIN_USER_TOKEN_TYPE = 1
+    INVALID_TYPE = 0; EPSILON = -2; MIN_USER_TOKEN_TYPE = 1
     EOF = -1 # IntStream.EOF
     DEFAULT_CHANNEL = 0
     HIDDEN_CHANNEL = 1

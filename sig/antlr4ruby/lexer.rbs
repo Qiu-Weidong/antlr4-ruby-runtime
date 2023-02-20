@@ -2,6 +2,83 @@
 module Antlr4ruby
   # @abstract
   class Lexer < Recognizer[Integer, ATN::LexerATNSimulator]
+    DEFAULT_MODE: Integer
+
+    DEFAULT_TOKEN_CHANNEL: Integer
+    HIDDEN: Integer
+    MAX_CHAR_VALUE: Integer
+    MIN_CHAR_VALUE: Integer
+    MORE: Integer
+
+    SKIP: Integer
+
     include _TokenSource
+
+    @token_factory_source_pair: Misc::Pair[_TokenSource, _CharStream]
+
+    attr_accessor channel: Integer
+    attr_accessor factory: _TokenFactory[untyped]
+    attr_accessor hit_eof: bool
+    attr_accessor input: _CharStream
+    attr_accessor mode: Integer
+    attr_accessor mode_stack: Misc::IntegerStack
+    attr_accessor text: String
+    attr_accessor token: _Token
+
+    attr_accessor token_factory_source_pair: Misc::Pair[_TokenSource, _CharStream]
+    attr_accessor token_start_char_index: Integer
+
+    attr_accessor token_start_line: Integer
+    attr_accessor type: Integer
+
+    def initialize: (_CharStream?) -> void
+
+    def emit: (_Token?) -> _Token?
+
+    def emit_eof: -> _Token
+
+    def get_all_tokens: -> Array[_Token]
+
+    def get_channel: -> Integer
+
+    def get_channel_names: -> Array[String]
+
+    def get_char_error_display: (Integer) -> String
+
+    def get_char_index: -> Integer
+
+    def get_error_display: (String | Integer) -> String
+
+    def get_mode_names: -> Array[String]
+
+    def get_text: -> String
+
+    def get_token: -> _Token
+
+    def get_type: -> Integer
+
+    def more: -> void
+
+    def notify_listeners: (LexerNoViableAltException) -> void
+
+    def pop_mode: -> Integer
+
+    def recover: (LexerNoViableAltException | RecognitionException) -> void
+
+    def reset: -> void
+
+    def set_channel: (Integer) -> void
+
+    def set_char_position_in_line: (Integer) -> void
+
+    def set_line: (Integer) -> void
+
+    def set_text: (String) -> void
+
+    def set_token: (_Token) -> void
+
+    def set_type: (Integer) -> void
+
+    def skip: -> void
   end
 end
