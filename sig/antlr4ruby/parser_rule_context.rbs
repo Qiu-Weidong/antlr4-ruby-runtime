@@ -43,5 +43,11 @@ module Antlr4ruby
 
     def get_parent: -> ParserRuleContext
 
+    def get_child: (Integer, Class?) -> Tree::_ParseTree?
+
+    def get_rule_context: (Class, Integer) -> RuleContext?
+
+    def get_rule_contexts: (Class) -> Array[RuleContext]
+
   end
 end

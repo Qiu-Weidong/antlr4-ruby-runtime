@@ -9,7 +9,7 @@ module Antlr4ruby
     attr_accessor offending_token: _Token
     attr_reader recognizer: Recognizer[untyped, untyped]
 
-    def initialize: (Recognizer[untyped, untyped], _IntStream, ParserRuleContext, String) -> void
+    def initialize: (Recognizer[untyped, untyped], _IntStream, ParserRuleContext?, String) -> void
 
     def get_ctx: -> RuleContext
 

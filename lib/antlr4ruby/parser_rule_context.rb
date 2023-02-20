@@ -1,7 +1,8 @@
+# 已完成
 
 module Antlr4ruby
   class ParserRuleContext < RuleContext
-    EMPTY = ParserRuleContext.new(nil, nil)
+    EMPTY = ParserRuleContext.new(nil, -1)
 
     attr_accessor :children,
                   :start,:stop,
@@ -21,7 +22,7 @@ module Antlr4ruby
         self.children = []
         ctx.children.each { |child|
           if child.instance_of?(ErrorNode)
-            # todo add_child
+            add_child(child)
           end
         }
       end
@@ -68,11 +69,28 @@ module Antlr4ruby
     end
 
     # @override
-    def get_child(i)
-      @children[i]
+    def get_child(i, context_type)
+      @children[i] unless context_type
+      arr = []
+      children.each do |child|
+        arr.push(child) if child.instance_of?(context_type)
+      end
+      arr[i]
     end
 
-    # todo get_child 的重载函数 get_rule_context、get_rule_contexts
+    def get_rule_context(context_type, i)
+      get_child(i, context_type)
+    end
+
+    def get_rule_contexts(context_type)
+      result = []
+      return result unless children
+
+      children.each do |child|
+        result.push(child) if child.instance_of?(context_type)
+      end
+      result
+    end
 
     def get_token(token_type, i)
       if !@children || i < 0 || i >= @children.length
@@ -135,7 +153,9 @@ module Antlr4ruby
     end
 
     def to_info_string(recognizer)
-      # rules = recognizer todo
+      rules = recognizer.get_rule_invocation_stack(self )
+      rules.reverse!
+      "parser_rule_context#{rules}{start=#{start}, stop=#{stop}}"
     end
   end
 end

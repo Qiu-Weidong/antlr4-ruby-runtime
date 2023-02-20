@@ -24,6 +24,8 @@ module Antlr4ruby
 
     def set_alt_number: (Integer) -> void
 
-    def to_s: (recognizer: Recognizer[) -> String
+    def to_s: (recognizer: Recognizer[untyped, untyped]?, rule_names: Array[String], stop: RuleContext?) -> String
+
+    # def get_rule_context: (Class, Integer?) -> RuleContext?
   end
 end

@@ -1,3 +1,5 @@
+# 已完成
+
 module Antlr4ruby
   class RuleContext
     attr_accessor :parent, :invoking_state
@@ -85,9 +87,18 @@ module Antlr4ruby
       Trees.to_string_tree(self, recognizer:recognizer, rule_names: rule_names)
     end
 
-    def to_s(recognizer)
+    def to_s(recognizer:nil , rule_names:[], stop:nil )
       # 多余的形式舍弃掉
-      # todo
+      rule_names  = recognizer.get_rule_names if recognizer
+      p = self
+      result = ''
+      while p && !p.equal?(stop)
+        rule_index = p.get_rule_index
+        rule_name = rule_names[rule_index] || rule_index.to_s
+        result += rule_name + ' '
+        p = p.parent
+      end
+      result
     end
 
     def enter_rule(listener) end

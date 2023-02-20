@@ -5,7 +5,7 @@ module Antlr4ruby
     interface _RuleNode
       include _ParseTree
 
-      def get_rule_context: -> RuleContext
+      def get_rule_context: -> RuleContext?
     end
   end
 end

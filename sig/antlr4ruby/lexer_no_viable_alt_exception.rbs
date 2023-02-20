@@ -3,5 +3,13 @@ module Antlr4ruby
   class LexerNoViableAltException < RecognitionException
     attr_reader start_index: Integer
     attr_reader dead_end_configs: ATN::ATNConfigSet
+
+    def initialize: (Lexer, _CharStream, Integer, ATN::ATNConfigSet) -> void
+
+    def get_dead_end_configs: -> ATN::ATNConfigSet
+
+    def get_start_index: -> Integer
+
+    def get_input_stream: -> _CharStream
   end
 end
