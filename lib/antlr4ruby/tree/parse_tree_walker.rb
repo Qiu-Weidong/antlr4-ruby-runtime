@@ -21,6 +21,7 @@ module Antlr4ruby
         exit_rule(listener, tree)
       end
 
+      protected
       def enter_rule(listener, rule)
         ctx = rule.get_rule_context
         listener.enter_every_rule(ctx)

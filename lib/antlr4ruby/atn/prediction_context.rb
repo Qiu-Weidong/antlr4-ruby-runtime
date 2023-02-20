@@ -4,10 +4,14 @@ module Antlr4ruby
   module ATN
     # @abstract
     class PredictionContext
-      EMPTY_RETURN_STATE = 2147483647
+      private
       INITIAL_HASH = 1
+      @@global_node_count = 0
 
-      # @@global_node_count
+
+      public
+      EMPTY_RETURN_STATE = 2147483647
+      attr_reader :id
     end
 
   end

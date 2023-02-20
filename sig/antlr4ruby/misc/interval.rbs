@@ -12,6 +12,10 @@ module Antlr4ruby
 
       # @@cache: Array[Interval]
 
+      attr_accessor a: Integer
+
+      attr_accessor b: Integer
+
       def initialize: (Integer, Integer) -> void
 
       def self.of: (Integer, Integer) -> Interval

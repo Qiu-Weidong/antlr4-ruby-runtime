@@ -5,6 +5,7 @@ module Antlr4ruby
     class Interval
       INTERVAL_POOL_MAX_VALUE = 1000
       INVALID = Interval.new(-1, -2)
+      attr_accessor :a, :b
 
       # @@cache = Array.new(INTERVAL_POOL_MAX_VALUE+1)
 

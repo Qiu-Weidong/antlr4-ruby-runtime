@@ -1,0 +1,9 @@
+
+
+module Antlr4ruby
+  module Misc
+    interface _Predicate[T]
+      def test: (T) -> bool
+    end
+  end
+end
