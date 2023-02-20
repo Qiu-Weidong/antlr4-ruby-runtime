@@ -1,7 +1,8 @@
 # frozen_string_literal: true
+# 已完成
 
 module Antlr4ruby
-  # 简单点，不使用 Vocabulary 接口，直接定义 VocabularyImpl 类，命名为 Vocabulary
+
   class Vocabulary
     def initialize(literal_names, symbolic_names, display_names = [])
       super()
@@ -27,7 +28,7 @@ module Antlr4ruby
     end
 
     def get_symbolic_name(token_type)
-      return 'EOF' if token_type == -1 # TODO: if token_type == Token.EOF
+      return 'EOF' if token_type == Token::EOF
 
       @symbolic_names[token_type]
     end

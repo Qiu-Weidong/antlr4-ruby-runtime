@@ -59,7 +59,7 @@ module Antlr4ruby
       end
 
       # @override
-      def to_string_tree(parser)
+      def to_string_tree(recognizer:nil, rule_names: [])
         self.to_s
       end
 

@@ -17,7 +17,7 @@ module Antlr4ruby
       n
     end
 
-    def is_empty
+    def is_empty?
       @invoking_state == -1
     end
 
@@ -43,13 +43,12 @@ module Antlr4ruby
 
     # @override
     def get_text
-      if get_child_count == 0
-        return ''
-      end
+      return '' if get_child_count == 0
 
       result = ''
       get_child_count.times do |i|
-        result += get_child(i).get_text
+        child = get_child(i)
+        result += child.get_text if child
       end
       result
     end
@@ -82,9 +81,8 @@ module Antlr4ruby
       visitor.visit_children(self)
     end
 
-    def to_string_tree(recognizer)
-      # rule_names 为参数的形式舍弃
-      # todo
+    def to_string_tree(recognizer:nil, rule_names: [])
+      Trees.to_string_tree(self, recognizer:recognizer, rule_names: rule_names)
     end
 
     def to_s(recognizer)

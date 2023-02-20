@@ -7,7 +7,7 @@ module Antlr4ruby
       def get_payload: -> Object
       def get_child: (Integer) -> _Tree?
       def get_child_count: -> Integer
-      def to_string_tree:(Parser?) -> String
+      def to_string_tree:(recognizer: Parser?, rule_names: Array[[String]]) -> String
     end
   end
 end

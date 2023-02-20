@@ -20,10 +20,10 @@ module Antlr4ruby
 
     def get_rule_index: -> Integer
 
-    def is_empty: -> bool
+    def is_empty?: -> bool
 
     def set_alt_number: (Integer) -> void
 
-    def to_s: (Recognizer[untyped, untyped]?) -> String
+    def to_s: (recognizer: Recognizer[) -> String
   end
 end
