@@ -1,11 +1,8 @@
-
-
 module Antlr4ruby
-  module Tree
-    interface _RuleNode
-      include _ParseTree
 
-      def get_rule_context: -> RuleContext?
-    end
+  interface _RuleNode
+    include _ParseTree
+
+    def get_rule_context: -> RuleContext?
   end
 end

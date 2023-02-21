@@ -1,6 +1,6 @@
 
 module Antlr4ruby
-  class Parser < Recognizer[_Token, ATN::ParserATNSimulator]
+  class Parser < Recognizer[_Token, ParserATNSimulator]
 
     class TraceListener
       include Tree::_ParseTreeListener
@@ -16,7 +16,7 @@ module Antlr4ruby
     attr_accessor input: _TokenStream?
     attr_accessor matched_eof: bool
     attr_accessor parse_listeners: Array[Tree::_ParseTreeListener]
-    attr_reader precedence_stack: Misc::IntegerStack
+    attr_reader precedence_stack: IntegerStack
 
     attr_accessor syntax_errors: Integer
 
@@ -34,7 +34,7 @@ module Antlr4ruby
 
     def enter_rule: (ParserRuleContext?, Integer?, Integer?) -> void
 
-    def get_atn_with_bypass_alts: -> ATN::ATN
+    def get_atn_with_bypass_alts: -> ATN
 
     def get_build_parse_tree: -> bool
 
@@ -46,9 +46,9 @@ module Antlr4ruby
 
     def get_error_handler: -> _ANTLRErrorStrategy
 
-    def get_expected_tokens: -> Misc::IntervalSet
+    def get_expected_tokens: -> IntervalSet
 
-    def get_expected_tokens_within_current_rule: -> Misc::IntervalSet
+    def get_expected_tokens_within_current_rule: -> IntervalSet
 
     def get_invoking_context: (Integer) -> ParserRuleContext
 
@@ -104,6 +104,6 @@ module Antlr4ruby
 
     private
 
-    attr_accessor bypass_alt_atn_cache: ATN::ATN
+    attr_accessor bypass_alt_atn_cache: ATN
   end
 end

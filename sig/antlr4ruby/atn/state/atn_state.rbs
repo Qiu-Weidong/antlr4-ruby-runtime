@@ -1,0 +1,7 @@
+module Antlr4ruby
+
+  # @abstract
+  class ATNState
+    def get_state_type: -> Integer
+  end
+end

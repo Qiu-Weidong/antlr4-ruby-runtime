@@ -1,10 +1,6 @@
-
-
-
 module Antlr4ruby
-  module ATN
-    class ATN
-      INVALID_ALT_NUMBER: Integer
-    end
+
+  class ATN
+    INVALID_ALT_NUMBER: Integer
   end
 end

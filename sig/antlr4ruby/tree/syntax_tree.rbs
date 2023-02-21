@@ -1,10 +1,8 @@
-
-
 module Antlr4ruby
-  module Tree
-    interface _SyntaxTree
-      include _Tree
-      def get_source_interval: -> Misc::Interval
-    end
+
+  interface _SyntaxTree
+    include _Tree
+
+    def get_source_interval: -> Interval
   end
 end

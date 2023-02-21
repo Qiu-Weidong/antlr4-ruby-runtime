@@ -1,7 +1,5 @@
-
 module Antlr4ruby
-  module Tree
-    class ParseTreeProperty[V]
-    end
+
+  class ParseTreeProperty[V]
   end
 end

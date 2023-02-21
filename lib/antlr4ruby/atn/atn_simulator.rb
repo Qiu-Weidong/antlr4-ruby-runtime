@@ -1,10 +1,6 @@
-
-
 module Antlr4ruby
-  module ATN
-    # @abstract
-    class ATNSimulator
-    end
-
+  # @abstract
+  class ATNSimulator
   end
+
 end

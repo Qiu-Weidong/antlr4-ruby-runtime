@@ -1,7 +1,7 @@
 
 module Antlr4ruby
   # @abstract
-  class Lexer < Recognizer[Integer, ATN::LexerATNSimulator]
+  class Lexer < Recognizer[Integer, LexerATNSimulator]
     DEFAULT_MODE: Integer
 
     DEFAULT_TOKEN_CHANNEL: Integer
@@ -14,18 +14,18 @@ module Antlr4ruby
 
     include _TokenSource
 
-    @token_factory_source_pair: Misc::Pair[_TokenSource, _CharStream]
+    @token_factory_source_pair: Pair[_TokenSource, _CharStream]
 
     attr_accessor channel: Integer
     attr_accessor factory: _TokenFactory[untyped]
     attr_accessor hit_eof: bool
     attr_accessor input: _CharStream
     attr_accessor mode: Integer
-    attr_accessor mode_stack: Misc::IntegerStack
+    attr_accessor mode_stack: IntegerStack
     attr_accessor text: String
     attr_accessor token: _Token
 
-    attr_accessor token_factory_source_pair: Misc::Pair[_TokenSource, _CharStream]
+    attr_accessor token_factory_source_pair: Pair[_TokenSource, _CharStream]
     attr_accessor token_start_char_index: Integer
 
     attr_accessor token_start_line: Integer

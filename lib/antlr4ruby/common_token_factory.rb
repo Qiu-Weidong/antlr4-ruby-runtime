@@ -24,7 +24,7 @@ module Antlr4ruby
         if text
           t.set_text(text)
         elsif copy_text && source.second
-          t.set_text(source.second.get_text(Misc::Interval.of(start, stop)))
+          t.set_text(source.second.get_text(Interval.of(start, stop)))
         end
         t
       else

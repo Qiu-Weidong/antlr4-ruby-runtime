@@ -1,0 +1,5 @@
+module Antlr4ruby
+  class PredicateEvalInfo < DecisionEventInfo
+  end
+
+end

@@ -1,9 +1,4 @@
-
-
-
 module Antlr4ruby
-  module ATN
-    class ATNSerializer
-    end
+  class ATNSerializer
   end
 end

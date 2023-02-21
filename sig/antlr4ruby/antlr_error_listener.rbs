@@ -8,15 +8,15 @@ module Antlr4ruby
 
     # 后面这些看情况取舍
     def report_ambiguity: (
-        Parser, DFA::DFA, Integer, Integer, bool, Misc::BitSet, ATN::ATNConfigSet
+        Parser, DFA, Integer, Integer, bool, BitSet, ATNConfigSet
       ) -> void
 
     def report_attempting_full_context: (
-        Parser, DFA::DFA, Integer, Integer, Misc::BitSet, ATN::ATNConfigSet
+        Parser, DFA, Integer, Integer, BitSet, ATNConfigSet
       ) -> void
 
     def report_context_sensitivity: (
-        Parser, DFA::DFA, Integer, Integer, Integer, ATN::ATNConfigSet
+        Parser, DFA, Integer, Integer, Integer, ATNConfigSet
       ) -> void
   end
 end

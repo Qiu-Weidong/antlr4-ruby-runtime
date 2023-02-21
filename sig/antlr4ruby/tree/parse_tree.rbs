@@ -1,22 +1,21 @@
-
-
-
 module Antlr4ruby
-  module Tree
-    interface _ParseTree
-      include _SyntaxTree
 
-      # @override
-      def get_parent: -> _ParseTree?
+  interface _ParseTree
+    include _SyntaxTree
 
-      # @override
-      def get_child: (Integer) -> _ParseTree?
+    # @override
+    def get_parent: -> _ParseTree?
 
-      def set_parent: (RuleContext) -> void
-      def get_text: -> String
-      def accept: (_ParseTreeVisitor[untyped]) -> untyped
+    # @override
+    def get_child: (Integer) -> _ParseTree?
 
-      # def to_string_tree: (Parser) -> String
-    end
+    def set_parent: (RuleContext) -> void
+
+    def get_text: -> String
+
+    def accept: (_ParseTreeVisitor[untyped]) -> untyped
+
+    # def to_string_tree: (Parser) -> String
   end
 end
+

@@ -1,10 +1,7 @@
 module Antlr4ruby
-  module Misc
-    class IntegerStack
 
+  class IntegerStack
 
-
-    end
   end
 end
 

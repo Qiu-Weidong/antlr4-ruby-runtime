@@ -1,0 +1,7 @@
+module Antlr4ruby
+
+  # @final
+  class NotSetTransition < SetTransition
+  end
+
+end

@@ -4,7 +4,7 @@ module Antlr4ruby
   interface _TokenFactory[T]
 
     # 改成关键字参数
-    def create: (type: Integer, text: String, source: Misc::Pair[_TokenSource, _CharStream]?,
+    def create: (type: Integer, text: String, source: Pair[_TokenSource, _CharStream]?,
       channel: Integer?, start: Integer?, stop: Integer?, line: Integer?, position:Integer?) -> T
   end
 end

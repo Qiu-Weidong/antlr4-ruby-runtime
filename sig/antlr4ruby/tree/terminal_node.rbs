@@ -1,21 +1,20 @@
-
-
 module Antlr4ruby
-  module Tree
-    interface _TerminalNode
-      include _ParseTree
-      def get_symbol: -> _Token
-    end
 
-    class TerminalNode
-      include _TerminalNode
-      @symbol: _Token
-      @parent: _ParseTree
+  interface _TerminalNode
+    include _ParseTree
 
-      attr_accessor parent: _ParseTree
-      attr_accessor symbol: _Token
+    def get_symbol: -> _Token
+  end
 
-      def initialize: (_Token) -> void
-    end
+  class TerminalNode
+    include _TerminalNode
+
+    @symbol: _Token
+    @parent: _ParseTree
+
+    attr_accessor parent: _ParseTree
+    attr_accessor symbol: _Token
+
+    def initialize: (_Token) -> void
   end
 end

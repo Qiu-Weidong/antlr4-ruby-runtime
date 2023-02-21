@@ -1,0 +1,10 @@
+module Antlr4ruby
+
+  # @abstract
+  class AbstractPredicateTransition < Transition
+
+  end
+end
+
+
+

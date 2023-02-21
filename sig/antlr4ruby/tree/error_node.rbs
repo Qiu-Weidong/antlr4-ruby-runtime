@@ -1,14 +1,13 @@
-
 module Antlr4ruby
-  module Tree
-    interface _ErrorNode
-      include _TerminalNode
-    end
 
-    class ErrorNode < TerminalNode
-      include _ErrorNode
-      def initialize:(_Token) -> void
+  interface _ErrorNode
+    include _TerminalNode
+  end
 
-    end
+  class ErrorNode < TerminalNode
+    include _ErrorNode
+
+    def initialize: (_Token) -> void
+
   end
 end

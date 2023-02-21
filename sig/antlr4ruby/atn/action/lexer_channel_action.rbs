@@ -1,0 +1,7 @@
+module Antlr4ruby
+
+  # @final 实现接口 LexerAction
+  class LexerChannelAction
+    include _LexerAction
+  end
+end

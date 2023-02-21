@@ -1,0 +1,13 @@
+module Antlr4ruby
+
+  # @abstract
+  class PredictionContext
+    EMPTY_RETURN_STATE: Integer
+    INITIAL_HASH: Integer
+
+    @@global_node_count: Integer
+
+    attr_reader id: Integer
+  end
+
+end

@@ -1,9 +1,5 @@
-
-
 module Antlr4ruby
-  module ATN
-    class PredictionMode
-    end
-
+  class PredictionMode
   end
+
 end

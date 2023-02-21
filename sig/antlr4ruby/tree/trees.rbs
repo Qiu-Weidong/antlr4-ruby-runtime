@@ -1,34 +1,32 @@
-
-
 module Antlr4ruby
-  module Tree
-    class Trees
-      def self._find_all_nodes: (_ParseTree, Integer, bool, Array[_ParseTree]) -> void
 
-      def self.find_all_nodes: (_ParseTree, Integer, bool) -> Array[_ParseTree]
+  class Trees
+    def self._find_all_nodes: (_ParseTree, Integer, bool, Array[_ParseTree]) -> void
 
-      def self.find_all_rule_nodes: (_ParseTree, Integer) -> Array[_ParseTree]
+    def self.find_all_nodes: (_ParseTree, Integer, bool) -> Array[_ParseTree]
 
-      def self.find_all_token_nodes: (_ParseTree, Integer) -> Array[_ParseTree]
+    def self.find_all_rule_nodes: (_ParseTree, Integer) -> Array[_ParseTree]
 
-      def self.find_node_such_that: (_Tree?, Misc::_Predicate[_Tree]) -> _Tree?
+    def self.find_all_token_nodes: (_ParseTree, Integer) -> Array[_ParseTree]
 
-      def self.get_ancestors: (_Tree) -> Array[_Tree]
+    def self.find_node_such_that: (_Tree?, _Predicate[_Tree]) -> _Tree?
 
-      def self.get_children: (_Tree) -> Array[_Tree]
+    def self.get_ancestors: (_Tree) -> Array[_Tree]
 
-      def self.get_descendants: (_ParseTree) -> Array[_ParseTree]
+    def self.get_children: (_Tree) -> Array[_Tree]
 
-      def self.get_node_text: (_Tree, recognizer: Parser?, rule_names: Array[String]?) -> String
+    def self.get_descendants: (_ParseTree) -> Array[_ParseTree]
 
-      def self.get_root_of_subtree_enclosing_region: (_ParseTree, Integer, Integer) -> ParserRuleContext?
+    def self.get_node_text: (_Tree, recognizer: Parser?, rule_names: Array[String]?) -> String
 
-      def self.is_ancestor_of?: (_Tree, _Tree) -> bool
+    def self.get_root_of_subtree_enclosing_region: (_ParseTree, Integer, Integer) -> ParserRuleContext?
 
-      def self.strip_children_out_of_range: (ParserRuleContext, ParserRuleContext, Integer, Integer) -> void
+    def self.is_ancestor_of?: (_Tree, _Tree) -> bool
 
-      def self.to_string_tree: (_Tree, recognizer: Parser?, rule_names: Array[String]?) -> String
-    end
+    def self.strip_children_out_of_range: (ParserRuleContext, ParserRuleContext, Integer, Integer) -> void
+
+    def self.to_string_tree: (_Tree, recognizer: Parser?, rule_names: Array[String]?) -> String
   end
 end
+
 

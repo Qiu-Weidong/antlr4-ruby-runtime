@@ -3,8 +3,8 @@ module Antlr4ruby
   class DiagnosticErrorListener < BaseErrorListener
     attr_reader exact_only: bool
 
-    def get_conflicting_alts: (Misc::BitSet, ATN::ATNConfigSet) -> Misc::BitSet
+    def get_conflicting_alts: (BitSet, ATNConfigSet) -> BitSet
 
-    def get_decision_description: (Parser, DFA::DFA) -> String
+    def get_decision_description: (Parser, DFA) -> String
   end
 end

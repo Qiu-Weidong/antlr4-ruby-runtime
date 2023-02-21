@@ -1,8 +1,6 @@
 module Antlr4ruby
-  module Misc
-    class IntervalSet
 
+  class IntervalSet
 
-    end
   end
 end

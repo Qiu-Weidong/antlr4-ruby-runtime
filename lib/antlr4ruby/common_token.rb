@@ -8,7 +8,7 @@ module Antlr4ruby
     end
 
     protected
-    EMPTY_SOURCE = Misc::Pair.new(nil, nil )
+    EMPTY_SOURCE = Pair.new(nil, nil )
     attr_accessor :type, :line, :char_position_in_line, :channel, :source, :text,:index,
                   :start, :stop
 

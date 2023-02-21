@@ -1,18 +1,15 @@
-
-
 module Antlr4ruby
-  module Misc
-    class Pair[A, B]
 
-      attr_accessor first: A
-      attr_accessor second: B
+  class Pair[A, B]
 
-      @first: A
-      @second: B
+    attr_accessor first: A
+    attr_accessor second: B
 
-      def initialize: (A, B) -> void
+    @first: A
+    @second: B
 
-    end
+    def initialize: (A, B) -> void
+
   end
 end
 

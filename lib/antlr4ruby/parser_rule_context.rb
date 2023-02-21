@@ -136,12 +136,12 @@ module Antlr4ruby
     # @override
     def get_source_interval
       unless @start
-        return Misc::Interval::INVALID
+        return Interval::INVALID
       end
       if !@stop || stop.get_token_index < start.get_token_index
-        return Misc::Interval.of(start.get_token_index, stop.get_token_index - 1)
+        return Interval.of(start.get_token_index, stop.get_token_index - 1)
       end
-      Misc::Interval.of(start.get_token_index, stop.get_token_index)
+      Interval.of(start.get_token_index, stop.get_token_index)
     end
 
     def get_start

@@ -1,31 +1,29 @@
-
-
 module Antlr4ruby
-  module DFA
-    class DFA
-      @states: Hash[DFAState, DFAState]
-      @s0: DFAState
-      @decision: Integer
-      @atn_start_state: ATN::DecisionState
 
-      @precedence_dfa: bool
+  class DFA
+    @states: Hash[DFAState, DFAState]
+    @s0: DFAState
+    @decision: Integer
+    @atn_start_state: DecisionState
 
-      attr_accessor atn_start_state: ATN::DecisionState
-      attr_accessor decision: Integer
-      attr_accessor s0: DFAState
-      attr_accessor states: Hash[DFAState, DFAState]
+    @precedence_dfa: bool
 
-      def initialize: (ATN::DecisionState, Integer) -> void
+    attr_accessor atn_start_state: DecisionState
+    attr_accessor decision: Integer
+    attr_accessor s0: DFAState
+    attr_accessor states: Hash[DFAState, DFAState]
 
-      def get_precedence_start_state: (Integer) -> DFAState
+    def initialize: (DecisionState, Integer) -> void
 
-      def get_states: -> Array[DFAState]
+    def get_precedence_start_state: (Integer) -> DFAState
 
-      def is_precedence_dfa: -> bool
+    def get_states: -> Array[DFAState]
 
-      def set_precedence_start_state: (Integer, DFAState) -> void
+    def is_precedence_dfa: -> bool
 
-      def to_lexer_string: -> String
-    end
+    def set_precedence_start_state: (Integer, DFAState) -> void
+
+    def to_lexer_string: -> String
   end
 end
+

@@ -1,0 +1,7 @@
+
+
+
+module Antlr4ruby
+    class ContextSensitivityInfo < DecisionEventInfo
+    end
+  end

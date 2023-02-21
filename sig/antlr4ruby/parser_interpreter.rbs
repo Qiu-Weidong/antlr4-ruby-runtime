@@ -1,8 +1,8 @@
 
 module Antlr4ruby
   class ParserInterpreter < Parser
-    attr_reader atn: ATN::ATN
-    attr_reader decision_to_dfa: Array[DFA::DFA]
+    attr_reader atn: ATN
+    attr_reader decision_to_dfa: Array[DFA]
     attr_reader grammar_file_name: String
 
     attr_accessor override_decision: Integer
@@ -14,11 +14,11 @@ module Antlr4ruby
     attr_reader parent_context_stack: Vocabulary
     attr_accessor root_context: InterpreterRuleContext
     attr_reader rule_names: Array[String]
-    attr_reader shared_context_cache: ATN::PredictionContextCache
+    attr_reader shared_context_cache: PredictionContextCache
 
     attr_reader vocabulary: Vocabulary
 
-    def initialize: (String, Vocabulary, Array[String], ATN::ATN, _TokenStream) -> void
+    def initialize: (String, Vocabulary, Array[String], ATN, _TokenStream) -> void
 
   end
 end

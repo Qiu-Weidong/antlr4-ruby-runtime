@@ -1,9 +1,4 @@
-
-
-
 module Antlr4ruby
-  module ATN
-    class LexerATNSimulator < ATNSimulator
-    end
+  class LexerATNSimulator < ATNSimulator
   end
 end

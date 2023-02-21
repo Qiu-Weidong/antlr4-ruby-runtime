@@ -16,7 +16,7 @@ module Antlr4ruby
 
     def add_error_listener: (_ANTLRErrorListener) -> void
 
-    def get_atn: -> ATN::ATN
+    def get_atn: -> ATN
 
     def get_error_header: (RecognitionException) -> String
 
@@ -30,7 +30,7 @@ module Antlr4ruby
 
     def get_interpreter: -> ATNInterpreter
 
-    def get_parse_info: -> ATN::ParseInfo?
+    def get_parse_info: -> ParseInfo?
 
     def get_rule_index_map: -> Hash[String, Integer]
 

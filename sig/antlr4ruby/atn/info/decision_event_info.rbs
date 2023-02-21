@@ -1,0 +1,14 @@
+module Antlr4ruby
+
+  class DecisionEventInfo
+    attr_reader configs: ATNConfigSet
+    attr_reader decision: Integer
+    attr_reader full_ctx: bool
+    attr_reader input: _TokenStream
+    attr_reader start_index: Integer
+    attr_reader stop_index: Integer
+
+    def initialize: (Integer, ATNConfigSet, _TokenStream, Integer, Integer, bool) -> void
+
+  end
+end

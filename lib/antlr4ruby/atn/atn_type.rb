@@ -1,10 +1,6 @@
-
-
 module Antlr4ruby
-  module ATN
-    module ATNType
-
-    end
+  module ATNType
 
   end
+
 end

@@ -19,10 +19,10 @@ module Antlr4ruby
       super()
       @token_start_char_index = -1
       @mode = Lexer.DEFAULT_MODE
-      @mode_stack = Misc::IntegerStack.new
+      @mode_stack = IntegerStack.new
       if input
         @input = input
-        @token_factory_source_pair = Misc::Pair.new(self, input)
+        @token_factory_source_pair = Pair.new(self, input)
       end
     end
 

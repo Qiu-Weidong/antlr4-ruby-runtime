@@ -1,0 +1,39 @@
+module Antlr4ruby
+
+  # @abstract
+  class Transition
+    EPSILON : Integer
+    RANGE : Integer
+    RULE : Integer
+    PREDICATE : Integer
+    ATOM : Integer
+    ACTION : Integer
+    SET : Integer
+    NOT_SET : Integer
+    WILDCARD : Integer
+    PRECEDENCE : Integer
+
+    @@serialization_names: Array[String]
+    @@serialization_types: Hash[Class, Integer]
+
+    @target: ATNState
+
+    def self.serialization_names: -> Array[String]
+
+    def self.serialization_types: -> Hash[Class, Integer]
+
+    attr_accessor target: ATNState
+
+    def initialize: (ATNState) -> void
+
+    # @!abstract
+    def get_serialization_type: -> Integer
+
+    def is_epsilon: -> bool
+
+    def label: -> Interval?
+
+    # @abstract
+    def matches: (Integer, Integer, Integer) -> bool
+  end
+end

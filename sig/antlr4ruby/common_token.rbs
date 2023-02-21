@@ -11,21 +11,21 @@ module Antlr4ruby
     @index: Integer
     @start: Integer
     @stop: Integer
-    @source: Misc::Pair[_TokenSource, _CharStream]
-    EMPTY_SOURCE: Misc::Pair[_TokenSource, _CharStream]
+    @source: Pair[_TokenSource, _CharStream]
+    EMPTY_SOURCE: Pair[_TokenSource, _CharStream]
 
     attr_accessor channel: Integer
     attr_accessor char_position_in_line: Integer
     attr_accessor index: Integer
     attr_accessor line: Integer
     # todo 构造函数声明 toString(Recognizer<?, ?> r)
-    attr_accessor source: Misc::Pair[_TokenSource, _CharStream]
+    attr_accessor source: Pair[_TokenSource, _CharStream]
     attr_accessor start: Integer
     attr_accessor stop: Integer
     attr_accessor text: String
     attr_accessor type: Integer
 
-    def initialize: (type: Integer?, source: Misc::Pair[_TokenSource, _CharStream]?, channel: Integer?, start: Integer?, stop: Integer?, text: String?, old_token: _Token?) -> void
+    def initialize: (type: Integer?, source: Pair[_TokenSource, _CharStream]?, channel: Integer?, start: Integer?, stop: Integer?, text: String?, old_token: _Token?) -> void
 
     def set_start_index: (Integer) -> void
 

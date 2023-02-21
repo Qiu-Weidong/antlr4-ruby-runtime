@@ -1,14 +1,12 @@
-
 module Antlr4ruby
-  module Tree
-    class ParseTreeWalker
-      DEFAULT: ParseTreeWalker
 
-      def enter_rule: (_ParseTreeListener, _RuleNode) -> void
+  class ParseTreeWalker
+    DEFAULT: ParseTreeWalker
 
-      def exit_rule: (_ParseTreeListener, _RuleNode) -> void
+    def enter_rule: (_ParseTreeListener, _RuleNode) -> void
 
-      def walk: (_ParseTreeListener, _ParseTree) -> void
-    end
+    def exit_rule: (_ParseTreeListener, _RuleNode) -> void
+
+    def walk: (_ParseTreeListener, _ParseTree) -> void
   end
 end

@@ -1,48 +1,48 @@
-
-
 module Antlr4ruby
-  module Misc
-    class Interval
-      INTERVAL_POOL_MAX_VALUE: Integer
-      INVALID: Interval
-      # @@cache: Array[Interval]
 
-      @a: Integer
-      @b: Integer
+  class Interval
+    INTERVAL_POOL_MAX_VALUE: Integer
+    INVALID: Interval
 
-      # @@cache: Array[Interval]
+    # @@cache: Array[Interval]
 
-      attr_accessor a: Integer
+    @a: Integer
+    @b: Integer
 
-      attr_accessor b: Integer
+    # @@cache: Array[Interval]
 
-      def initialize: (Integer, Integer) -> void
+    attr_accessor a: Integer
 
-      def self.of: (Integer, Integer) -> Interval
+    attr_accessor b: Integer
 
-      def length: -> Integer
+    def initialize: (Integer, Integer) -> void
 
-      def starts_before_disjoint: (Interval) -> bool
+    def self.of: (Integer, Integer) -> Interval
 
-      def starts_before_non_disjoint: (Interval) -> bool
+    def length: -> Integer
 
-      def starts_after:(Interval) -> bool
+    def starts_before_disjoint: (Interval) -> bool
 
-      def starts_after_disjoint: (Interval) -> bool
+    def starts_before_non_disjoint: (Interval) -> bool
 
-      def starts_after_non_disjoint:(Interval) -> bool
+    def starts_after: (Interval) -> bool
 
-      def disjoint: (Interval) -> bool
+    def starts_after_disjoint: (Interval) -> bool
 
-      def adjacent:(Interval) -> bool
+    def starts_after_non_disjoint: (Interval) -> bool
 
-      def properly_contains:(Interval) -> bool
+    def disjoint: (Interval) -> bool
 
-      def union:(Interval) -> Interval
-      def intersection: (Interval) -> Interval
+    def adjacent: (Interval) -> bool
 
-      def difference_not_properly_contained: (Interval) -> Interval
-    end
+    def properly_contains: (Interval) -> bool
+
+    def union: (Interval) -> Interval
+
+    def intersection: (Interval) -> Interval
+
+    def difference_not_properly_contained: (Interval) -> Interval
   end
 end
+
 

@@ -1,31 +1,29 @@
-
-
 module Antlr4ruby
-  module Misc
-    interface _IntSet
-      def add: (Integer) -> void
 
-      def add_all: (_IntSet) -> _IntSet
+  interface _IntSet
+    def add: (Integer) -> void
 
-      def and: (_IntSet) -> _IntSet
+    def add_all: (_IntSet) -> _IntSet
 
-      def complement:(_IntSet) -> _IntSet
+    def and: (_IntSet) -> _IntSet
 
-      def or: (_IntSet) -> _IntSet
+    def complement: (_IntSet) -> _IntSet
 
-      def substract: (_IntSet) -> _IntSet
+    def or: (_IntSet) -> _IntSet
 
-      def size: -> Integer
+    def substract: (_IntSet) -> _IntSet
 
-      # def nil?: -> bool
+    def size: -> Integer
 
-      def contains: (Integer) -> bool
+    # def nil?: -> bool
 
-      def remove: (Integer) -> void
+    def contains: (Integer) -> bool
 
-      def to_list: -> Array[Integer]
+    def remove: (Integer) -> void
 
-    end
+    def to_list: -> Array[Integer]
+
   end
 end
+
 

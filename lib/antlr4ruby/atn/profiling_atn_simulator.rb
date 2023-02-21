@@ -1,9 +1,5 @@
-
-
 module Antlr4ruby
-  module ATN
-    class ProfilingATNSimulator < ParserATNSimulator
-    end
-
+  class ProfilingATNSimulator < ParserATNSimulator
   end
+
 end

@@ -1,53 +1,50 @@
-
-
-
 module Antlr4ruby
-  module DFA
-    class DFAState
-      BASIC: Integer
-      BLOCK_END: Integer
-      BLOCK_START: Integer
-      INITIAL_NUM_TRANSITIONS: Integer
-      INVALID_TYPE: Integer
-      LOOP_END: Integer
-      PLUS_BLOCK_START: Integer
-      PLUS_LOOP_BACK: Integer
-      RULE_START: Integer
-      RULE_STOP: Integer
-      STAR_BLOCK_START: Integer
-      STAR_LOOP_BACK: Integer
-      STAR_LOOP_ENTRY: Integer
-      TOKEN_START: Integer
 
-      @state_number: Integer
-      @configs: ATN::ATNConfigSet
-      @edges: Array[DFAState]
-      @is_accept_state: bool
-      @prediction: Integer
-      @lexer_action_executor: ATN::LexerActionExecutor
-      @requires_full_context: bool
+  class DFAState
+    BASIC: Integer
+    BLOCK_END: Integer
+    BLOCK_START: Integer
+    INITIAL_NUM_TRANSITIONS: Integer
+    INVALID_TYPE: Integer
+    LOOP_END: Integer
+    PLUS_BLOCK_START: Integer
+    PLUS_LOOP_BACK: Integer
+    RULE_START: Integer
+    RULE_STOP: Integer
+    STAR_BLOCK_START: Integer
+    STAR_LOOP_BACK: Integer
+    STAR_LOOP_ENTRY: Integer
+    TOKEN_START: Integer
 
-      class PredPrediction
-        @pred: ATN::SemanticContext
-        @alt: Integer
+    @state_number: Integer
+    @configs: ATNConfigSet
+    @edges: Array[DFAState]
+    @is_accept_state: bool
+    @prediction: Integer
+    @lexer_action_executor: LexerActionExecutor
+    @requires_full_context: bool
 
-        def initialize: (ATN::SemanticContext, Integer) -> void
-      end
+    class PredPrediction
+      @pred: SemanticContext
+      @alt: Integer
 
-      @predicates: Array[PredPrediction]
-
-      attr_accessor configs: ATN::ATNConfigSet
-      attr_accessor edges: Array[DFAState]
-      attr_accessor is_accept_state: bool
-      attr_accessor lexer_action_executor: ATN::LexerActionExecutor
-      attr_accessor predicates: Array[PredPrediction]
-      attr_accessor prediction: Integer
-      attr_accessor requires_full_context: bool
-      attr_accessor state_number: Integer
-
-      def initialize: (Integer | ATN::ATNConfigSet | nil) -> void
-      def get_alt_set: -> Set[Integer]
-
+      def initialize: (SemanticContext, Integer) -> void
     end
+
+    @predicates: Array[PredPrediction]
+
+    attr_accessor configs: ATNConfigSet
+    attr_accessor edges: Array[DFAState]
+    attr_accessor is_accept_state: bool
+    attr_accessor lexer_action_executor: LexerActionExecutor
+    attr_accessor predicates: Array[PredPrediction]
+    attr_accessor prediction: Integer
+    attr_accessor requires_full_context: bool
+    attr_accessor state_number: Integer
+
+    def initialize: (Integer | ATNConfigSet | nil) -> void
+
+    def get_alt_set: -> Set[Integer]
+
   end
 end

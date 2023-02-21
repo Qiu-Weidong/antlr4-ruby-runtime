@@ -1,9 +1,4 @@
-
-
-
 module Antlr4ruby
-  module ATN
-    class LL1Analyzer
-    end
+  class LL1Analyzer
   end
 end
