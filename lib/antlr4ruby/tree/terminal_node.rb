@@ -38,10 +38,10 @@ module Antlr4ruby
     # @!override
     def get_source_interval
       unless @symbol
-        return Interval.INVALID
+        return (-1)..(-2)
       end
       token_index = self.symbol.get_token_index
-      Interval.new(token_index, token_index)
+      token_index..token_index
     end
 
     # @override

@@ -3,11 +3,11 @@ module Antlr4ruby
   class Parser < Recognizer[_Token, ParserATNSimulator]
 
     class TraceListener
-      include Tree::_ParseTreeListener
+      include _ParseTreeListener
     end
 
     class TrimToSizeListener
-      include Tree::_ParseTreeListener
+      include _ParseTreeListener
     end
 
     attr_accessor build_parse_trees: bool
@@ -15,18 +15,18 @@ module Antlr4ruby
     attr_accessor err_handler: _ANTLRErrorStrategy
     attr_accessor input: _TokenStream?
     attr_accessor matched_eof: bool
-    attr_accessor parse_listeners: Array[Tree::_ParseTreeListener]
+    attr_accessor parse_listeners: Array[_ParseTreeListener]
     attr_reader precedence_stack: IntegerStack
 
     attr_accessor syntax_errors: Integer
 
     def add_contex_to_parse_tree: -> void
 
-    def add_parse_listener: (Tree::_ParseTreeListener) -> void
+    def add_parse_listener: (_ParseTreeListener) -> void
 
     def consume: -> _Token
 
-    def create_terminal_node: (ParserRuleContext, _Token) -> Tree::_TerminalNode
+    def create_terminal_node: (ParserRuleContext, _Token) -> _TerminalNode
 
     def dump_dfa: -> void
 
@@ -52,7 +52,7 @@ module Antlr4ruby
 
     def get_invoking_context: (Integer) -> ParserRuleContext
 
-    def get_parse_listeners: -> Array[Tree::_ParseTreeListener]
+    def get_parse_listeners: -> Array[_ParseTreeListener]
 
     def get_precedence: -> Integer
 
@@ -80,7 +80,7 @@ module Antlr4ruby
 
     def push_new_recursion_context: (ParserRuleContext, Integer, Integer) -> void
 
-    def remove_parse_listener: (Tree::_ParseTreeListener) -> void
+    def remove_parse_listener: (_ParseTreeListener) -> void
 
     def remove_parse_listeners: -> void
 

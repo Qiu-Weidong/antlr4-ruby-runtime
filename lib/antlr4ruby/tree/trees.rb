@@ -123,7 +123,7 @@ module Antlr4ruby
           child = t.get_child(i, nil )
           if child and child.instance_of?(ParserRuleContext)
             range = child.get_source_interval
-            if (range.b < start_index || range.a > stop_index) && is_ancestor_of?(child, root)
+            if (range.first < start_index || range.last > stop_index) && is_ancestor_of?(child, root)
               abbrev = CommonToken.new(type: Token::INVALID_TYPE, text: '...')
               t.children[i] = TerminalNode.new(abbrev)
             end

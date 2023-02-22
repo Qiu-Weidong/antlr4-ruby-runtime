@@ -3,12 +3,12 @@ module Antlr4ruby
   class ParserRuleContext < RuleContext
     EMPTY: ParserRuleContext
 
-    @children: Array[Tree::_ParseTree]
+    @children: Array[_ParseTree]
     @start: _Token
     @stop: _Token
     @exception: RecognitionException
 
-    attr_accessor children: Array[Tree::_ParseTree]
+    attr_accessor children: Array[_ParseTree]
 
     attr_accessor exception: RecognitionException
     attr_accessor start: _Token
@@ -17,25 +17,25 @@ module Antlr4ruby
 
     def initialize: (ParserRuleContext?, Integer) -> void
 
-    def add_any_child: (untyped) -> Tree::_ParseTree
+    def add_any_child: (untyped) -> _ParseTree
 
-    def add_child: (RuleContext | Tree::TerminalNode) -> (RuleContext | Tree::TerminalNode)
+    def add_child: (RuleContext | TerminalNode) -> (RuleContext | TerminalNode)
 
-    def add_error_node: (Tree::ErrorNode) -> Tree::ErrorNode
+    def add_error_node: (ErrorNode) -> ErrorNode
 
     def copy_from: (ParserRuleContext) -> void
 
-    # def enter_rule: (Tree::_ParseTreeListener) -> void
+    # def enter_rule: (_ParseTreeListener) -> void
 
-    # def exit_rule: (Tree::_ParseTreeListener) -> void
+    # def exit_rule: (_ParseTreeListener) -> void
 
     def get_start: -> _Token
 
     def get_stop: -> _Token
 
-    def get_token: (Integer, Integer) -> Tree::TerminalNode?
+    def get_token: (Integer, Integer) -> TerminalNode?
 
-    def get_tokens: (Integer) -> Array[Tree::TerminalNode]
+    def get_tokens: (Integer) -> Array[TerminalNode]
 
     def remove_last_child: -> void
 
@@ -43,7 +43,7 @@ module Antlr4ruby
 
     def get_parent: -> ParserRuleContext
 
-    def get_child: (Integer, Class?) -> Tree::_ParseTree?
+    def get_child: (Integer, Class?) -> _ParseTree?
 
     def get_rule_context: (Class, Integer) -> RuleContext?
 

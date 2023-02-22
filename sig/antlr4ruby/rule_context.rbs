@@ -1,7 +1,7 @@
 
 module Antlr4ruby
   class RuleContext
-    include Tree::_RuleNode
+    include _RuleNode
     @parent: RuleContext?
     @invoking_state: Integer
 
@@ -12,9 +12,9 @@ module Antlr4ruby
 
     def depth: -> Integer
 
-    def enter_rule: (Tree::_ParseTreeListener) -> void
+    def enter_rule: (_ParseTreeListener) -> void
 
-    def exit_rule: (Tree::_ParseTreeListener) -> void
+    def exit_rule: (_ParseTreeListener) -> void
 
     def get_alt_number: -> Integer
 

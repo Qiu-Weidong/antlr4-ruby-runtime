@@ -31,7 +31,7 @@ module Antlr4ruby
 
     def is_epsilon: -> bool
 
-    def label: -> Interval?
+    def label: -> Range[Integer]?
 
     # @abstract
     def matches: (Integer, Integer, Integer) -> bool

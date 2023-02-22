@@ -25,7 +25,7 @@ module Antlr4ruby
 
     # @override
     def get_source_interval
-      Interval.INVALID
+      (-1)..(-2)
     end
 
     # @override

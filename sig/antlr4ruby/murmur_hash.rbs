@@ -1,0 +1,13 @@
+module Antlr4ruby
+  class MurmurHash
+    DEFAULT_SEED: Integer
+
+    def self.finish: (Integer, Integer) -> Integer
+
+    def self.init: (Integer) -> Integer
+
+    def self.update: (Integer,Integer | Object) -> Integer
+
+    def self.hash: (Array[untyped], Integer) -> untyped
+  end
+end

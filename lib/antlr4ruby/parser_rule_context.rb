@@ -34,7 +34,7 @@ module Antlr4ruby
     def exit_rule(listener) end
 
     def add_child(rule_invocation)
-      if rule_invocation.instance_of?(Tree::TerminalNode)
+      if rule_invocation.instance_of?(TerminalNode)
         rule_invocation.set_parent(self)
       end
       add_any_child(rule_invocation)
@@ -136,12 +136,12 @@ module Antlr4ruby
     # @override
     def get_source_interval
       unless @start
-        return Interval::INVALID
+        return (-1)..(-2)
       end
       if !@stop || stop.get_token_index < start.get_token_index
-        return Interval.of(start.get_token_index, stop.get_token_index - 1)
+        return start.get_token_index...stop.get_token_index
       end
-      Interval.of(start.get_token_index, stop.get_token_index)
+      start.get_token_index..stop.get_token_index
     end
 
     def get_start

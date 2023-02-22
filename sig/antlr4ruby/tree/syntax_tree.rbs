@@ -3,6 +3,6 @@ module Antlr4ruby
   interface _SyntaxTree
     include _Tree
 
-    def get_source_interval: -> Interval
+    def get_source_interval: -> Range[Integer]
   end
 end

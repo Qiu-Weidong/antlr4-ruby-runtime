@@ -1,0 +1,9 @@
+module Antlr4ruby
+  class RangeSet[T]
+    attr_accessor data: Set[Range[T]]
+
+    def add: (Range[T]) -> void
+
+    def clear: -> void
+  end
+end
