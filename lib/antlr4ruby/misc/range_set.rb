@@ -145,7 +145,7 @@ module Antlr4ruby
       (data.length - 1).times do |i|
         a, b = data[i], data[i + 1]
         # a.first 一定 小于或 等于 b.first
-        return i if a.last > b.first
+        return i if a.last >= b.first
       end
       -1
     end
