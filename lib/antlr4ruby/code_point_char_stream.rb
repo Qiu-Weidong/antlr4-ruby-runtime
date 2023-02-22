@@ -1,55 +1,87 @@
-
 module Antlr4ruby
   # @abstract
   class CodePointCharStream
+
+    def initialize(data, name = UNKNOWN_SOURCE_NAME)
+      @data, @name, @position = data, name, 0
+    end
+
     protected
-    attr_reader :size, :name
+
+    attr_reader :name, :data
     attr_accessor :position
 
-
     private
-    # @abstract
+
     def get_internal_storage
-      # todo 抛出抽象函数异常
+      @data
     end
 
     public
+
     def self.from_buffer(code_point_buffer, name = UNKNOWN_SOURCE_NAME)
       # todo
     end
 
+    def self.from_string(input, name = UNKNOWN_SOURCE_NAME)
+      buffer = []
+      input.each_char do |c|
+        buffer.push(c.ord)
+      end
+      CodePointCharStream.new(buffer, name)
+    end
+
     def consume
-      # todo
+      raise "can not consume eof." if @position == @data.length
+      @position += 1
     end
 
     def index
-      # todo
+      @position
     end
 
     def size
-      # todo
+      @data.length
     end
 
     def mark
-      # todo
+      -1
     end
 
-    def release(marker)
-      # todo
-    end
+    def release(marker) end
 
     def seek(index)
-      # todo
+      @position = index
+    end
+
+    def la(i)
+      if i < 0
+        offset = position + i
+        offset < 0 ? IntStream.EOF : data[offset]
+      elsif i > 0
+        offset = position + i - 1
+        offset > data.length ? IntStream.EOF : data[offset]
+      else
+        0
+      end
+    end
+
+    def get_text(interval)
+      start = interval.a < data.length ? interval.a : data.length
+      stop = interval.b < data.length ? interval.b : data.length
+      hold = data[start, stop - start + 1]
+      return hold.pack('U*') if hold
+      'error in method get_text'
     end
 
     def get_source_name
-      # todo
+      UNKNOWN_SOURCE_NAME if !@name || name.empty?
+      @name
     end
 
     def to_s
-      # todo
+      data.pack('U*')
     end
-
 
   end
 end

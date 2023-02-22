@@ -6,10 +6,14 @@ module Antlr4ruby
 
     def self.from_buffer: (CodePointBuffer, String)-> CodePointCharStream
 
+    def self.from_string: (String, String) -> CodePointCharStream
+
+    attr_reader data: Array[Integer]
     attr_reader name: String
     attr_accessor position: Integer
     attr_reader size: Integer
 
     def get_internal_storage: -> Object
+    def initialize: (Array[Integer], String) -> void
   end
 end

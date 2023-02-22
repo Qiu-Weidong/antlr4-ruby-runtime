@@ -1,4 +1,4 @@
-
+require_relative 'code_point_char_stream'
 module Antlr4ruby
   class CharStreams
     DEFAULT_BUFFER_SIZE = 4096
@@ -6,21 +6,20 @@ module Antlr4ruby
 
     class << self
       def from_path(path, charset)
-        # todo
+        # from_file(path, charset)
       end
 
       def from_file_name(filename, charset)
-        # todo
+        # from_file(filename, charset)
       end
 
       def from_file(file, charset)
         # todo
       end
 
-      # todo 查看 ruby 是否支持 stream
-
       def from_string(input, source_name = IntStream.UNKNOWN_SOURCE_NAME)
-        # todo
+        # 首先将字符串转换为整数数组
+        CodePointCharStream.from_string(input, source_name)
       end
 
 

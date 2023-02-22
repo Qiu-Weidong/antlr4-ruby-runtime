@@ -5,20 +5,20 @@ require_relative "lib/antlr4ruby/version"
 Gem::Specification.new do |spec|
   spec.name = "antlr4ruby"
   spec.version = Antlr4ruby::VERSION
-  spec.authors = ["TODO: Write your name"]
+  spec.authors = ["邱维东"]
   spec.email = ["568385476@qq.com"]
 
-  spec.summary = "TODO: Write a short summary, because RubyGems requires one."
-  spec.description = "TODO: Write a longer description or delete this line."
-  spec.homepage = "TODO: Put your gem's website or public repo URL here."
+  spec.summary = "ruby runtime for antlr4. antlr4 的 ruby 运行时。"
+  spec.description = "ruby runtime for antlr4. antlr4 的 ruby 运行时。"
+  spec.homepage = "https://github.com/Qiu-Weidong/antlr4-ruby-runtime.git"
   spec.license = "MIT"
   spec.required_ruby_version = ">= 2.6.0"
 
-  spec.metadata["allowed_push_host"] = "TODO: Set to your gem server 'https://example.com'"
+  # spec.metadata["allowed_push_host"] = "不要"
 
   spec.metadata["homepage_uri"] = spec.homepage
-  spec.metadata["source_code_uri"] = "TODO: Put your gem's public repo URL here."
-  spec.metadata["changelog_uri"] = "TODO: Put your gem's CHANGELOG.md URL here."
+  spec.metadata["source_code_uri"] = "https://github.com/Qiu-Weidong/antlr4-ruby-runtime.git"
+  # spec.metadata["changelog_uri"] = "不要"
 
   # Specify which files should be added to the gem when it is released.
   # The `git ls-files -z` loads the files in the RubyGem that have been added into git.
