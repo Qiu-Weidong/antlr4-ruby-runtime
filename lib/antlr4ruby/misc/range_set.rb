@@ -35,14 +35,14 @@ module Antlr4ruby
       result = []
       other.data.each do |a|
         data.each do |b|
-          next if a.first > b.last || a.last < b.first
+          next if a.min > b.max || a.max < b.min
           if a.cover?(b)
             result.push(b)
           elsif b.cover?(a)
             result.push(a)
           else
-            start = a.first > b.first ? a.first : b.first
-            stop = a.last < b.last ? a.last : b.last
+            start = a.min > b.min ? a.min : b.min
+            stop = a.max < b.max ? a.max : b.max
             result.push(start..stop)
           end
         end
@@ -61,9 +61,9 @@ module Antlr4ruby
       result = []
       data.each do |item|
         next if range.cover?(item)
-        result.push(item.first...range.first) if item.include?(range.first) && range.first > item.first
-        result.push(range.last + 1..item.last) if item.include?(range.last) && range.last < item.last
-        result.push(item) if item.last < range.first || item.first > range.last
+        result.push(item.min...range.min) if item.include?(range.min) && range.min > item.min
+        result.push(range.max + 1..item.max) if item.include?(range.max) && range.max < item.max
+        result.push(item) if item.max < range.min || item.min > range.max
       end
 
       @data = result
@@ -109,18 +109,18 @@ module Antlr4ruby
     def start
       nil if empty?
       data.sort! do |a, b|
-        a.first == b.first ? a.last <=> b.last : a.first <=> b.first
+        a.min == b.min ? a.max <=> b.max : a.min <=> b.min
       end
 
-      data[0].first
+      data[0].min
     end
 
     def stop
       nil if empty?
       data.sort! do |a, b|
-        a.first == b.first ? a.last <=> b.last : a.first <=> b.first
+        a.min == b.min ? a.max <=> b.max : a.min <=> b.min
       end
-      data[-1].last
+      data[-1].max
     end
 
     def to_a
@@ -139,13 +139,13 @@ module Antlr4ruby
 
     def check
       data.sort! do |a, b|
-        a.first == b.first ? a.last <=> b.last : a.first <=> b.first
+        a.min == b.min ? a.max <=> b.max : a.min <=> b.min
       end
 
       (data.length - 1).times do |i|
         a, b = data[i], data[i + 1]
-        # a.first 一定 小于或 等于 b.first
-        return i if a.last >= b.first
+        # a.min 一定 小于或 等于 b.min
+        return i if a.max >= b.min
       end
       -1
     end
@@ -155,8 +155,8 @@ module Antlr4ruby
       while index != -1
         a, b = data[index], data[index + 1]
         data.delete_at(index); data.delete_at(index + 1)
-        stop = a.last > b.last ? a.last : b.last
-        data.push(a.first..stop)
+        stop = a.max > b.max ? a.max : b.max
+        data.push(a.min..stop)
 
         index = check
       end
