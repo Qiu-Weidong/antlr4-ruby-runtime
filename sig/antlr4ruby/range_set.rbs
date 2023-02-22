@@ -1,9 +1,49 @@
 module Antlr4ruby
   class RangeSet[T]
-    attr_accessor data: Set[Range[T]]
+    attr_accessor data: Array[Range[T]]
+
+    def &: (RangeSet[T]) -> RangeSet[T]
+
+    def +: (RangeSet[T]) -> RangeSet[T]
+
+    def -: (RangeSet[T]) -> RangeSet[T]
 
     def add: (Range[T]) -> void
 
+    def add_all: (Enumerable[Range[T]] | RangeSet[T]) -> void
+
     def clear: -> void
+
+    def complement: (RangeSet[T]) -> RangeSet[T]
+
+    def cover?: (Range[T]) -> bool
+
+    def delete: (Range[T]) -> void
+
+    def delete_all: (Enumerable[Range[T]] | RangeSet[T]) -> void
+
+    def empty?: -> bool
+
+    def include?: (Integer) -> bool
+
+    def start: -> Integer?
+
+    def stop: -> Integer?
+
+    def to_a: -> Array[Range[T]]
+
+    def to_set: -> Set[Range[T]]
+
+    def |: (RangeSet[T]) -> RangeSet[T]
+
+    def ~: -> RangeSet[T]
+
+    def initialize: (Array[Range[T]]) -> void
+
+    private
+
+    def check: -> Integer
+
+    def solve: -> void
   end
 end
