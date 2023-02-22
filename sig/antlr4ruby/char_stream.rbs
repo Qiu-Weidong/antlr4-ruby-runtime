@@ -4,6 +4,6 @@ module Antlr4ruby
   interface _CharStream
     include _IntStream
 
-    def get_text: (Interval) -> String
+    def get_text: (Range[Integer]) -> String
   end
 end

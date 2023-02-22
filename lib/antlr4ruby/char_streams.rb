@@ -1,20 +1,25 @@
 require_relative 'code_point_char_stream'
 module Antlr4ruby
   class CharStreams
-    DEFAULT_BUFFER_SIZE = 4096
-
-
     class << self
       def from_path(path, charset)
         # from_file(path, charset)
       end
 
       def from_file_name(filename, charset)
-        # from_file(filename, charset)
+        mode = charset ? "rb:#{charset}" : 'r'
+        File.open(filename, mode) do |file|
+          from_file(file)
+        end
       end
 
-      def from_file(file, charset)
-        # todo
+      def from_file(file)
+        input = file.read
+        if input
+          from_string(input)
+        else
+          raise "文件读取异常"
+        end
       end
 
       def from_string(input, source_name = IntStream.UNKNOWN_SOURCE_NAME)

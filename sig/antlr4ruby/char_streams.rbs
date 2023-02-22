@@ -3,7 +3,7 @@ module Antlr4ruby
   class CharStreams
     DEFAULT_BUFFER_SIZE: Integer
 
-    def self.from_file: (File, String?) -> _CharStream
+    def self.from_file: (File) -> _CharStream
 
     def self.from_file_name: (String, String?) -> _CharStream
 

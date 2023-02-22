@@ -120,7 +120,7 @@ module Antlr4ruby
         end
 
         t.get_child_count.times do |i|
-          child = t.get_child(i)
+          child = t.get_child(i, nil )
           if child and child.instance_of?(ParserRuleContext)
             range = child.get_source_interval
             if (range.b < start_index || range.a > stop_index) && is_ancestor_of?(child, root)

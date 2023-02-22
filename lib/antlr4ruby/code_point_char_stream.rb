@@ -67,9 +67,7 @@ module Antlr4ruby
     end
 
     def get_text(interval)
-      start = interval.a < data.length ? interval.a : data.length
-      stop = interval.b < data.length ? interval.b : data.length
-      hold = data[start, stop - start + 1]
+      hold = data[interval]
       return hold.pack('U*') if hold
       'error in method get_text'
     end
