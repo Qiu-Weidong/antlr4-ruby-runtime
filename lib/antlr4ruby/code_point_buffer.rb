@@ -1,12 +1,9 @@
-
+# @deprecated
 module Antlr4ruby
   class CodePointBuffer
     BYTE = :BYTE
     CHAR = :CHAR
     INT = :INT
-
-
-    # todo byte_buffer、char_buffer、int_buffer
 
     def position(new_position)
       # todo

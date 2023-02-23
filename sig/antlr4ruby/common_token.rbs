@@ -18,7 +18,6 @@ module Antlr4ruby
     attr_accessor char_position_in_line: Integer
     attr_accessor index: Integer
     attr_accessor line: Integer
-    # todo 构造函数声明 toString(Recognizer<?, ?> r)
     attr_accessor source: Pair[_TokenSource, _CharStream]
     attr_accessor start: Integer
     attr_accessor stop: Integer
