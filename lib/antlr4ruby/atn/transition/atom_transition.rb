@@ -1,11 +1,13 @@
+# finished
+
 module Antlr4ruby
   # @final
   class AtomTransition < Transition
-    attr_reader :label
+    attr_reader :atom_label
 
     def initialize(target, label)
       super(target)
-      @label = label
+      @atom_label = label
     end
 
     def get_serialization_type
@@ -13,15 +15,15 @@ module Antlr4ruby
     end
 
     def label
-      # todo IntervalSet
+      RangeSet.new([atom_label..atom_label])
     end
 
-    def matches(symbol, min_vocab_symbol, max_vocab_symbol)
-      @label == symbol
+    def matches?(symbol, min_vocab_symbol, max_vocab_symbol)
+      @atom_label == symbol
     end
 
     def to_s
-      "#{label}"
+      "#{atom_label}"
     end
   end
 end

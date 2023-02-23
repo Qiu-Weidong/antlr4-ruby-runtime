@@ -1,5 +1,10 @@
 module Antlr4ruby
 
   class RuleTransition < Transition
+    attr_accessor follow_state: ATNState
+    attr_reader precedence: Integer
+    attr_reader rule_index: Integer
+
+    def initialize: (RuleStartState, Integer, Integer, ATNState) -> void
   end
 end

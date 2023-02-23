@@ -1,5 +1,16 @@
 module Antlr4ruby
 
-  class LexerATNConfig
+  class LexerATNConfig < ATNConfig
+    def self.check_non_greedy_decision: (LexerATNConfig, ATNState) -> bool
+
+    attr_reader passed_through_non_greedy_decision: bool
+
+    def get_lexer_action_executor: -> LexerActionExecutor
+
+    def has_passed_through_non_greedy_decision?: -> bool
+
+    private
+
+    attr_reader lexer_action_executor: LexerActionExecutor
   end
 end

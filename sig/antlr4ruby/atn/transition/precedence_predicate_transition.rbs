@@ -2,5 +2,9 @@ module Antlr4ruby
 
   # @final
   class PrecedencePredicateTransition < AbstractPredicateTransition
+    attr_reader precedence: Integer
+
+    def initialize: (ATNState, Integer) -> void
+    def get_predicate: -> untyped
   end
 end

@@ -2,5 +2,6 @@ module Antlr4ruby
 
   # @final
   class LoopEndState < ATNState
+    attr_accessor loop_back_state: ATNState
   end
 end

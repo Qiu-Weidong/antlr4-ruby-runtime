@@ -42,10 +42,8 @@ module Antlr4ruby
 
     def initialize: (Array[Range[T]]) -> void
 
-    private
+    def eql?: (RangeSet[T]?) -> bool
 
-    def check: -> Integer
-
-    def solve: -> void
+    def == :(RangeSet[T]) -> bool
   end
 end

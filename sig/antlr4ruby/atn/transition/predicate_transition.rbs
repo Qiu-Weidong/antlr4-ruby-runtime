@@ -1,6 +1,11 @@
 module Antlr4ruby
 
   class PredicateTransition < AbstractPredicateTransition
+    attr_reader is_ctx_dependent: bool
+    attr_reader pred_index: Integer
+    attr_reader rule_index: Integer
+
+    def initialize: (ATNState, Integer, Integer, bool) -> void
   end
 
 end

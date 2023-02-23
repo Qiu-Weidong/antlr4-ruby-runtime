@@ -29,11 +29,12 @@ module Antlr4ruby
     # @!abstract
     def get_serialization_type: -> Integer
 
-    def is_epsilon: -> bool
+    def is_epsilon?: -> bool
 
-    def label: -> Range[Integer]?
+    def label: -> RangeSet[Integer]?
 
     # @abstract
-    def matches: (Integer, Integer, Integer) -> bool
+    def matches?: (Integer, Integer, Integer) -> bool
+
   end
 end

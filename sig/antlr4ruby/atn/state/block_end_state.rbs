@@ -2,5 +2,6 @@ module Antlr4ruby
 
   # @final
   class BlockEndState < ATNState
+    attr_accessor start_state: BlockStartState
   end
 end

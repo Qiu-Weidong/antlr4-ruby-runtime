@@ -10,6 +10,6 @@ module Antlr4ruby
     attr_reader is_ctx_dependent: Integer
     attr_reader rule_index: Integer
 
-    def initialize: (ATNState, Integer, Integer, Integer) -> void
+    def initialize: (ATNState, Integer, Integer, bool) -> void
   end
 end

@@ -1,5 +1,7 @@
 module Antlr4ruby
 
   class RuleStartState < ATNState
+    attr_accessor is_left_recursive_rule: bool
+    attr_accessor stop_state: RuleStopState
   end
 end

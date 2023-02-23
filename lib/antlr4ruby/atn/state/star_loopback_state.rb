@@ -1,4 +1,10 @@
+# finished
 module Antlr4ruby
-  class StarLoopbackState < DecisionState
+  class StarLoopbackState < ATNState
+
+    # 删除为使用的方法
+    def get_state_type
+      STAR_LOOP_BACK
+    end
   end
 end

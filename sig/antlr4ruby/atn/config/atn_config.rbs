@@ -1,5 +1,21 @@
 module Antlr4ruby
 
   class ATNConfig
+    SUPPRESS_PRECEDENCE_FILTER: Integer
+
+    attr_reader alt: Integer
+    attr_accessor context: PredictionContext
+    attr_accessor reaches_into_outer_context: Integer
+    attr_reader semantic_context: SemanticContext
+    attr_reader state: ATNState
+
+    def get_outer_context_depth: -> Integer
+
+    def is_precedence_filter_suppressed: -> bool
+
+    def set_precedence_filter_suppressed: (bool) -> void
+
+    def eql?: (Object) -> bool
+    def to_s: (recognizer: Recognizer[untyped, untyped]?, show_alt: bool) -> String
   end
 end

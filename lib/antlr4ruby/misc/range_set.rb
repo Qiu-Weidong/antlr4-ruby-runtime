@@ -206,6 +206,18 @@ module Antlr4ruby
       data.to_set
     end
 
+    def eql?(other)
+      return false if !other || data.length != other.data.length
+      data.length.times do |i|
+        return false unless data[i].eql?(other.data[i])
+      end
+      true
+    end
+
+    def == (other)
+      self.eql?(other)
+    end
+
   end
 end
 

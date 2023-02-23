@@ -1,5 +1,6 @@
 module Antlr4ruby
 
   class PlusBlockStartState < BlockStartState
+    attr_accessor loop_back_state: PlusLoopbackState
   end
 end

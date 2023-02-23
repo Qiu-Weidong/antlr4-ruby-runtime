@@ -1,3 +1,5 @@
+# finished
+
 module Antlr4ruby
   # @abstract
   class Transition
@@ -38,17 +40,15 @@ module Antlr4ruby
 
     def initialize(target)
       super()
-      unless target
-        # todo 抛出异常
-      end
+      raise "target can not be nil." unless target
       @target = target
     end
 
     def get_serialization_type
-      # todo 抛出抽象函数异常
+      raise NotImplementedError.new("#{self.class.name}#get_serialization_type is abstract method.")
     end
 
-    def is_epsilon
+    def is_epsilon?
       false
     end
 
@@ -56,8 +56,8 @@ module Antlr4ruby
       nil
     end
 
-    def matches(symbol, min_vocab_symbol, max_vocab_symbol)
-      # todo 抛出抽象函数调用异常
+    def matches?(symbol, min_vocab_symbol, max_vocab_symbol)
+      raise NotImplementedError.new("#{self.class.name}#matches is abstract method.")
     end
   end
 end

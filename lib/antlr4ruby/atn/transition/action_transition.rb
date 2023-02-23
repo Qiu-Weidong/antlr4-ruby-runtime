@@ -1,3 +1,4 @@
+# finished
 # 已完成
 
 module Antlr4ruby
@@ -8,8 +9,7 @@ module Antlr4ruby
     def initialize(target,
                    rule_index,
                    action_index = -1,
-                   is_ctx_dependent = false
-    )
+                   is_ctx_dependent = false)
       super(target)
       @rule_index = rule_index
       @action_index = action_index
@@ -20,11 +20,11 @@ module Antlr4ruby
       ACTION
     end
 
-    def is_epsilon
+    def is_epsilon?
       true
     end
 
-    def matches(symbol, min_vocab_symbol, max_vocab_symbol)
+    def matches?(symbol, min_vocab_symbol, max_vocab_symbol)
       false
     end
 

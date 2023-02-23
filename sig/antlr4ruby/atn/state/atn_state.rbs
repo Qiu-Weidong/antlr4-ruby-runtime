@@ -2,6 +2,49 @@ module Antlr4ruby
 
   # @abstract
   class ATNState
+    BASIC: Integer
+    BLOCK_END: Integer
+    BLOCK_START: Integer
+    INITIAL_NUM_TRANSITIONS: Integer
+
+    INVALID_STATE_NUMBER: Integer
+    INVALID_TYPE: Integer
+
+    LOOP_END: Integer
+    PLUS_BLOCK_START: Integer
+    PLUS_LOOP_BACK: Integer
+    RULE_START: Integer
+
+    RULE_STOP: Integer
+    STAR_BLOCK_START: Integer
+
+    STAR_LOOP_BACK: Integer
+    STAR_LOOP_ENTRY: Integer
+    TOKEN_START: Integer
+
+    @@serialization_names: Array[String]
+
+    attr_accessor atn: ATN?
+    attr_accessor epsilon_only_transitions: bool
+    attr_accessor next_token_within_rule: RangeSet[Integer]
+    attr_accessor rule_index: Integer
+    attr_accessor state_number: Integer
+    attr_reader transitions: Array[Transition]
+
+    def add_transition: (Transition, Integer) -> void
+
+    def get_number_of_transitions: -> Integer
+
     def get_state_type: -> Integer
+
+    def get_transition: (Integer) -> Transition?
+
+    def only_has_epsilon_transitions?: -> bool
+
+    def remove_transition: (Integer) -> Transition
+
+    def set_rule_index: (Integer) -> void
+
+    def set_transition: (Integer, Transition) -> void
   end
 end
