@@ -2,5 +2,14 @@
 
 module Antlr4ruby
   class AcceptStateInfo
+    attr_reader lexer_action_executor: LexerActionExecutor
+
+    private
+
+    attr_reader prediction: Integer
+
+    def get_lexer_action_executor: -> LexerActionExecutor
+
+    def get_prediction: -> Integer
   end
 end

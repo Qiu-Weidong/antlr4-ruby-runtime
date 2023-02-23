@@ -2,6 +2,15 @@
 
 module Antlr4ruby
   class ConflictInfo
+    attr_accessor exact: bool
+
+    def get_conflicted_alts: -> BitSet
+
+    def is_exact?: -> bool
+
+    private
+
+    attr_accessor conflicted_alts: BitSet
   end
 end
 

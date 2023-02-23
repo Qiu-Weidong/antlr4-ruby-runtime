@@ -7,7 +7,22 @@ module Antlr4ruby
 
     @@global_node_count: Integer
 
+    def self.from_rule_context: (ATN, RuleContext) -> PredictionContext
+
+    attr_reader cached_hash_code: Integer
     attr_reader id: Integer
+
+    def initialize: (Integer) -> void
+
+    def get_parent: (Integer) -> PredictionContext
+
+    def get_return_state: (Integer) -> Integer
+
+    def has_empty_path?: -> bool
+
+    def is_empty?: -> bool
+
+    def size: -> Integer
   end
 
 end

@@ -2,5 +2,11 @@
 
 module Antlr4ruby
   class SimulatorState
+    attr_accessor outer_context: ParserRuleContext
+    attr_accessor remaining_outer_context: ParserRuleContext?
+    attr_accessor s0: DFAState
+    attr_accessor use_context: bool
+
+    def initialize: (ParserRuleContext, DFAState, bool, ParserRuleContext?) -> void
   end
 end
