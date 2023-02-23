@@ -7,7 +7,7 @@ module Antlr4ruby
 
     def initialize(data = [])
       @data = data
-      solve
+      # solve
     end
 
     def clear
@@ -15,10 +15,33 @@ module Antlr4ruby
     end
 
     def add(range)
-      # 先添加，再合并
-      data.push(range)
-      solve
+      i = 0
+      result = []
+      while i < data.length
+        a = data[i]
+        if a.min > range.max
+          break
+        elsif a.max < range.min
+          result << a; i += 1; next
+        else
+          # 直接将 a 合并到 range 里面
+          start = a.min < range.min ? a.min : range.min
+          stop = a.max > range.max ? a.max : range.max
+          range = start..stop; i += 1
+        end
+      end
 
+      result << range
+      while i < data.length
+        result << data[i]; i += 1
+      end
+
+
+      @data = result
+    end
+
+    def merge(other)
+      # todo
     end
 
     def + (other)

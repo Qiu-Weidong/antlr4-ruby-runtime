@@ -26,6 +26,8 @@ module Antlr4ruby
 
     def include?: (Integer) -> bool
 
+    def merge: (RangeSet[T]) -> void
+
     def start: -> Integer?
 
     def stop: -> Integer?
