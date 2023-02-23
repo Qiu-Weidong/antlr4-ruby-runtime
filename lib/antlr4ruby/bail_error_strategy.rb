@@ -1,19 +1,27 @@
-
+# finished
 
 module Antlr4ruby
   class BailErrorStrategy < DefaultErrorStrategy
 
     def recover(recognizer, e)
-      # todo
+      context = recognizer.get_context
+      while context
+        context.exception = e; context = context.get_parent
+      end
+
+      raise ParseCancellationException.new
     end
 
     def recover_in_line(recognizer)
-      # todo
+      e = InputMismatchException.new(recognizer, nil, nil)
+      context = recognizer.get_context
+      while context
+        context.exception = e; context = context.get_parent
+      end
+      raise ParseCancellationException.new
     end
 
-    def sync(recognizer)
-      # todo
-    end
+    def sync(recognizer) end
 
 
   end

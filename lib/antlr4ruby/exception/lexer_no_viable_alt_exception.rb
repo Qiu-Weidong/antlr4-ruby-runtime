@@ -1,3 +1,4 @@
+# finished
 # 已完成
 module Antlr4ruby
   class LexerNoViableAltException < RecognitionException
@@ -25,7 +26,7 @@ module Antlr4ruby
     def to_s
       symbol = ''
       if start_index >= 0 && start_index < get_input_stream.size
-        symbol = get_input_stream.get_text(Interval.of(start_index, start_index))
+        symbol = get_input_stream.get_text(start_index..start_index)
       end
       "#{self.class.name}(#{symbol})"
     end

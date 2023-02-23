@@ -1,3 +1,5 @@
+# finished
+
 module Antlr4ruby
   # @abstract
   class CodePointCharStream
@@ -24,10 +26,11 @@ module Antlr4ruby
     end
 
     def self.from_string(input, name = UNKNOWN_SOURCE_NAME)
-      buffer = []
-      input.each_char do |c|
-        buffer.push(c.ord)
-      end
+      buffer = input.unpack('U*')
+      # input.each_char do |c|
+      #   buffer.push(c.ord)
+      # end
+      # 这里会有一个警告，但是不好处理
       CodePointCharStream.new(buffer, name)
     end
 

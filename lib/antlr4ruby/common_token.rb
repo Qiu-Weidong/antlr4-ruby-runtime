@@ -4,7 +4,8 @@ module Antlr4ruby
     # 使用关键字参数来定义
     def initialize(type: nil, source: nil,
                    channel:nil, start: nil, stop: nil, text: nil, old_token: nil )
-      # todo
+      @char_position_in_line = -1
+      
     end
 
     protected
@@ -14,7 +15,12 @@ module Antlr4ruby
 
     public
     def to_s(recognizer)
-      # todo
+      channel_str = channel == 0 ? "":", channel=#{channel}"
+      txt = get_text
+      txt = '<no text>' unless txt
+      type_string = type.to_s
+      type_string = recognizer.get_vocabulary.get_display_name(type) if recognizer
+      "[@#{get_token_index}, #{start}:#{stop}='#{txt}',<#{type_string}>, #{line}:#{char_position_in_line}]"
     end
 
     def get_type
@@ -26,7 +32,15 @@ module Antlr4ruby
     end
 
     def get_text
-      # todo
+      return @text if @text
+      input = get_input_stream
+      return "" unless  input
+      n = input.size
+      if start < n && stop < n
+        input.get_text(start..stop)
+      else
+        '<EOF>'
+      end
     end
 
     def set_text(text)

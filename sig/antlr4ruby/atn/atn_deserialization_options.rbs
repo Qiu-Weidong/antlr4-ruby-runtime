@@ -1,5 +1,27 @@
 module Antlr4ruby
 
   class ATNDeserializationOptions
+    @@default_options: ATNDeserializationOptions
+
+    def self.get_default_options: -> ATNDeserializationOptions
+
+    attr_reader generate_rule_bypass_transitions: bool
+    attr_reader verify_atn: bool
+
+    def is_generate_rule_bypass_transitions?: -> bool
+
+    def is_read_only?: -> bool
+
+    def is_verify_atn?: -> bool
+
+    def make_read_only: (bool) -> void
+
+    def set_generate_rule_bypass_transitions: (bool) -> void
+
+    def set_verify_atn: (bool) -> void
+
+    private
+
+    attr_reader read_only: bool
   end
 end

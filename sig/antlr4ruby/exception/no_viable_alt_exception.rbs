@@ -6,7 +6,7 @@ module Antlr4ruby
 
     def initialize: (Parser, _TokenStream?, _Token?, _Token?, ATNConfigSet?, ParserRuleContext?) -> void
 
-    def get_dead_end_configs: -> ATNConfigSet
+    def get_dead_end_configs: -> ATNConfigSet?
 
     def get_start_token: -> _Token
 

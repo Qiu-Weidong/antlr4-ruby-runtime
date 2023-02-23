@@ -1,3 +1,4 @@
+# finished
 
 module Antlr4ruby
   class RecognitionException < RuntimeError
@@ -7,6 +8,8 @@ module Antlr4ruby
       @recognizer, @input, @ctx = recognizer, input, ctx
       if recognizer
         @offending_state = recognizer.get_state
+      else
+        @offending_state = -1
       end
     end
 
@@ -24,7 +27,8 @@ module Antlr4ruby
     end
 
     def get_expected_tokens
-      # todo
+      return RangeSet.new unless recognizer
+      recognizer.get_atn.get_expected_tokens(offending_state, ctx)
     end
 
     def get_ctx

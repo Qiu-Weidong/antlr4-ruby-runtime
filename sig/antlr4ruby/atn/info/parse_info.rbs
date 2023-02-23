@@ -1,4 +1,8 @@
 module Antlr4ruby
   class ParseInfo
+    attr_reader atn_simulator: ProfilingATNSimulator
+    def initialize: (ProfilingATNSimulator) -> void
+
+    def get_decision_info: -> Array[DecisionInfo]
   end
 end

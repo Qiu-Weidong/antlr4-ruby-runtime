@@ -1,7 +1,7 @@
 module Antlr4ruby
 
   interface _LexerAction
-    def get_action_type: -> LexerActionType
+    def get_action_type: -> Symbol
 
     def is_position_dependent: -> bool
 

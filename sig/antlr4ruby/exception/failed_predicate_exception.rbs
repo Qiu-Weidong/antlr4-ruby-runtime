@@ -4,5 +4,20 @@ module Antlr4ruby
 
     # private
     # attr_reader :rule_index, :predicate_index
+
+    attr_reader predicate: String
+    attr_reader predicate_index: Integer
+
+    def get_pred_index: -> Integer
+
+    def get_predicate: -> String
+
+    def get_rule_index: -> Integer
+
+    def initialize: (Parser, String?, String?) -> void
+
+    private
+
+    attr_reader rule_index: Integer
   end
 end

@@ -1,12 +1,28 @@
 module Antlr4ruby
 
   class DecisionInfo
-    attr_reader configs: ATNConfigSet
+    attr_reader ambiguities: Array[AmbiguityInfo]
+    attr_reader context_sensitivities: Array[ContextSensitivityInfo]
     attr_reader decision: Integer
-    attr_reader full_ctx: bool
-    attr_reader input: _TokenStream
-    attr_reader start_index: Integer
-    attr_reader stop_index: Integer
+
+    attr_reader errors: Array[ErrorInfo]
+    attr_accessor invocations: Integer
+
+    attr_accessor ll_atn_transitions: Integer
+    attr_accessor ll_dfa_transitions: Integer
+    attr_accessor ll_fallback: Integer
+    attr_accessor ll_max_look: Integer
+    attr_accessor ll_max_look_event: LookaheadEventInfo
+    attr_accessor ll_min_look: Integer
+    attr_accessor ll_total_look: Integer
+    attr_reader predicate_evals: Array[PredicateEvalInfo]
+    attr_accessor sll_atn_transitions: Integer
+    attr_accessor sll_dfa_transitions: Integer
+    attr_accessor sll_max_look: Integer
+    attr_accessor sll_max_look_event: LookaheadEventInfo
+    attr_accessor sll_min_look: Integer
+    attr_accessor sll_total_look: Integer
+    attr_accessor time_in_prediction: Integer
 
     def initialize: (Integer, ATNConfigSet, _TokenStream, Integer, Integer, bool) -> void
   end

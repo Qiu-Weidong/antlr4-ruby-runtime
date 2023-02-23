@@ -1,5 +1,8 @@
 module Antlr4ruby
   class LookaheadEventInfo < DecisionEventInfo
+    attr_accessor predicted_alt: Integer
+
+    def initialize: (Integer, ATNConfigSet, Integer, _TokenStream, Integer, Integer, bool) -> void
   end
 
 end

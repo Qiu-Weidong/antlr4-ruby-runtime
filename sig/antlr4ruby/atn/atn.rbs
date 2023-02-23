@@ -2,5 +2,31 @@ module Antlr4ruby
 
   class ATN
     INVALID_ALT_NUMBER: Integer
+
+    attr_reader decision_to_state: Array[DecisionState]
+    attr_reader grammar_type: Symbol
+    attr_accessor lexer_actions: Array[_LexerAction]
+    attr_reader max_token_type: Integer
+    attr_reader mode_name_to_start_state: Hash[String, TokensStartState]
+    attr_reader mode_to_start_state: Array[TokensStartState]
+    attr_accessor rule_to_start_state: Array[RuleStartState]
+    attr_accessor rule_to_stop_state: Array[RuleStopState]
+    attr_accessor rule_to_token_type: Array[Integer]
+    attr_reader states: Array[ATNState]
+
+    def add_state: (ATNState) -> void
+
+    def define_decision_state: (DecisionState) -> Integer
+
+    def get_decision_state: (Integer) -> DecisionState
+
+    def get_expected_tokens: (Integer, RuleContext) -> RangeSet[Integer]
+
+    def get_number_of_decisions: -> Integer
+
+    def next_tokens: (ATNState, RuleContext?) -> RangeSet[Integer]
+    def initialize: (Symbol, Integer) -> void
+
+    def remove_state: (ATNState) -> void
   end
 end

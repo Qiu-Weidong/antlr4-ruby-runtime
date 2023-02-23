@@ -13,7 +13,7 @@ module Antlr4ruby
 
     def get_ctx: -> RuleContext
 
-    def get_expected_tokens: -> IntervalSet
+    def get_expected_tokens: -> RangeSet[Integer]
 
     def get_input_stream: -> _IntStream
 
