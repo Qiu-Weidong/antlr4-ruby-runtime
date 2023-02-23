@@ -14,27 +14,18 @@ include Antlr4ruby
 
 require_relative 'antlr4ruby/misc/range_set'
 
-total = RangeSet.new([0...256])
-set1 = RangeSet.new
-p '...'
-set1.add(128..128)
-p '...'
-set1.add(0..8)
-p '...'
-set1.add(8..10)
-p '...'
-set1.add(23..45)
-set1.add(90..127)
-set1.add(78..119)
-set1.add(145..197)
-# set
-# set1 = RangeSet.new([ 0..10, 23..35, 90..127, 145..197])
+# total = RangeSet.new([0...256])
+set1 = RangeSet.new([0..10, 23..45, 78..128, 145..197])
+set2 = RangeSet.new([7..100, 120..120, 129..213])
 
 p set1
-set2 = set1.complement(total)
 p set2
-
 p set1 & set2
+p set1 | set2
+p set1 - set2
+p set1.complement(set2)
+
+# p  RangeSet.new([0..257]) - RangeSet.new([11..22, 46..77, 129..144, 198..255])
 
 
 
