@@ -1,3 +1,4 @@
+# finished
 
 module Antlr4ruby
   class CommonTokenStream < BufferedTokenStream
@@ -16,9 +17,7 @@ module Antlr4ruby
     end
 
     def lb(k)
-      if k==0 || (@p -k) < 0
-        return nil
-      end
+      return nil if k==0 || (@p -k) < 0
 
       i = @p
       n = 1
@@ -26,21 +25,15 @@ module Antlr4ruby
         i = previous_token_on_channel(i-1, @channel)
         n += 1
       end
-      if i < 0
-        return nil
-      end
+      return nil if i < 0
       tokens[i]
     end
 
-    public def lt(k)
+    public
+    def lt(k)
       lazy_init
-      if k == 0
-        return nil
-      end
-
-      if k < 0
-        return lb(-k)
-      end
+      return nil if k == 0
+      return lb(-k) if k < 0
 
       i = @p
       n = 1
@@ -53,6 +46,16 @@ module Antlr4ruby
 
       tokens[i]
     end
+    def get_number_of_on_channel_tokens
+      n = 0
+      fill
+      tokens.each do |token|
+        n += 1 if token.get_channel == channel
+        break if token.get_type == Token::EOF
+      end
+      n
+    end
+
 
   end
 end

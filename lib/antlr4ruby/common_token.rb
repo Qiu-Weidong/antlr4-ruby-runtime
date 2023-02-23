@@ -1,11 +1,24 @@
-
+# finished
 module Antlr4ruby
   class CommonToken
     # 使用关键字参数来定义
     def initialize(type: nil, source: nil,
-                   channel:nil, start: nil, stop: nil, text: nil, old_token: nil )
+                   channel:nil, start: nil, stop: nil, text: nil )
       @char_position_in_line = -1
-      
+      @channel = channel || Token::DEFAULT_CHANNEL
+      @index = -1
+      @text = text || ''
+      @type = type || -1
+      @start = start || 0
+      @stop = stop || 0
+
+      if source&.first
+        @line = source.first.get_line
+        @char_position_in_line = source.first.get_char_position_in_line
+      else
+        @source = EMPTY_SOURCE
+      end
+
     end
 
     protected
