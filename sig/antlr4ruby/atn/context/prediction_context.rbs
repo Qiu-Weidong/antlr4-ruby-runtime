@@ -7,7 +7,23 @@ module Antlr4ruby
 
     @@global_node_count: Integer
 
+    def self.calculate_empty_hash_code: -> Integer
+
+    def self.calculate_hash_code: (parent: PredictionContext?, parents: Array[PredictionContext], return_state: Integer, return_states: Array[Integer]) -> Integer
+
+    def self.combine_common_parents: (Array[PredictionContext]) -> void
+
     def self.from_rule_context: (ATN, RuleContext) -> PredictionContext
+
+    def self.merge: (PredictionContext, PredictionContext, bool, DoubleKeyMap[PredictionContext, PredictionContext, PredictionContext]) -> PredictionContext
+
+    def self.merge_arrays: (ArrayPredictionContext, ArrayPredictionContext, bool, DoubleKeyMap[PredictionContext, PredictionContext, PredictionContext]) -> PredictionContext
+
+    def self.merge_root: (SingletonPredictionContext, SingletonPredictionContext, bool) -> PredictionContext
+
+    def self.merge_singletons: (SingletonPredictionContext, SingletonPredictionContext, bool, DoubleKeyMap[PredictionContext, PredictionContext, PredictionContext]) -> PredictionContext
+
+    def self.to_dot_string: (PredictionContext) -> String
 
     attr_reader cached_hash_code: Integer
     attr_reader id: Integer
@@ -23,6 +39,8 @@ module Antlr4ruby
     def is_empty?: -> bool
 
     def size: -> Integer
+
+    def to_s: (Recognizer[untyped, untyped]) -> String
   end
 
 end

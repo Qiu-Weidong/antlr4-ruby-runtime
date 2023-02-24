@@ -1,0 +1,11 @@
+module Antlr4ruby
+  class DoubleKeyMap[Key1, Key2, Value]
+    def get: (Key1, Key2) -> Value?
+
+    def put: (Key1, Key2) -> Value?
+
+    private
+
+    attr_accessor data: Hash[Key1, Hash[Key2, Value]]
+  end
+end
