@@ -21,7 +21,16 @@ module Antlr4ruby
     end
 
     def fix_offset_before_match(offset)
-      # todo
+      update_lexer_actions = []
+
+      lexer_actions.length.times do |i|
+        if lexer_actions[i].is_position_dependent && !(lexer_actions[i].instance_of?(LexerIndexedCustomAction))
+
+        end
+      end
+
+      return self if update_lexer_actions.length <= 0
+      LexerActionExecutor(update_lexer_actions)
     end
 
     def get_lexer_actions

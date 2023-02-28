@@ -7,7 +7,7 @@
 require 'antlr4ruby'
 include Antlr4ruby
 
-# todo LexerATNSimulator Lexer ATNDeserializer ATN PredictionContextCache DFA
+# todo LexerATNSimulator Lexer ATN PredictionContextCache DFA
 class HelloLexer < Lexer
   def initialize(input)
     super(input)
