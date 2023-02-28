@@ -363,12 +363,27 @@ module Antlr4ruby
     end
 
     def lexer_action_factory(type, data1, data2)
-      # todo
-      # case type
-      # when :CHANNEL
-      #   # return LexerChannelAction.new(data1)
-      #
-      # end
+      case type
+      when :CHANNEL
+        return LexerChannelAction.new(data1)
+      when :CUSTOM
+        return LexerCustomAction.new(data1, data2)
+      when :MODE
+        return LexerModeAction.new(data1)
+      when :MORE
+        return LexerMoreAction.INSTANCE
+      when :POP_MODE
+        return LexerPopModeAction.INSTANCE
+      when :PUSH_MODE
+        return LexerPushModeAction.new(data1)
+      when :SKIP
+        return LexerSkipAction.INSTANCE
+      when :TYPE
+        return LexerTypeAction.new(data1)
+      else
+        raise "The specified lexer action type #{type} is not valid."
+
+      end
     end
 
 
