@@ -12,7 +12,7 @@ module Antlr4ruby
 
     attr_accessor state_number: Integer
 
-    def action: (RuleContext, Integer, Integer) -> void
+    def action: (RuleContext?, Integer, Integer) -> void
 
     def add_error_listener: (_ANTLRErrorListener) -> void
 

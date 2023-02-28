@@ -3,6 +3,14 @@ module Antlr4ruby
   # @final LexerAction
   class LexerModeAction
     include _LexerAction
+
+    def initialize: (Integer) -> void
+
+    def get_mode: -> Integer
+
+    private
+
+    attr_reader mode: Integer
   end
 
 end

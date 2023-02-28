@@ -1,5 +1,12 @@
 module Antlr4ruby
 
   class PredictionContextCache
+    attr_reader cache: Hash[PredictionContext, PredictionContext]
+
+    def add: (PredictionContext) -> PredictionContext
+
+    def get: (PredictionContext) -> PredictionContext
+
+    def size: -> Integer
   end
 end

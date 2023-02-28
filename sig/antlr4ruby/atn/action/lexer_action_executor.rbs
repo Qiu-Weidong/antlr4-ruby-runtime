@@ -1,5 +1,20 @@
 module Antlr4ruby
 
   class LexerActionExecutor
+    def self.append: (LexerActionExecutor, _LexerAction) -> LexerActionExecutor
+
+    attr_reader hash_code: Integer
+
+    def initialize: (Array[_LexerAction]) -> void
+
+    def execute: (Lexer, _CharStream, Integer)
+
+    def fix_offset_before_match: (Integer) -> LexerActionExecutor
+
+    def get_lexer_actions: -> Array[_LexerAction]
+
+    private
+
+    attr_reader lexer_actions: Array[_LexerAction]
   end
 end

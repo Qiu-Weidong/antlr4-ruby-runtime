@@ -14,7 +14,7 @@ module Antlr4ruby
     attr_accessor rule_to_token_type: Array[Integer]
     attr_reader states: Array[ATNState]
 
-    def add_state: (ATNState) -> void
+    def add_state: (ATNState?) -> void
 
     def define_decision_state: (DecisionState) -> Integer
 

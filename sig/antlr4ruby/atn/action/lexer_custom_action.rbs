@@ -3,5 +3,15 @@ module Antlr4ruby
   # @final LexerAction
   class LexerCustomAction
     include _LexerAction
+
+    attr_reader action_index: Integer
+
+    def get_action_index: -> Integer
+
+    def get_rule_index: -> Integer
+
+    private
+
+    attr_reader rule_index: Integer
   end
 end

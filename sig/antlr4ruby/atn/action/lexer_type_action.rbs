@@ -2,5 +2,11 @@ module Antlr4ruby
 
   class LexerTypeAction
     include _LexerAction
+
+    def get_type: -> Integer
+
+    private
+
+    attr_reader type: Integer
   end
 end

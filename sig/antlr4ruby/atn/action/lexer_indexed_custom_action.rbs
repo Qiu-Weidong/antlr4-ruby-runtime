@@ -3,5 +3,17 @@ module Antlr4ruby
   # @final LexerAction
   class LexerIndexedCustomAction
     include _LexerAction
+
+    def initialize: (Integer, _LexerAction) -> void
+
+    attr_reader action: _LexerAction
+
+    def get_action: -> _LexerAction
+
+    def get_offset: -> Integer
+
+    private
+
+    attr_reader offset: Integer
   end
 end

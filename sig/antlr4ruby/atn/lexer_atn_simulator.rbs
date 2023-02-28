@@ -17,15 +17,67 @@ module Antlr4ruby
       def reset: -> void
     end
 
+    @@debug: bool
+
+    @@dfa_debug: bool
+
+    def self.debug: -> bool
+
     attr_accessor char_position_in_line: Integer
-    attr_reader debug: bool
     attr_accessor decision_to_dfa: Array[DFA]
-    attr_reader dfa_debug: bool
     attr_accessor line: Integer
     attr_accessor mode: Integer
     attr_accessor prev_accept: SimState
     attr_reader recognizer: Lexer
     attr_accessor start_index: Integer
+
+    def accept: (_CharStream, LexerActionExecutor, Integer, Integer, Integer, Integer) -> void
+
+    def add_dfa_edge: (DFAState, Integer, ATNConfigSet | DFAState) -> DFAState?
+
+    def add_dfa_state: (ATNConfigSet) -> DFAState
+
+    def capture_sim_state: (SimState, _CharStream, DFAState) -> void
+
+    def closure: (_CharStream, LexerATNConfig, ATNConfigSet, bool, bool, bool) -> bool
+
+    def compute_start_state: (_CharStream, ATNState) -> ATNConfigSet
+
+    def compute_target_state: (_CharStream, DFAState, Integer) -> DFAState
+
+    def consume: (_CharStream) -> void
+
+    def evaluate_predicate: (_CharStream, Integer, Integer, bool) -> bool
+
+    def exec_atn: (_CharStream) -> Integer
+
+    def fail_or_accept: (SimState, _CharStream, ATNConfigSet, Integer) -> Integer
+
+    def get_char_position_in_line: -> Integer
+
+    def get_dfa: (Integer) -> DFA
+
+    def get_epsilon_target: (_CharStream, LexerATNConfig, Transition, ATNConfigSet, bool, bool) -> LexerATNConfig
+
+    def get_existing_target_state: (DFAState, Integer) -> DFAState
+
+    def get_line: -> Integer
+
+    def get_reachable_config_set: (_CharStream, ATNConfigSet, ATNConfigSet, Integer) -> void
+
+    def get_reachable_target: (Transition, Integer) -> ATNState
+
+    def get_text: (_CharStream) -> String
+
+    def get_token_name: (Integer) -> String
+
+    def match: (_CharStream, Integer) -> Integer
+
+    def match_atn: (_CharStream) -> Integer
+
+    def set_char_position_in_line: (Integer) -> void
+
+    def set_line: (Integer) -> void
 
   end
 end

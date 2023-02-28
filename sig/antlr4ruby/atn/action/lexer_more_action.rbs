@@ -2,6 +2,8 @@ module Antlr4ruby
 
   # @final LexerAction
   class LexerMoreAction
+    INSTANCE: LexerMoreAction
+
     include _LexerAction
   end
 end

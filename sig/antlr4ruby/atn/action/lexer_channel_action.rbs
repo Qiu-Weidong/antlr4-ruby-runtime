@@ -3,5 +3,13 @@ module Antlr4ruby
   # @final 实现接口 LexerAction
   class LexerChannelAction
     include _LexerAction
+
+    def initialize: (Integer) -> void
+
+    def get_channel: -> Integer
+
+    private
+
+    attr_reader channel: Integer
   end
 end

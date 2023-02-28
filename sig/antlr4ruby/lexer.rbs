@@ -2,8 +2,10 @@
 module Antlr4ruby
   # @abstract
   class Lexer < Recognizer[Integer, LexerATNSimulator]
-    DEFAULT_MODE: Integer
+    include _TokenSource
 
+
+    DEFAULT_MODE: Integer
     DEFAULT_TOKEN_CHANNEL: Integer
     HIDDEN: Integer
     MAX_CHAR_VALUE: Integer
@@ -12,7 +14,7 @@ module Antlr4ruby
 
     SKIP: Integer
 
-    include _TokenSource
+
 
     @token_factory_source_pair: Pair[_TokenSource, _CharStream]
 
@@ -62,6 +64,8 @@ module Antlr4ruby
     def notify_listeners: (LexerNoViableAltException) -> void
 
     def pop_mode: -> Integer
+
+    def push_mode: (Integer) -> void
 
     def recover: (LexerNoViableAltException | RecognitionException) -> void
 

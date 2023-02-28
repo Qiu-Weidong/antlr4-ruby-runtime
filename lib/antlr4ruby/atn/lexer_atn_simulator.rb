@@ -9,7 +9,14 @@ module Antlr4ruby
       @decision_to_dfa, @recognizer = decision_to_dfa, recognizer
     end
 
-    attr_reader :debug, :dfa_debug
+
+    @@debug = false
+    @@dfa_debug = false
+
+    def self.debug
+      @@debug
+    end
+    # attr_reader :debug, :dfa_debug
     attr_accessor :decision_to_dfa
 
     def match(input, mode)
@@ -24,6 +31,46 @@ module Antlr4ruby
       # todo
     end
 
+    def get_dfa(mode)
+      # todo
+    end
+
+    def get_text(input)
+      # todo
+    end
+
+    def get_line
+      @line
+    end
+
+    def set_line(line)
+      @line = line
+    end
+
+    def get_char_position_in_line
+      @char_position_in_line
+    end
+
+    def set_char_position_in_line(pos)
+      @char_position_in_line = pos
+    end
+
+    def consume(input)
+      # todo
+    end
+
+    def get_token_name(t)
+      return 'EOF' if t == -1
+      [t].pack("U*")
+    end
+
+
+
+
+
+
+
+    protected
     def match_atn(input)
       # todo
     end
@@ -31,7 +78,7 @@ module Antlr4ruby
     def exec_atn(input, ds0)
       # todo
     end
-    
+
     def get_existing_target_state(s, t)
       # todo
     end
@@ -44,13 +91,46 @@ module Antlr4ruby
       # todo
     end
 
+    def get_reachable_config_set(input, closure, reach, t)
+      # todo
+    end
 
+    def accept(input, lexer_action_exec, sstart_index, index, line, char_pos)
+      # todo
+    end
 
+    def get_reachable_target(trans, t)
+      # todo
+    end
 
+    def compute_start_state(input, p)
+      # todo
+    end
 
+    def closure(input, config, configs, current_accept_state, speculative, treat_eor_as_epsilon)
+      # todo
+    end
 
+    def get_epsilon_target(input, config, t, configs, speculative, treat_eof_as_epsilon)
+      # todo
+    end
 
-    protected
+    def evaluate_predicate(input, rule_index, pred_index, speculative)
+      # todo
+    end
+
+    def capture_sim_state(settings, input, dfa_state)
+      # todo
+    end
+
+    def add_dfa_edge(from, t, q)
+      # todo
+    end
+
+    def add_dfa_state(configs)
+      # todo
+    end
+
     class SimState
       protected
       attr_accessor :index, :line, :char_pos, :dfa_state

@@ -7,11 +7,11 @@
 require 'antlr4ruby'
 include Antlr4ruby
 
-# todo LexerATNSimulator Lexer ATNDeserializer ATN PredictionContextCache
+# todo LexerATNSimulator Lexer ATNDeserializer ATN PredictionContextCache DFA
 class HelloLexer < Lexer
   def initialize(input)
     super(input)
-    # todo @interp = LexerATNSimulator.new(self, @atn, @decision_to_dfa, @shared_context_cache)
+    @interpreter = LexerATNSimulator.new(self, @atn, @decision_to_dfa, @shared_context_cache)
   end
 
   ID=1, NUMBER=2, WS=3

@@ -52,6 +52,11 @@ module Antlr4ruby
       # todo
     end
 
+    def push_mode(m)
+      p "push_mode #{m}" if LexerATNSimulator.debug
+      # todo
+    end
+
     def emit(token)
       # todo
     end

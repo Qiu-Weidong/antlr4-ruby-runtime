@@ -9,7 +9,7 @@ module Antlr4ruby
 
     def edge_factory: (ATN, Integer, Integer, Integer,Integer,Integer,Integer,Array[RangeSet[Integer]]) -> Transition
 
-    def lexer_action_factory: (LexerActionType, Integer, Integer) -> _LexerAction
+    def lexer_action_factory: (Symbol, Integer, Integer) -> _LexerAction
 
     def mark_precedence_decisions: (ATN) -> void
 
