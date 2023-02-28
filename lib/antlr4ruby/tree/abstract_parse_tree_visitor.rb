@@ -19,8 +19,10 @@ module Antlr4ruby
         end
 
         child = node.get_child(i)
-        child_result = child.accept(self)
-        result = aggregate_result(result, child_result)
+        if child
+          child_result = child.accept(self)
+          result = aggregate_result(result, child_result)
+        end
       end
 
       result
