@@ -25,7 +25,8 @@ module Antlr4ruby
 
       lexer_actions.length.times do |i|
         if lexer_actions[i].is_position_dependent && !(lexer_actions[i].instance_of?(LexerIndexedCustomAction))
-
+          update_lexer_actions = lexer_actions.clone if update_lexer_actions.length <= 0
+          update_lexer_actions[i] = LexerIndexedCustomAction.new(offset, lexer_actions[i])
         end
       end
 
@@ -38,9 +39,34 @@ module Antlr4ruby
     end
 
     def execute(lexer, input, start_index)
+      requires_seek = false
+      stop_index = input.index
+
+      begin
+        lexer_actions.each do |lexer_action|
+          if lexer_action.instance_of?(LexerIndexedCustomAction)
+            offset = lexer_action.get_offset
+            input.seek(start_index + offset)
+            lexer_action = lexer_action.get_action
+            requires_seek = (start_index + offset) != stop_index
+          elsif lexer_action.is_position_dependent
+            input.seek(stop_index)
+            requires_seek = false
+          end
+          lexer_action.execute(lexer)
+        end
+      ensure
+        input.seek(stop_index) if requires_seek
+      end
+    end
+
+    def hash
       # todo
     end
 
+    def eql?(other)
+      # todo
+    end
 
     private
     attr_reader :lexer_actions, :hash_code

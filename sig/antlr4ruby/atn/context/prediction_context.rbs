@@ -21,13 +21,13 @@ module Antlr4ruby
 
     def self.get_cached_context: (PredictionContext, PredictionContextCache, Hash[Integer, PredictionContext]) -> PredictionContext
 
-    def self.merge: (PredictionContext, PredictionContext, bool, DoubleKeyMap[PredictionContext, PredictionContext, PredictionContext]) -> PredictionContext
+    def self.merge: (PredictionContext, PredictionContext, bool, Hash[PredictionContext, Hash[PredictionContext, PredictionContext]]) -> PredictionContext
 
-    def self.merge_arrays: (ArrayPredictionContext, ArrayPredictionContext, bool, DoubleKeyMap[PredictionContext, PredictionContext, PredictionContext]) -> PredictionContext
+    def self.merge_arrays: (ArrayPredictionContext, ArrayPredictionContext, bool, Hash[PredictionContext, Hash[PredictionContext, PredictionContext]]) -> PredictionContext
 
     def self.merge_root: (SingletonPredictionContext, SingletonPredictionContext, bool) -> PredictionContext
 
-    def self.merge_singletons: (SingletonPredictionContext, SingletonPredictionContext, bool, DoubleKeyMap[PredictionContext, PredictionContext, PredictionContext]) -> PredictionContext
+    def self.merge_singletons: (SingletonPredictionContext, SingletonPredictionContext, bool, Hash[PredictionContext, Hash[PredictionContext, PredictionContext]]) -> PredictionContext
 
     def self.to_dot_string: (PredictionContext) -> String
 
@@ -36,7 +36,7 @@ module Antlr4ruby
 
     def initialize: (Integer) -> void
 
-    def get_parent: (Integer) -> PredictionContext
+    def get_parent: (Integer) -> PredictionContext?
 
     def get_return_state: (Integer) -> Integer
 

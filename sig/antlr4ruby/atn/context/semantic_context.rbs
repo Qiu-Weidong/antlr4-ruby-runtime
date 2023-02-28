@@ -2,5 +2,35 @@ module Antlr4ruby
 
   # @abstract
   class SemanticContext
+    def self.and: (SemanticContext, SemanticContext) -> SemanticContext
+
+    def self.or: (SemanticContext, SemanticContext) -> SemanticContext
+
+    def eval_precedence: (Recognizer[untyped, untyped], RuleContext) -> SemanticContext
+    def eval: (Recognizer[untyped, untyped], RuleContext) -> bool
+
+    class Empty < SemanticContext
+      INSTANCE: Empty
+    end
+
+    class Predicate < SemanticContext
+
+      attr_reader is_ctx_dependent: bool
+      attr_reader pred_index: Integer
+      attr_reader rule_index: Integer
+    end
+
+    class PrecedencePredicate < SemanticContext
+      # todo
+    end
+
+    class Operator < SemanticContext
+      def get_operands: -> Array[SemanticContext]
+
+    end
+
+    private
+
+    def filter_precedence_predicates: (Array[SemanticContext]) -> Array[PrecedencePredicate]
   end
 end

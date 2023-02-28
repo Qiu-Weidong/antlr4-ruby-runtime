@@ -1,5 +1,11 @@
 module Antlr4ruby
 
   class SingletonPredictionContext < PredictionContext
+    def self.create: (PredictionContext, Integer) -> SingletonPredictionContext
+
+    attr_reader parent: PredictionContext
+    attr_reader return_state: Integer
+
+    def initialize: (PredictionContext?, Integer) -> void
   end
 end

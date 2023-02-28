@@ -7,11 +7,13 @@ module Antlr4ruby
 
     def initialize: (Array[_LexerAction]) -> void
 
-    def execute: (Lexer, _CharStream, Integer)
+    def execute: (Lexer, _CharStream, Integer) -> void
 
     def fix_offset_before_match: (Integer) -> LexerActionExecutor
 
     def get_lexer_actions: -> Array[_LexerAction]
+
+    # def execute: () -> void
 
     private
 

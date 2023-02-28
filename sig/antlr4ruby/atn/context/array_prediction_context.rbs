@@ -1,5 +1,11 @@
 module Antlr4ruby
 
   class ArrayPredictionContext < PredictionContext
+    attr_reader parents: Array[PredictionContext]
+    attr_reader return_states: Array[Integer]
+
+    def initialize: (context: SingletonPredictionContext?,
+        parents: Array[PredictionContext],
+      return_states: Array[Integer]) -> void
   end
 end

@@ -1,5 +1,6 @@
 module Antlr4ruby
 
   class EmptyPredictionContext < SingletonPredictionContext
+    INSTANCE: EmptyPredictionContext
   end
 end

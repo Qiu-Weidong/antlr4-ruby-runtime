@@ -1,6 +1,9 @@
 module Antlr4ruby
 
   class LexerATNConfig < ATNConfig
+
+    def initialize: (state: ATNState, alt:Integer?, context: PredictionContext?,
+        config: LexerATNConfig?, executor: LexerActionExecutor?) -> void
     def self.check_non_greedy_decision: (LexerATNConfig, ATNState) -> bool
 
     attr_reader passed_through_non_greedy_decision: bool
