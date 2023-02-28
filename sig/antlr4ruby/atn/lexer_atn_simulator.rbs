@@ -1,5 +1,31 @@
 module Antlr4ruby
 
   class LexerATNSimulator < ATNSimulator
+    MAX_DFA_EDGE: Integer
+    MIN_DFA_EDGE: Integer
+
+
+
+
+
+    class SimState
+
+      attr_accessor char_pos: Integer
+      attr_accessor dfa_state: DFAState?
+      attr_accessor index: Integer
+      attr_accessor line: Integer
+      def reset: -> void
+    end
+
+    attr_accessor char_position_in_line: Integer
+    attr_reader debug: bool
+    attr_accessor decision_to_dfa: Array[DFA]
+    attr_reader dfa_debug: bool
+    attr_accessor line: Integer
+    attr_accessor mode: Integer
+    attr_accessor prev_accept: SimState
+    attr_reader recognizer: Lexer
+    attr_accessor start_index: Integer
+
   end
 end

@@ -79,6 +79,14 @@ module Antlr4ruby
         # todo
       end
 
+      def get_all_context_nodes(context)
+        # todo
+      end
+
+      def get_all_context_nodes_(context, nodes, visited)
+        # todo
+      end
+
 
       protected
       def calculate_empty_hash_code

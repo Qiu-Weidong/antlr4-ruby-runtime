@@ -15,6 +15,12 @@ module Antlr4ruby
 
     def self.from_rule_context: (ATN, RuleContext) -> PredictionContext
 
+    def self.get_all_context_nodes: (PredictionContext) -> Array[PredictionContext]
+
+    def self.get_all_context_nodes_: (PredictionContext, Array[PredictionContext], Hash[PredictionContext, PredictionContext]) -> void
+
+    def self.get_cached_context: (PredictionContext, PredictionContextCache, Hash[Integer, PredictionContext]) -> PredictionContext
+
     def self.merge: (PredictionContext, PredictionContext, bool, DoubleKeyMap[PredictionContext, PredictionContext, PredictionContext]) -> PredictionContext
 
     def self.merge_arrays: (ArrayPredictionContext, ArrayPredictionContext, bool, DoubleKeyMap[PredictionContext, PredictionContext, PredictionContext]) -> PredictionContext

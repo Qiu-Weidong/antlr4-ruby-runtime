@@ -1,0 +1,37 @@
+class HelloLexer < Antlr4ruby::Lexer
+  Id: Integer
+  ID: Integer
+  LITERAL_NAMES: Array[String]
+  NUMBER: Integer
+  Number: Integer
+
+  SYMBOLIC_NAMES: Array[String]
+
+  VOCABULARY: Antlr4ruby::Vocabulary
+
+  WS: Integer
+
+  @@atn: Antlr4ruby::ATN
+  @@channel_names: Array[String]
+  @@decision_to_dfa: Array[Antlr4ruby::DFA]
+  @@mode_names: Array[String]
+  @@rule_names: Array[String]
+
+  @@serialized_atn: Array[Integer]
+
+  @@shared_context_cache: Antlr4ruby::PredictionContextCache
+
+  def get_atn: -> Antlr4ruby::ATN
+
+  def get_channel_names: -> Array[String]
+
+  def get_grammar_file_name: -> String
+
+  def get_mode_names: -> Array[String]
+
+  def get_rule_names: -> Array[String]
+
+  def get_serialized_atn: -> Array[Integer]
+
+  def get_vocabulary: -> Antlr4ruby::Vocabulary
+end

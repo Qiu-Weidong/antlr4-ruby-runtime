@@ -1,5 +1,26 @@
 module Antlr4ruby
 
   class ATNDeserializer
+    SERIALIZED_VERSION: Integer
+
+    def check_condition: (bool, String?) -> void
+
+    def deserialize: (Array[Integer]) -> ATN
+
+    def edge_factory: (ATN, Integer, Integer, Integer,Integer,Integer,Integer,Array[RangeSet[Integer]]) -> Transition
+
+    def lexer_action_factory: (LexerActionType, Integer, Integer) -> _LexerAction
+
+    def mark_precedence_decisions: (ATN) -> void
+
+    def state_factory: (Integer, Integer) -> ATNState
+
+    def verify_atn: (ATN) -> void
+
+    private
+
+    attr_reader deserialization_options: ATNDeserializationOptions
+
+    def deserialize_sets: (Array[Integer], Integer, Array[RangeSet[Integer]]) -> Integer
   end
 end

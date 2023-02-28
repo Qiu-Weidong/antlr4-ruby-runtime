@@ -6,7 +6,7 @@ module Antlr4ruby
 
     def self.init: (Integer) -> Integer
 
-    def self.update: (Integer,Integer | Object?) -> Integer
+    def self.update: (Integer, Object) -> Integer
 
     def self.hash: (Array[untyped], Integer) -> untyped
   end
