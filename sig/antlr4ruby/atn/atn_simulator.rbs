@@ -2,6 +2,18 @@ module Antlr4ruby
 
   # @abstract
   class ATNSimulator
+    ERROR: DFAState
+
+    attr_reader atn: ATN
+    attr_reader shared_context_cache: PredictionContextCache
+
+    def clear_dfa: -> void
+
+    def get_cached_context: (PredictionContext) -> PredictionContext
+
+    def get_shared_context_cache: -> PredictionContextCache
+
+    def reset: -> void
   end
 
 end
