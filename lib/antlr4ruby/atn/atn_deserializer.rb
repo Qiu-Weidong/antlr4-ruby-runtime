@@ -1,3 +1,18 @@
+require 'antlr4ruby/atn/atn_deserialization_options'
+require 'antlr4ruby/atn/atn'
+require 'antlr4ruby/atn/state/atn_state'
+require 'antlr4ruby/atn/state/tokens_start_state'
+require 'antlr4ruby/atn/state/decision_state'
+require 'antlr4ruby/atn/state/basic_state'
+require 'antlr4ruby/atn/state/block_start_state'
+require 'antlr4ruby/atn/state/rule_stop_state'
+require 'antlr4ruby/atn/state/rule_start_state'
+require 'antlr4ruby/atn/state/block_end_state'
+require 'antlr4ruby/atn/state/loop_end_state'
+require 'antlr4ruby/atn/state/plus_loopback_state'
+require 'antlr4ruby/atn/state/star_block_start_state'
+require 'antlr4ruby/atn/state/plus_block_start_state'
+
 module Antlr4ruby
   class ATNDeserializer
     SERIALIZED_VERSION = 4
@@ -22,7 +37,7 @@ module Antlr4ruby
       n_states = data[p]; p += 1
       n_states.times do |i|
         s_type = data[p]; p += 1
-        if s_type == ATNState.INVALID_TYPE
+        if s_type == ATNState::INVALID_TYPE
           atn.add_state(nil)
           next
         end
@@ -30,7 +45,7 @@ module Antlr4ruby
         rule_index = data[p]; p += 1
         s = state_factory(s_type, rule_index)
 
-        if s_type == ATNState.LOOP_END
+        if s_type == ATNState::LOOP_END
           loop_back_state_number = data[p]; p += 1
           loop_back_state_numbers << Pair.new(s, loop_back_state_number)
         elsif s.instance_of?(BlockStartState)
@@ -329,29 +344,29 @@ module Antlr4ruby
       case type
       # when ATNState.INVALID_TYPE
 
-      when ATNState.BASIC
+      when ATNState::BASIC
         s = BasicState.new
-      when ATNState.RULE_START
+      when ATNState::RULE_START
         s = RuleStartState.new
-      when ATNState.BLOCK_START
+      when ATNState::BLOCK_START
         s = BasicBlockStartState.new
-      when ATNState.PLUS_BLOCK_START
+      when ATNState::PLUS_BLOCK_START
         s = PlusBlockStartState.new
-      when ATNState.STAR_BLOCK_START
+      when ATNState::STAR_BLOCK_START
         s = StarBlockStartState.new
-      when ATNState.TOKEN_START
+      when ATNState::TOKEN_START
         s = TokensStartState.new
-      when ATNState.RULE_STOP
+      when ATNState::RULE_STOP
         s = RuleStopState.new
-      when ATNState.BLOCK_END
+      when ATNState::BLOCK_END
         s = BlockEndState.new
-      when ATNState.STAR_LOOP_BACK
+      when ATNState::STAR_LOOP_BACK
         s = StarLoopbackState.new
-      when ATNState.STAR_LOOP_ENTRY
+      when ATNState::STAR_LOOP_ENTRY
         StarLoopEntryState.new
-      when ATNState.PLUS_LOOP_BACK
+      when ATNState::PLUS_LOOP_BACK
         s = PlusLoopbackState.new
-      when ATNState.LOOP_END
+      when ATNState::LOOP_END
         s = LoopEndState.new
       else
         raise "The specified state type #{type} is not valid."

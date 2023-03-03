@@ -1,3 +1,6 @@
+require 'antlr4ruby/recognizer'
+require 'antlr4ruby/token'
+
 
 module Antlr4ruby
   # @abstract

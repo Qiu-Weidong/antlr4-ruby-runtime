@@ -75,7 +75,7 @@ module Antlr4ruby
       # todo
     end
 
-    def get(start, stop)
+    def get_multi(start, stop)
       # todo
     end
 

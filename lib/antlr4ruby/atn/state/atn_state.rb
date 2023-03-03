@@ -1,4 +1,6 @@
 # finished
+require 'antlr4ruby/misc/range_set'
+
 
 module Antlr4ruby
   # @abstract

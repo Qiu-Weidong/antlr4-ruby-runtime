@@ -4,7 +4,9 @@
 =end
 
 
-require 'antlr4ruby'
+require 'antlr4ruby/lexer'
+require 'antlr4ruby/vocabulary'
+require 'antlr4ruby/atn/atn_deserializer'
 include Antlr4ruby
 
 # todo LexerATNSimulator Lexer ATN PredictionContextCache DFA

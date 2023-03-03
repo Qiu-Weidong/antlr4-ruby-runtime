@@ -21,6 +21,8 @@ module Antlr4ruby
     attr_accessor token_source: _TokenSource
     attr_accessor tokens: Array[_Token]
 
+    def get_multi: (Integer, Integer) -> Array[_Token]
+
     def get_tokens:
       () -> Array[_Token]
       | (Integer, Integer) -> Array[_Token]
@@ -41,7 +43,6 @@ module Antlr4ruby
 
     def sync: (Integer) -> bool
 
-    def get: (Integer) -> _Token
-      | (Integer, Integer) -> Array[_Token]
+    # def get: (Integer) -> _Token
   end
 end

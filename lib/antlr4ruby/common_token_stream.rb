@@ -1,4 +1,5 @@
 # finished
+require 'antlr4ruby/buffered_token_stream'
 
 module Antlr4ruby
   class CommonTokenStream < BufferedTokenStream
