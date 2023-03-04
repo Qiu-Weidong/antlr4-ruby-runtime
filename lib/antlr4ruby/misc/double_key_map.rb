@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 
-
+# 不需要
 module Antlr4ruby
   class DoubleKeyMap
 

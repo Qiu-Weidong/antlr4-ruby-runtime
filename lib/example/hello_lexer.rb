@@ -4,16 +4,16 @@
 =end
 
 
-require 'antlr4ruby/lexer'
-require 'antlr4ruby/vocabulary'
-require 'antlr4ruby/atn/atn_deserializer'
-include Antlr4ruby
+require 'antlr4ruby'
+
+# cpp、JavaScript 没有打开名称空间 最好不要打开名称空间
+# include Antlr4ruby
 
 # todo LexerATNSimulator Lexer ATN PredictionContextCache DFA
-class HelloLexer < Lexer
+class HelloLexer < Antlr4ruby::Lexer
   def initialize(input)
     super(input)
-    @interpreter = LexerATNSimulator.new(self, @atn, @decision_to_dfa, @shared_context_cache)
+    @interpreter = Antlr4ruby::LexerATNSimulator.new(self, @atn, @decision_to_dfa, @shared_context_cache)
   end
 
   ID=1, NUMBER=2, WS=3
@@ -27,7 +27,7 @@ class HelloLexer < Lexer
 
   LITERAL_NAMES = []
   SYMBOLIC_NAMES = [nil, "ID", "NUMBER", "WS"]
-  VOCABULARY = Vocabulary.new(LITERAL_NAMES, SYMBOLIC_NAMES);
+  VOCABULARY = Antlr4ruby::Vocabulary.new(LITERAL_NAMES, SYMBOLIC_NAMES);
 
   def get_vocabulary
     VOCABULARY
@@ -69,12 +69,12 @@ class HelloLexer < Lexer
                       24,23,1,0,0,0,25,26,1,0,0,0,26,24,1,0,0,0,26,27,1,0,0,0,27,8,1,0,0,0,28,
                       29,7,2,0,0,29,30,1,0,0,0,30,31,6,4,0,0,31,10,1,0,0,0,4,0,18,20,26,1,6,
                       0,0]
-  @@atn = ATNDeserializer.new.deserialize(@@serialized_atn)
+  @@atn = Antlr4ruby::ATNDeserializer.new.deserialize(@@serialized_atn)
 
 
   protected
-  @@decision_to_dfa = (0...@@atn.get_number_of_decisions).map { |i| DFA.new(@@atn.get_decision_state(i), i) }
-  @@shared_context_cache = PredictionContextCache.new
+  @@decision_to_dfa = (0...@@atn.get_number_of_decisions).map { |i| Antlr4ruby::DFA.new(@@atn.get_decision_state(i), i) }
+  @@shared_context_cache = Antlr4ruby::PredictionContextCache.new
 
 end
 

@@ -1,4 +1,8 @@
 # finished
+
+require 'antlr4ruby/exception/recognition_exception'
+
+
 module Antlr4ruby
   class FailedPredicateException < RecognitionException
 

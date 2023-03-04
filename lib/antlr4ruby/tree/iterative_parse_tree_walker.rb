@@ -1,3 +1,6 @@
+require 'antlr4ruby/tree/parse_tree_walker'
+
+
 module Antlr4ruby
 
   class IterativeParseTreeWalker < ParseTreeWalker

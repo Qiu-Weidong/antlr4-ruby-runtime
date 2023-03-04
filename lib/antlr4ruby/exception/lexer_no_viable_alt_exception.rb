@@ -1,5 +1,8 @@
 # finished
 # 已完成
+require 'antlr4ruby/exception/recognition_exception'
+
+
 module Antlr4ruby
   class LexerNoViableAltException < RecognitionException
     def initialize(lexer, input, start_index, dead_end_configs)

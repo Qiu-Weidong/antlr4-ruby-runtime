@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 # 已完成
 
+require 'antlr4ruby/token'
+
+
 module Antlr4ruby
 
   class TerminalNode
