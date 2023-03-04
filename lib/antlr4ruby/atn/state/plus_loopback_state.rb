@@ -1,4 +1,8 @@
 # finished
+
+require 'antlr4ruby/atn/state/decision_state'
+
+
 module Antlr4ruby
   # @final
   class PlusLoopbackState < DecisionState

@@ -1,4 +1,5 @@
 # finished
+require 'antlr4ruby/atn/transition/transition'
 
 module Antlr4ruby
   class RangeTransition < Transition

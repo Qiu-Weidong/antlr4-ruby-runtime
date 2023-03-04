@@ -1,5 +1,7 @@
 # finished
 # 已完成
+require 'antlr4ruby/atn/state/decision_state'
+
 
 module Antlr4ruby
   class StarLoopEntryState < DecisionState

@@ -1,5 +1,7 @@
 # finished
 # 已完成
+require 'antlr4ruby/common_token'
+
 
 module Antlr4ruby
   class CommonTokenFactory

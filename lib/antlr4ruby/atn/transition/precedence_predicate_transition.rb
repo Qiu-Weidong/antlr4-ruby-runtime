@@ -1,3 +1,6 @@
+require 'antlr4ruby/atn/transition/abstract_predicate_transition'
+
+
 module Antlr4ruby
   # @final
   class PrecedencePredicateTransition < AbstractPredicateTransition

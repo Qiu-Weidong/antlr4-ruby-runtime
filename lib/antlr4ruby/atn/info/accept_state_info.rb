@@ -4,8 +4,8 @@
 module Antlr4ruby
   class AcceptStateInfo
 
-    def initialize(prediction, lexer_action_executor)
-      @prediction, @lexer_action_executor = prediction, lexer_action_executor
+    def initialize(prediction, executor)
+      @prediction, @lexer_action_executor = prediction, executor
     end
 
     def get_prediction

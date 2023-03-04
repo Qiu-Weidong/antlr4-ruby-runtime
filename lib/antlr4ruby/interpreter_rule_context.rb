@@ -1,5 +1,8 @@
 # 已完成
 
+require 'antlr4ruby/parser_rule_context'
+
+
 module Antlr4ruby
   class InterpreterRuleContext < ParserRuleContext
 

@@ -1,4 +1,6 @@
 # finished
+require 'antlr4ruby/default_error_strategy'
+
 
 module Antlr4ruby
   class BailErrorStrategy < DefaultErrorStrategy

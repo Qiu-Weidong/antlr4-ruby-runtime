@@ -1,4 +1,7 @@
 # finished
+require 'antlr4ruby/atn/transition/transition'
+require 'antlr4ruby/misc/range_set'
+
 
 module Antlr4ruby
   class SetTransition < Transition

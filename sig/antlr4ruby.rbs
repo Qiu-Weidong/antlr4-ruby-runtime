@@ -1,4 +1,11 @@
 module Antlr4ruby
   VERSION: String
   # See the writing guide of rbs: https://github.com/ruby/rbs#guides
+
+  class Antlr
+    def self.main: -> void
+
+    def hello: (_TokenSource) -> void
+  end
+
 end

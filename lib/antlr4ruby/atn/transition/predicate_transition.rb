@@ -1,3 +1,6 @@
+require 'antlr4ruby/atn/transition/abstract_predicate_transition'
+
+
 module Antlr4ruby
   class PredicateTransition < AbstractPredicateTransition
     attr_reader :rule_index, :pred_index, :is_ctx_dependent

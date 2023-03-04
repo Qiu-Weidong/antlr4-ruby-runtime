@@ -1,5 +1,7 @@
 # finished
 # 已完成
+require 'antlr4ruby/atn/transition/transition'
+
 
 module Antlr4ruby
   # @abstract

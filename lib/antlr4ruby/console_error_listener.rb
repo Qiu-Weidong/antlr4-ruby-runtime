@@ -1,4 +1,7 @@
 # 已完成
+require 'antlr4ruby/base_error_listener'
+
+
 module Antlr4ruby
   class ConsoleErrorListener < BaseErrorListener
     INSTANCE = ConsoleErrorListener.new

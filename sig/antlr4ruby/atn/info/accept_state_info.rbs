@@ -4,6 +4,7 @@ module Antlr4ruby
   class AcceptStateInfo
     attr_reader lexer_action_executor: LexerActionExecutor
 
+    def initialize: (Integer, LexerActionExecutor) -> void
     private
 
     attr_reader prediction: Integer

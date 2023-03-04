@@ -1,6 +1,9 @@
 # finished
 # 已完成
 
+require 'antlr4ruby/atn/info/decision_event_info'
+
+
 module Antlr4ruby
   class AmbiguityInfo < DecisionEventInfo
     attr_accessor :ambig_alts

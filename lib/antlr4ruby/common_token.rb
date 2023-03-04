@@ -1,4 +1,7 @@
 # finished
+require 'antlr4ruby/token'
+
+
 module Antlr4ruby
   class CommonToken
     # 使用关键字参数来定义

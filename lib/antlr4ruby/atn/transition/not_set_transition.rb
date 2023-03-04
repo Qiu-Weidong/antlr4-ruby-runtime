@@ -1,4 +1,6 @@
 # finished
+require 'antlr4ruby/atn/transition/set_transition'
+
 
 module Antlr4ruby
   # @final

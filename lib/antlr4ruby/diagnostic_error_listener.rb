@@ -1,4 +1,6 @@
 
+require 'antlr4ruby/base_error_listener'
+
 module Antlr4ruby
   class DiagnosticErrorListener < BaseErrorListener
 

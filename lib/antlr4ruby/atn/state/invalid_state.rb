@@ -1,6 +1,8 @@
 # finished
 # frozen_string_literal: true
 
+require 'antlr4ruby/atn/state/basic_state'
+
 
 module Antlr4ruby
   class InvalidState < BasicState

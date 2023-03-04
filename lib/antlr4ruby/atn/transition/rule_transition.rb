@@ -1,4 +1,6 @@
 # finished
+require 'antlr4ruby/atn/transition/transition'
+
 module Antlr4ruby
   class RuleTransition < Transition
     attr_reader :rule_index, :precedence

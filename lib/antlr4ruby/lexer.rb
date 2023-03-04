@@ -18,16 +18,16 @@ module Antlr4ruby
                   :token_start_line, :hit_eof, :channel,
                   :type, :mode_stack, :mode, :text
 
-    def initialize(input)
-      super()
-      @token_start_char_index = -1
-      @mode = Lexer.DEFAULT_MODE
-      @mode_stack = IntegerStack.new
-      if input
-        @input = input
-        @token_factory_source_pair = Pair.new(self, input)
-      end
-    end
+    # def initialize(input)
+    #   super()
+    #   @token_start_char_index = -1
+    #   @mode = Lexer.DEFAULT_MODE
+    #   @mode_stack = IntegerStack.new
+    #   if input
+    #     @input = input
+    #     @token_factory_source_pair = Pair.new(self, input)
+    #   end
+    # end
 
 
     protected
@@ -175,6 +175,16 @@ module Antlr4ruby
 
 
 
-
+    def initialize(input)
+      super()
+      @token_start_char_index = -1
+      @mode = Lexer.DEFAULT_MODE
+      @mode_stack = IntegerStack.new
+      if input
+        @input = input
+        # 不适用 pair，直接 [a, b].freeze
+        @token_factory_source_pair = Pair.new(self, input)
+      end
+    end
   end
 end

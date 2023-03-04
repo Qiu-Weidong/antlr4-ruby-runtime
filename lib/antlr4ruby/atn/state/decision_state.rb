@@ -1,5 +1,7 @@
 # finished
 # 已完成
+require 'antlr4ruby/atn/state/atn_state'
+
 
 module Antlr4ruby
 
