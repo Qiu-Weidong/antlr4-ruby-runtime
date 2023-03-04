@@ -2,18 +2,16 @@
 
 **Not Finished Yet**
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/antlr4ruby`. To experiment with that code, run `bin/console` for an interactive prompt.
-
 ## Installation
 
 Install the gem and add to the application's Gemfile by executing:
-
-    $ bundle add antlr4ruby
-
+```
+$ bundle add antlr4ruby
+```
 If bundler is not being used to manage dependencies, install the gem by executing:
-
-    $ gem install antlr4ruby
-
+```
+$ gem install antlr4ruby
+```
 ## Usage
 
 TODO: Write usage instructions here
