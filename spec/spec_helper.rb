@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "antlr4ruby"
+# require "antlr4ruby"
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure

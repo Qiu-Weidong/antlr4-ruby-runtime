@@ -1,11 +1,8 @@
-require_relative 'code_point_char_stream'
+require 'antlr4ruby/code_point_char_stream'
+
 module Antlr4ruby
   class CharStreams
     class << self
-      def from_path(path, charset)
-        # from_file(path, charset)
-      end
-
       def from_file_name(filename, charset)
         mode = charset ? "rb:#{charset}" : 'r'
         File.open(filename, mode) do |file|
@@ -22,7 +19,7 @@ module Antlr4ruby
         end
       end
 
-      def from_string(input, source_name = IntStream.UNKNOWN_SOURCE_NAME)
+      def from_string(input, source_name = IntStream::UNKNOWN_SOURCE_NAME)
         # 首先将字符串转换为整数数组
         CodePointCharStream.from_string(input, source_name)
       end

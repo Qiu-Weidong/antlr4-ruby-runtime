@@ -1,10 +1,13 @@
 # finished
 
+require 'antlr4ruby/int_stream'
+
+
 module Antlr4ruby
   # @abstract
   class CodePointCharStream
 
-    def initialize(data, name = UNKNOWN_SOURCE_NAME)
+    def initialize(data, name = IntStream::UNKNOWN_SOURCE_NAME)
       @data, @name, @position = data, name, 0
     end
 
@@ -21,15 +24,8 @@ module Antlr4ruby
 
     public
 
-    def self.from_buffer(code_point_buffer, name = UNKNOWN_SOURCE_NAME)
-      # todo
-    end
-
-    def self.from_string(input, name = UNKNOWN_SOURCE_NAME)
+    def self.from_string(input, name = IntStream::UNKNOWN_SOURCE_NAME)
       buffer = input.unpack('U*')
-      # input.each_char do |c|
-      #   buffer.push(c.ord)
-      # end
       # 这里会有一个警告，但是不好处理
       CodePointCharStream.new(buffer, name)
     end
@@ -51,7 +47,7 @@ module Antlr4ruby
       -1
     end
 
-    def release(marker) end
+    def release(_marker) end
 
     def seek(index)
       @position = index
@@ -76,7 +72,6 @@ module Antlr4ruby
     end
 
     def get_source_name
-      UNKNOWN_SOURCE_NAME if !@name || name.empty?
       @name
     end
 
