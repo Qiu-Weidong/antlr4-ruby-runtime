@@ -7,7 +7,7 @@ module Antlr4ruby
   # @abstract
   class CodePointCharStream
 
-    def initialize(data, name = IntStream::UNKNOWN_SOURCE_NAME)
+    def initialize(data, name = Antlr4ruby::IntStream::UNKNOWN_SOURCE_NAME)
       @data, @name, @position = data, name, 0
     end
 
@@ -24,7 +24,7 @@ module Antlr4ruby
 
     public
 
-    def self.from_string(input, name = IntStream::UNKNOWN_SOURCE_NAME)
+    def self.from_string(input, name = Antlr4ruby::IntStream::UNKNOWN_SOURCE_NAME)
       buffer = input.unpack('U*')
       # 这里会有一个警告，但是不好处理
       CodePointCharStream.new(buffer, name)
@@ -56,10 +56,10 @@ module Antlr4ruby
     def la(i)
       if i < 0
         offset = position + i
-        offset < 0 ? IntStream.EOF : data[offset]
+        offset < 0 ? Antlr4ruby::IntStream::EOF : data[offset]
       elsif i > 0
         offset = position + i - 1
-        offset > data.length ? IntStream.EOF : data[offset]
+        offset >= data.length ? Antlr4ruby::IntStream::EOF : data[offset]
       else
         0
       end
