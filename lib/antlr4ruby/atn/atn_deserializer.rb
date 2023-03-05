@@ -35,7 +35,7 @@ module Antlr4ruby
       loop_back_state_numbers = []
       end_state_numbers = []
       n_states = data[p]; p += 1
-      n_states.times do |i|
+      n_states.times do |_|
         s_type = data[p]; p += 1
         if s_type == ATNState::INVALID_TYPE
           atn.add_state(nil)
@@ -66,7 +66,7 @@ module Antlr4ruby
       end
 
       num_precedence_states = data[p]; p += 1
-      num_non_greedy_states.times do |i|
+      num_precedence_states.times do |_|
         state_number = data[p]; p += 1
         atn.states[state_number].is_left_recursive_rule = true
       end
@@ -89,11 +89,11 @@ module Antlr4ruby
       atn.states.each do |state|
         next unless state.instance_of?(RuleStartState)
         atn.rule_to_stop_state[state.rule_index] = state
-        atn.rule_to_start_state[state.rule_index] = state
+        atn.rule_to_start_state[state.rule_index].stop_state = state
       end
 
       n_modes = data[p]; p += 1
-      n_modes.times do |i|
+      n_modes.times do |_|
         s = data[p]; p += 1
         atn.mode_to_start_state << atn.states[s]
       end
@@ -102,7 +102,7 @@ module Antlr4ruby
       p = deserialize_sets(data, p, sets)
 
       n_edges = data[p]; p += 1
-      n_edges.times do |i|
+      n_edges.times do |_|
         src, trg, token_type, arg1, arg2, arg3 =
           data[p], data[p+1], data[p+2], data[p+3], data[p+4], data[p+5]
 
@@ -117,7 +117,10 @@ module Antlr4ruby
           t = state.get_transition(i)
           next unless t.instance_of?(RuleTransition)
           outermost_precedence_return = -1
-          if t && atn.rule_to_start_state[t.target.rule_index].is_left_recursive_rule
+
+          raise "get_transition is nil" unless t
+
+          if atn.rule_to_start_state[t.target.rule_index].is_left_recursive_rule
             outermost_precedence_return = t.target.rule_index if t.precedence == 0
           end
 
@@ -165,6 +168,9 @@ module Antlr4ruby
         atn.lexer_actions.length.times do |i|
           t = data[p]; p += 1
           action_type = [:CHANNEL, :CUSTOM, :MODE, :MORE, :POP_MODE, :PUSH_MODE, :SKIP, :TYPE].at(t)
+
+          raise ".." unless action_type
+
           data1 = data[p]; p += 1
           data2 = data[p]; p += 1
           lexer_action = lexer_action_factory(action_type, data1, data2)
@@ -178,7 +184,7 @@ module Antlr4ruby
       verify_atn(atn) if deserialization_options.is_verify_atn?
 
       if deserialization_options.is_generate_rule_bypass_transitions? && atn.grammar_type == :PARSER
-        atn.rule_to_token_type = Array.new(atn.rule_to_start_state.length)
+        atn.rule_to_token_type = Array.new(atn.rule_to_start_state.length, 0)
         atn.rule_to_start_state.length.times do |i|
           atn.rule_to_token_type[i] = atn.max_token_type + i + 1
         end
@@ -214,7 +220,7 @@ module Antlr4ruby
 
             end
 
-            raise "" unless  end_state
+            raise "Couldn't identify final state of the precedence rule prefix section." unless  end_state
             exclude_transition = end_state.loop_back_state.get_transition(0)
           else
             end_state = atn.rule_to_stop_state[i]
@@ -290,7 +296,8 @@ module Antlr4ruby
         end
 
         if state.instance_of?(StarLoopbackState)
-
+          check_condition(state.get_number_of_transitions == 1)
+          check_condition(state.get_transition(0).target.instance_of?(StarLoopEntryState))
         end
 
         check_condition(state.loop_back_state != nil ) if state.instance_of?(LoopEndState)
@@ -311,13 +318,13 @@ module Antlr4ruby
       raise message || 'check error' unless condition
     end
 
-    def edge_factory(atn, type, src, trg, arg1, arg2, arg3, sets)
+    def edge_factory(atn, type, _src, trg, arg1, arg2, arg3, sets)
       target = atn.states[trg]
       case type
       when Transition.EPSILON
         return EpsilonTransition.new(target)
       when Transition.RANGE
-        return arg3 != 0 ? RangeTransition.new(target, Token.EOF, arg2) : RangeTransition.new(target, arg1, arg2)
+        return arg3 != 0 ? RangeTransition.new(target, Token::EOF, arg2) : RangeTransition.new(target, arg1, arg2)
       when Transition.RULE
         return RuleTransition.new(atn.states[arg1], arg2, arg3, target)
       when Transition.PREDICATE

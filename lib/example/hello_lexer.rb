@@ -27,7 +27,7 @@ class HelloLexer < Antlr4ruby::Lexer
 
   LITERAL_NAMES = []
   SYMBOLIC_NAMES = [nil, "ID", "NUMBER", "WS"]
-  VOCABULARY = Antlr4ruby::Vocabulary.new(LITERAL_NAMES, SYMBOLIC_NAMES);
+  VOCABULARY = Antlr4ruby::Vocabulary.new(LITERAL_NAMES, SYMBOLIC_NAMES)
 
   def get_vocabulary
     VOCABULARY
