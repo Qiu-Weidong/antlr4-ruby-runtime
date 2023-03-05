@@ -33,7 +33,7 @@ module Antlr4ruby
 
     def initialize
       @atn, @state_number, @rule_index, @epsilon_only_transitions, @transitions, @next_token_within_rule =
-        nil, INVALID_STATE_NUMBER, 0, false, [], RangeSet.new
+        nil, INVALID_STATE_NUMBER, 0, false, [], nil
     end
 
     def get_state_type
@@ -96,7 +96,7 @@ module Antlr4ruby
     end
 
     def eql?(other)
-      return false unless other.instance_of?(ATNState)
+      return false unless other.kind_of?(ATNState)
       @state_number == other.state_number
     end
 

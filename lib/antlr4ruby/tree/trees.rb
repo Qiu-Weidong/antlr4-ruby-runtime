@@ -20,12 +20,12 @@ module Antlr4ruby
       def get_node_text(tree, recognizer: nil, rule_names: [])
 
         rule_names = recognizer.get_rule_names if recognizer
-        if tree.instance_of?(RuleContext)
+        if tree.kind_of?(RuleContext)
           rule_index = tree.get_rule_context.get_rule_index
           return rule_names[rule_index]
-        elsif tree.instance_of?(ErrorNode)
+        elsif tree.kind_of?(ErrorNode)
           return tree.to_s
-        elsif tree.instance_of?(TerminalNode)
+        elsif tree.kind_of?(TerminalNode)
           symbol = tree.get_symbol
           return symbol.get_text if symbol
         end
@@ -76,9 +76,9 @@ module Antlr4ruby
       end
 
       def _find_all_nodes(t, index, find_tokens, nodes)
-        if find_tokens && t.instance_of?(TerminalNode)
+        if find_tokens && t.kind_of?(TerminalNode)
           nodes.push(t) if t.get_symbol.get_type == index
-        elsif !find_tokens && t.instance_of?(ParserRuleContext)
+        elsif !find_tokens && t.kind_of?(ParserRuleContext)
           nodes.push(t) if t.get_rule_index == index
         end
 
@@ -108,7 +108,7 @@ module Antlr4ruby
           end
 
         end
-        if t.instance_of?(ParserRuleContext)
+        if t.kind_of?(ParserRuleContext)
           return t if start_token_index >= t.get_start.get_token_index && (t.get_stop == nil || stop_token_index <= t.get_stop.get_token_index)
         end
         nil
@@ -121,7 +121,7 @@ module Antlr4ruby
 
         t.get_child_count.times do |i|
           child = t.get_child(i, nil )
-          if child and child.instance_of?(ParserRuleContext)
+          if child and child.kind_of?(ParserRuleContext)
             range = child.get_source_interval
             if (range.first < start_index || range.last > stop_index) && is_ancestor_of?(child, root)
               abbrev = CommonToken.new(type: Token::INVALID_TYPE, text: '...')

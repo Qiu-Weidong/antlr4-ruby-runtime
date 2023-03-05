@@ -46,9 +46,9 @@ module Antlr4ruby
       @predicates = []
 
       if configs
-        if configs.instance_of?(Integer)
+        if configs.kind_of?(Integer)
           @state_number = configs
-        elsif configs.instance_of?(ATNConfigSet)
+        elsif configs.kind_of?(ATNConfigSet)
           @configs = configs
         end
       end

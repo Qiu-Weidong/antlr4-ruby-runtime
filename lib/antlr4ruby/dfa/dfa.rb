@@ -11,7 +11,7 @@ module Antlr4ruby
       @decision = decision
 
       precedence_dfa = false
-      if @atn_start_state.instance_of?(StarLoopEntryState)
+      if @atn_start_state.kind_of?(StarLoopEntryState)
         if @atn_start_state.is_precedence_decision
           precedence_dfa = true
 

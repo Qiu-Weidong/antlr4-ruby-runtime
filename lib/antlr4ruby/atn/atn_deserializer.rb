@@ -12,7 +12,11 @@ require 'antlr4ruby/atn/state/loop_end_state'
 require 'antlr4ruby/atn/state/plus_loopback_state'
 require 'antlr4ruby/atn/state/star_block_start_state'
 require 'antlr4ruby/atn/state/plus_block_start_state'
+require 'antlr4ruby/atn/state/star_loop_entry_state'
+require 'antlr4ruby/atn/state/star_loopback_state'
+require 'antlr4ruby/misc/pair'
 
+# todo 将 instance_of 改为 kind_of
 module Antlr4ruby
   class ATNDeserializer
     SERIALIZED_VERSION = 4
@@ -87,7 +91,7 @@ module Antlr4ruby
 
       atn.rule_to_stop_state = Array.new(n_rules)
       atn.states.each do |state|
-        next unless state.instance_of?(RuleStartState)
+        next unless state.kind_of?(RuleStartState)
         atn.rule_to_stop_state[state.rule_index] = state
         atn.rule_to_start_state[state.rule_index].stop_state = state
       end
@@ -95,7 +99,9 @@ module Antlr4ruby
       n_modes = data[p]; p += 1
       n_modes.times do |_|
         s = data[p]; p += 1
-        atn.mode_to_start_state << atn.states[s]
+        state = atn.states[s]
+        raise '向下转换出错' unless state.kind_of?(TokensStartState)
+        atn.mode_to_start_state << state
       end
 
       sets = []
@@ -115,7 +121,7 @@ module Antlr4ruby
       atn.states.each do |state|
         state.get_number_of_transitions.times do |i|
           t = state.get_transition(i)
-          next unless t.instance_of?(RuleTransition)
+          next unless t.kind_of?(RuleTransition)
           outermost_precedence_return = -1
 
           raise "get_transition is nil" unless t
@@ -130,24 +136,24 @@ module Antlr4ruby
       end
 
       atn.states.each do |state|
-        if state.instance_of?(BlockStartState)
+        if state.kind_of?(BlockStartState)
           raise "illegal state." if ! state.end_state || state.end_state.start_state
 
           state.end_state.start_state = state
         end
 
-        if state.instance_of?(PlusLoopbackState)
+        if state.kind_of?(PlusLoopbackState)
           loop_back_state = state
           loop_back_state.get_number_of_transitions.times do |i|
             target = loop_back_state.get_transition(i).target
-            target.loop_back_state = loop_back_state if target.instance_of?(PlusBlockStartState)
+            target.loop_back_state = loop_back_state if target.kind_of?(PlusBlockStartState)
           end
 
-        elsif state.instance_of?(StarLoopbackState)
+        elsif state.kind_of?(StarLoopbackState)
           loop_back_state = state
           loop_back_state.get_number_of_transitions.times do |i|
             target = loop_back_state.get_transition(i).target
-            target.loop_back_state = loop_back_state if target.instance_of?(StarLoopbackState)
+            target.loop_back_state = loop_back_state if target.kind_of?(StarLoopbackState)
           end
         end
 
@@ -209,11 +215,11 @@ module Antlr4ruby
             # end_state = nil
             atn.states.each do |state|
               next if state.rule_index != i
-              next unless state.instance_of?(StarLoopEntryState)
+              next unless state.kind_of?(StarLoopEntryState)
               maybe_loop_end_state = state.get_transition(state.get_number_of_transitions-1).target
-              next unless maybe_loop_end_state.instance_of?(LoopEndState)
+              next unless maybe_loop_end_state.kind_of?(LoopEndState)
 
-              if maybe_loop_end_state.epsilon_only_transitions && maybe_loop_end_state.get_transition(0).target.instance_of?(RuleStopState)
+              if maybe_loop_end_state.epsilon_only_transitions && maybe_loop_end_state.get_transition(0).target.kind_of?(RuleStopState)
                 end_state = state
                 break
               end
@@ -260,12 +266,12 @@ module Antlr4ruby
     protected
     def mark_precedence_decisions(atn)
       atn.states.each do |state|
-        next unless state.instance_of?(StarLoopEntryState)
+        next unless state.kind_of?(StarLoopEntryState)
 
         if atn.rule_to_start_state[state.rule_index].is_left_recursive_rule
           maybe_loop_end_state = state.get_transition(state.get_number_of_transitions-1).target
-          if maybe_loop_end_state.instance_of?(LoopEndState)
-            if maybe_loop_end_state.epsilon_only_transitions && maybe_loop_end_state.get_transition(0).target.instance_of?(RuleStopState)
+          if maybe_loop_end_state.kind_of?(LoopEndState)
+            if maybe_loop_end_state.epsilon_only_transitions && maybe_loop_end_state.get_transition(0).target.kind_of?(RuleStopState)
               state.is_precedence_decision = true
             end
           end
@@ -278,38 +284,38 @@ module Antlr4ruby
         next unless state
         check_condition(state.only_has_epsilon_transitions? || state.get_number_of_transitions <= 1)
 
-        check_condition(state.loop_back_state != nil ) if state.instance_of?(PlusBlockStartState)
+        check_condition(state.loop_back_state != nil ) if state.kind_of?(PlusBlockStartState)
 
-        if state.instance_of?(StarLoopEntryState)
+        if state.kind_of?(StarLoopEntryState)
           check_condition(state.loop_back_state != nil )
           check_condition(state.get_number_of_transitions == 2)
 
-          if state.get_transition(0).target.instance_of?(StarBlockStartState)
-            check_condition(state.get_transition(1).target.instance_of?(LoopEndState))
+          if state.get_transition(0).target.kind_of?(StarBlockStartState)
+            check_condition(state.get_transition(1).target.kind_of?(LoopEndState))
             check_condition(!state.non_greedy)
-          elsif state.get_transition(0).target.instance_of?(LoopEndState)
-            check_condition(state.get_transition(1).target.instance_of?(StarBlockStartState))
+          elsif state.get_transition(0).target.kind_of?(LoopEndState)
+            check_condition(state.get_transition(1).target.kind_of?(StarBlockStartState))
             check_condition(state.non_greedy)
           else
             raise "illegal state"
           end
         end
 
-        if state.instance_of?(StarLoopbackState)
+        if state.kind_of?(StarLoopbackState)
           check_condition(state.get_number_of_transitions == 1)
-          check_condition(state.get_transition(0).target.instance_of?(StarLoopEntryState))
+          check_condition(state.get_transition(0).target.kind_of?(StarLoopEntryState))
         end
 
-        check_condition(state.loop_back_state != nil ) if state.instance_of?(LoopEndState)
-        check_condition(state.stop_state != nil) if state.instance_of?(RuleStartState)
-        check_condition(state.end_state != nil) if state.instance_of?(BlockStartState)
-        check_condition(state.start_state != nil) if state.instance_of?(BlockEndState)
+        check_condition(state.loop_back_state != nil ) if state.kind_of?(LoopEndState)
+        check_condition(state.stop_state != nil) if state.kind_of?(RuleStartState)
+        check_condition(state.end_state != nil) if state.kind_of?(BlockStartState)
+        check_condition(state.start_state != nil) if state.kind_of?(BlockEndState)
 
-        # check_condition(state.get_number_of_transitions <= 1 || state.decision >= 0) if state.instance_of?(DecisionState)
-        if state.instance_of?(DecisionState)
+        # check_condition(state.get_number_of_transitions <= 1 || state.decision >= 0) if state.kind_of?(DecisionState)
+        if state.kind_of?(DecisionState)
           check_condition(state.get_number_of_transitions <= 1 || state.decision >= 0)
         else
-          check_condition(state.get_number_of_transitions <= 1 || state.instance_of?(RuleStopState))
+          check_condition(state.get_number_of_transitions <= 1 || state.kind_of?(RuleStopState))
         end
       end
     end
@@ -370,7 +376,7 @@ module Antlr4ruby
       when ATNState::STAR_LOOP_BACK
         s = StarLoopbackState.new
       when ATNState::STAR_LOOP_ENTRY
-        StarLoopEntryState.new
+        s = StarLoopEntryState.new
       when ATNState::PLUS_LOOP_BACK
         s = PlusLoopbackState.new
       when ATNState::LOOP_END

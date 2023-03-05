@@ -1,9 +1,9 @@
 require 'antlr4ruby/common_token_stream'
 require 'antlr4ruby/char_streams'
 require 'example/hello_lexer'
-#
+
 include Antlr4ruby
-#
+
 stream = CharStreams.from_string('hello world 123456      89231 GH')
 p stream.get_source_name
 # p stream.data

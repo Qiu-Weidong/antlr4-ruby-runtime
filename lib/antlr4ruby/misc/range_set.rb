@@ -126,7 +126,7 @@ module Antlr4ruby
     end
 
     def add_all(ranges)
-      other_data = ranges.instance_of?(RangeSet) ? ranges.data : ranges
+      other_data = ranges.kind_of?(RangeSet) ? ranges.data : ranges
       other_data.each do |item|
         add(item)
       end
@@ -145,7 +145,7 @@ module Antlr4ruby
     end
 
     def delete_all(ranges)
-      other_data = ranges.instance_of?(RangeSet) ? ranges.data : ranges
+      other_data = ranges.kind_of?(RangeSet) ? ranges.data : ranges
       other_data.each do |item|
         delete(item)
       end

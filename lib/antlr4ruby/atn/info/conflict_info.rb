@@ -25,7 +25,7 @@ module Antlr4ruby
     def eql?(other)
       return true if self.equal?(other)
 
-      return false unless other.instance_of?(ConflictInfo)
+      return false unless other.kind_of?(ConflictInfo)
       @exact == other.exact && conflicted_alts.eql?(other.conflicted_alts)
     end
 

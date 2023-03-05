@@ -29,7 +29,7 @@ module Antlr4ruby
 
       # todo eql? hash to_s
       def eql?(other)
-        return false if ! other || ! other.instance_of?(ATNConfig)
+        return false if ! other || ! other.kind_of?(ATNConfig)
         return true if self.equal?(other)
         @alt == other.alt && state.state_number == other.state.state_number  # todo
       end

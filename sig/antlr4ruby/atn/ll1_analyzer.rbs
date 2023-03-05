@@ -1,5 +1,16 @@
 module Antlr4ruby
 
   class LL1Analyzer
+    HIT_PRED: Integer
+
+    attr_reader atn: ATN
+
+    def initialize: (ATN) -> void
+
+    def _look: (ATNState, ATNState, PredictionContext, RangeSet[Integer], Set[ATNConfig], BitSet, bool, bool) -> void
+
+    def get_decision_lookahead: (ATNState) -> Array[RangeSet[Integer]]
+
+    def look: (ATNState, RuleContext?, ATNState?) -> RangeSet[Integer]
   end
 end

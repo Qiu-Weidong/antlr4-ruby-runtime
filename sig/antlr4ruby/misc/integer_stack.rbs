@@ -1,9 +1,10 @@
-module Antlr4ruby
-
-  class IntegerStack
-
-  end
-end
+# module Antlr4ruby
+#
+#   class IntegerStack
+#
+#     @hello: untyped
+#   end
+# end
 
 
 

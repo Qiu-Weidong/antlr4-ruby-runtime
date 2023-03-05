@@ -26,7 +26,7 @@ module Antlr4ruby
 
     attr_accessor atn: ATN?
     attr_accessor epsilon_only_transitions: bool
-    attr_accessor next_token_within_rule: RangeSet[Integer]
+    attr_accessor next_token_within_rule: RangeSet[Integer]?
     attr_accessor rule_index: Integer
     attr_accessor state_number: Integer
     attr_reader transitions: Array[Transition]

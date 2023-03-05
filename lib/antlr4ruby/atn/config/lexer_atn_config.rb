@@ -20,7 +20,7 @@ module Antlr4ruby
 
     def self.check_non_greedy_decision(source, target)
       return source.passed_through_non_greedy_decision ||
-        target.instance_of?(DecisionState) && target.non_greedy
+        target.kind_of?(DecisionState) && target.non_greedy
     end
 
     public

@@ -1,3 +1,6 @@
+require 'antlr4ruby/atn/ll1_analyzer'
+
+
 module Antlr4ruby
   class ATN
     INVALID_ALT_NUMBER = 0
@@ -10,32 +13,55 @@ module Antlr4ruby
       @grammar_type, @max_token_type = grammar_type, max_token_type
     end
 
-    def next_tokens(state, ctx)
-      # todo
+    def next_tokens(state, ctx = nil)
+      return state.next_token_within_rule if state.next_token_within_rule
+      anal = LL1Analyzer.new(self)
+      tmp = anal.look(state, ctx)
+      state.next_token_within_rule = tmp
+      tmp
     end
 
     def add_state(state)
-      # todo
+      if state
+        state.atn = self
+        state.state_number = states.size
+      end
+      states << state
     end
 
-    def remove_state(state)
-      # todo
-    end
+    # def remove_state(state) 不要了
+    # end
 
     def define_decision_state(state)
-      # todo
+      decision_to_state << state
+      tmp = decision_to_state.size - 1
+      state.decision = tmp
+      tmp
     end
 
+
     def get_decision_state(decision)
-      # todo
+      return nil if decision_to_state.empty?
+      decision_to_state[decision]
     end
 
     def get_number_of_decisions
-      # todo
+      decision_to_state.size
     end
 
     def get_expected_tokens(state_number, context)
+      raise "Invalid state number." if state_number < 0 || state_number >= states.size
+
+      s = states[state_number]
+      following = next_tokens(s)
       # todo
+      return following unless following.include?(Token::EPSILON)
+
+      expected = RangeSet.new
+      expected.add_all(following)
+      expected.delete(Token::EPSILON..Token::EPSILON)
+
+      nil
     end
 
 

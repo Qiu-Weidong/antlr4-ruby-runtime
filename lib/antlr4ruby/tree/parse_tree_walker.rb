@@ -8,10 +8,10 @@ module Antlr4ruby
     DEFAULT = ParseTreeWalker.new
 
     def walk(listener, tree)
-      if tree.instance_of?(ErrorNode)
+      if tree.kind_of?(ErrorNode)
         listener.visit_error_node(tree)
         return
-      elsif tree.instance_of?(TerminalNode)
+      elsif tree.kind_of?(TerminalNode)
         listener.visit_terminal(tree)
         return
       end

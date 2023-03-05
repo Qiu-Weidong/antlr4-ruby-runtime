@@ -41,7 +41,7 @@ module Antlr4ruby
 
     def to_info_string: (Parser) -> String
 
-    def get_parent: -> ParserRuleContext
+    def get_parent: -> ParserRuleContext?
 
     def get_child: (Integer, Class?) -> _ParseTree?
 

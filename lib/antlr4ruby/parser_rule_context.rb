@@ -22,7 +22,7 @@ module Antlr4ruby
       if ctx.children
         self.children = []
         ctx.children.each do |child|
-          if child.instance_of?(ErrorNode)
+          if child.kind_of?(ErrorNode)
             add_child(child)
           end
         end
@@ -34,7 +34,7 @@ module Antlr4ruby
     def exit_rule(listener) end
 
     def add_child(rule_invocation)
-      if rule_invocation.instance_of?(TerminalNode)
+      if rule_invocation.kind_of?(TerminalNode)
         rule_invocation.set_parent(self)
       end
       add_any_child(rule_invocation)
@@ -70,7 +70,7 @@ module Antlr4ruby
       @children[i] unless context_type
       arr = []
       children.each do |child|
-        arr.push(child) if child.instance_of?(context_type)
+        arr.push(child) if child.kind_of?(context_type)
       end
       arr[i]
     end
@@ -84,7 +84,7 @@ module Antlr4ruby
       return result unless children
 
       children.each do |child|
-        result.push(child) if child.instance_of?(context_type)
+        result.push(child) if child.kind_of?(context_type)
       end
       result
     end
@@ -96,7 +96,7 @@ module Antlr4ruby
 
       j = -1
       @children.each do |o|
-        if o.instance_of?(TerminalNode)
+        if o.kind_of?(TerminalNode)
           node = o
           symbol = node.get_symbol
           if symbol.get_type == token_type
@@ -117,7 +117,7 @@ module Antlr4ruby
       end
       tokens = []
       children.each do |child|
-        if child.instance_of?(TerminalNode)
+        if child.kind_of?(TerminalNode)
           node = child
           symbol = node.get_symbol
           if symbol.get_type == token_type
