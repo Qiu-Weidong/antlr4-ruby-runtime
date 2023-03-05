@@ -48,7 +48,7 @@ module Antlr4ruby
         if s_type == ATNState::LOOP_END
           loop_back_state_number = data[p]; p += 1
           loop_back_state_numbers << Pair.new(s, loop_back_state_number)
-        elsif s.instance_of?(BlockStartState)
+        elsif s.kind_of?(BlockStartState)
           end_state_number = data[p]; p += 1
           end_state_numbers << Pair.new(s, end_state_number)
         end
@@ -321,25 +321,25 @@ module Antlr4ruby
     def edge_factory(atn, type, _src, trg, arg1, arg2, arg3, sets)
       target = atn.states[trg]
       case type
-      when Transition.EPSILON
+      when Transition::EPSILON
         return EpsilonTransition.new(target)
-      when Transition.RANGE
+      when Transition::RANGE
         return arg3 != 0 ? RangeTransition.new(target, Token::EOF, arg2) : RangeTransition.new(target, arg1, arg2)
-      when Transition.RULE
+      when Transition::RULE
         return RuleTransition.new(atn.states[arg1], arg2, arg3, target)
-      when Transition.PREDICATE
+      when Transition::PREDICATE
         return PredicateTransition.new(target, arg1, arg2, arg3 != 0)
-      when Transition.PRECEDENCE
+      when Transition::PRECEDENCE
         return PrecedencePredicateTransition.new(target, arg1)
-      when Transition.ATOM
-        return arg3 != 0 ? AtomTransition.new(target, Token.EOF) : AtomTransition.new(target, arg1)
-      when Transition.ACTION
+      when Transition::ATOM
+        return arg3 != 0 ? AtomTransition.new(target, Token::EOF) : AtomTransition.new(target, arg1)
+      when Transition::ACTION
         return ActionTransition.new(target, arg1, arg2, arg3 != 0)
-      when Transition.SET
+      when Transition::SET
         return SetTransition.new(target, sets[arg1])
-      when Transition.NOT_SET
+      when Transition::NOT_SET
         return NotSetTransition.new(target, sets[arg1])
-      when Transition.WILDCARD
+      when Transition::WILDCARD
         return WildcardTransition.new(target)
       else
         raise "The specified transition type is not valid."

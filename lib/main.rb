@@ -4,7 +4,7 @@ require 'example/hello_lexer'
 #
 include Antlr4ruby
 #
-stream = CharStreams.from_string('hello world 123456 ____123___     89231 GH')
+stream = CharStreams.from_string('hello world 123456      89231 GH')
 p stream.get_source_name
 # p stream.data
 
