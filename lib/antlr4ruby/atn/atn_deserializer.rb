@@ -38,7 +38,7 @@ require 'antlr4ruby/atn/action/lexer_push_mode_action'
 require 'antlr4ruby/atn/action/lexer_skip_action'
 require 'antlr4ruby/atn/action/lexer_type_action'
 
-# todo 将 instance_of 改为 kind_of
+
 module Antlr4ruby
   class ATNDeserializer
     SERIALIZED_VERSION = 4
@@ -113,7 +113,7 @@ module Antlr4ruby
 
       atn.rule_to_stop_state = Array.new(n_rules)
       atn.states.each do |state|
-        next unless state.kind_of?(RuleStartState)
+        next unless state.kind_of?(RuleStopState)
         atn.rule_to_stop_state[state.rule_index] = state
         atn.rule_to_start_state[state.rule_index].stop_state = state
       end
@@ -126,6 +126,7 @@ module Antlr4ruby
         atn.mode_to_start_state << state
       end
 
+      # 从这里开始检查
       sets = []
       p = deserialize_sets(data, p, sets)
 
