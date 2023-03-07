@@ -1,4 +1,5 @@
 require 'antlr4ruby/atn/atn_deserialization_options'
+
 require 'antlr4ruby/atn/atn'
 require 'antlr4ruby/atn/state/atn_state'
 require 'antlr4ruby/atn/state/tokens_start_state'
@@ -14,7 +15,28 @@ require 'antlr4ruby/atn/state/star_block_start_state'
 require 'antlr4ruby/atn/state/plus_block_start_state'
 require 'antlr4ruby/atn/state/star_loop_entry_state'
 require 'antlr4ruby/atn/state/star_loopback_state'
+
+require 'antlr4ruby/atn/transition/transition'
+require 'antlr4ruby/atn/transition/epsilon_transition'
+require 'antlr4ruby/atn/transition/action_transition'
+require 'antlr4ruby/atn/transition/atom_transition'
+require 'antlr4ruby/atn/transition/not_set_transition'
+require 'antlr4ruby/atn/transition/predicate_transition'
+require 'antlr4ruby/atn/transition/precedence_predicate_transition'
+require 'antlr4ruby/atn/transition/range_transition'
+require 'antlr4ruby/atn/transition/rule_transition'
+require 'antlr4ruby/atn/transition/set_transition'
+require 'antlr4ruby/atn/transition/wildcard_transition'
 require 'antlr4ruby/misc/pair'
+
+require 'antlr4ruby/atn/action/lexer_channel_action'
+require 'antlr4ruby/atn/action/lexer_custom_action'
+require 'antlr4ruby/atn/action/lexer_mode_action'
+require 'antlr4ruby/atn/action/lexer_more_action'
+require 'antlr4ruby/atn/action/lexer_pop_mode_action'
+require 'antlr4ruby/atn/action/lexer_push_mode_action'
+require 'antlr4ruby/atn/action/lexer_skip_action'
+require 'antlr4ruby/atn/action/lexer_type_action'
 
 # todo 将 instance_of 改为 kind_of
 module Antlr4ruby
@@ -163,8 +185,9 @@ module Antlr4ruby
       n_decisions.times do |i|
         s = data[p]; p += 1
         dec_state = atn.states[s]
+        raise 'cast down error' unless dec_state.kind_of?(DecisionState)
         atn.decision_to_state << dec_state
-        dec_state.decision = i-1
+        dec_state.decision = i
       end
 
       if atn.grammar_type == :LEXER
@@ -399,13 +422,13 @@ module Antlr4ruby
       when :MODE
         return LexerModeAction.new(data1)
       when :MORE
-        return LexerMoreAction.INSTANCE
+        return LexerMoreAction::INSTANCE
       when :POP_MODE
-        return LexerPopModeAction.INSTANCE
+        return LexerPopModeAction::INSTANCE
       when :PUSH_MODE
         return LexerPushModeAction.new(data1)
       when :SKIP
-        return LexerSkipAction.INSTANCE
+        return LexerSkipAction::INSTANCE
       when :TYPE
         return LexerTypeAction.new(data1)
       else
@@ -420,7 +443,7 @@ module Antlr4ruby
     attr_reader :deserialization_options
     def deserialize_sets(data, p, sets)
       n_sets = data[p]; p += 1
-      n_sets.times do |i|
+      n_sets.times do |_|
         n_intervals = data[p]; p += 1
         range_set = RangeSet.new
         sets << range_set
@@ -428,7 +451,7 @@ module Antlr4ruby
         contains_eof = (data[p] != 0)
         p += 1
         range_set.add(-1..-1) if contains_eof
-        n_intervals.times do |i|
+        n_intervals.times do |_|
           a = data[p]; p += 1
           b = data[p]; p += 1
           range_set.add(a..b)

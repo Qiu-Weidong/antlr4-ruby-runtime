@@ -1,4 +1,6 @@
 require 'antlr4ruby/atn/ll1_analyzer'
+require 'antlr4ruby/token'
+# require 'antlr4ruby/atn/transition/rule_transition'
 
 
 module Antlr4ruby
@@ -11,6 +13,8 @@ module Antlr4ruby
 
     def initialize(grammar_type, max_token_type)
       @grammar_type, @max_token_type = grammar_type, max_token_type
+      @states, @mode_to_start_state, @decision_to_state, @mode_name_to_start_state = [], [], [], {}
+      @rule_to_start_state, @rule_to_stop_state, @rule_to_token_type, @lexer_actions = [], [], [], []
     end
 
     def next_tokens(state, ctx = nil)
@@ -61,7 +65,19 @@ module Antlr4ruby
       expected.add_all(following)
       expected.delete(Token::EPSILON..Token::EPSILON)
 
-      nil
+      while context && context.invoking_state >=0 && following.include?(Token::EPSILON)
+        invoking_state = states[context.invoking_state]
+        rt = invoking_state.get_transition(0)
+        raise 'cast down error' unless rt.kind_of?(RuleTransition)
+        following = next_tokens(rt.follow_state)
+        expected.add_all(following)
+        expected.delete(Token::EPSILON..Token::EPSILON)
+        context = context.parent
+      end
+
+      expected.add(Token::EOF..Token::EOF) if following.include?(Token::EPSILON)
+
+      expected
     end
 
 
