@@ -38,7 +38,7 @@ require 'antlr4ruby/atn/action/lexer_push_mode_action'
 require 'antlr4ruby/atn/action/lexer_skip_action'
 require 'antlr4ruby/atn/action/lexer_type_action'
 
-
+# finished
 module Antlr4ruby
   class ATNDeserializer
     SERIALIZED_VERSION = 4
@@ -126,7 +126,7 @@ module Antlr4ruby
         atn.mode_to_start_state << state
       end
 
-      # 从这里开始检查
+
       sets = []
       p = deserialize_sets(data, p, sets)
 
@@ -141,6 +141,7 @@ module Antlr4ruby
         p += 6
       end
 
+      # 从这里开始检查
       atn.states.each do |state|
         state.get_number_of_transitions.times do |i|
           t = state.get_transition(i)
@@ -173,10 +174,9 @@ module Antlr4ruby
           end
 
         elsif state.kind_of?(StarLoopbackState)
-          loop_back_state = state
-          loop_back_state.get_number_of_transitions.times do |i|
-            target = loop_back_state.get_transition(i).target
-            target.loop_back_state = loop_back_state if target.kind_of?(StarLoopbackState)
+          state.get_number_of_transitions.times do |i|
+            target = state.get_transition(i).target
+            target.loop_back_state = state if target.kind_of?(StarLoopEntryState)
           end
         end
 

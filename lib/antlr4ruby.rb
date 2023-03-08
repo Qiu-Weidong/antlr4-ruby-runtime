@@ -4,7 +4,7 @@ require "antlr4ruby/version"
 require 'antlr4ruby/lexer'
 require 'antlr4ruby/vocabulary'
 require 'antlr4ruby/atn/atn_deserializer'
-# require_relative 'example/hello_lexer'
+require 'antlr4ruby/dfa/dfa'
 
 # 在这里将所有要导出的包都 require 了
 

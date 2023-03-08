@@ -1,4 +1,5 @@
-
+require 'antlr4ruby/misc/murmur_hash'
+require 'antlr4ruby/atn/context/semantic_context'
 
 module Antlr4ruby
     class ATNConfig
@@ -27,19 +28,32 @@ module Antlr4ruby
         end
       end
 
-      # todo eql? hash to_s
       def eql?(other)
         return false if ! other || ! other.kind_of?(ATNConfig)
         return true if self.equal?(other)
-        @alt == other.alt && state.state_number == other.state.state_number  # todo
+        @alt == other.alt &&
+          state.state_number == other.state.state_number &&
+          is_precedence_filter_suppressed == other.is_precedence_filter_suppressed &&
+          ( !context && ! other.context || context && context.eql?(other.context) ) &&
+          semantic_context.eql?(other.semantic_context)
       end
 
       def hash
-        # todo
+        hashcode = MurmurHash.init(7)
+        hashcode = MurmurHash.update(hashcode, state.state_number)
+        hashcode = MurmurHash.update(hashcode, alt)
+        hashcode = MurmurHash.update(hashcode, context)
+        hashcode = MurmurHash.update(hashcode, semantic_context)
+        MurmurHash.finish(hashcode, 4)
       end
 
       def to_s(recognizer: nil, show_alt: true)
-        # todo
+        result = '(' + state.to_s
+        result += ',' + alt.to_s if show_alt
+        result += ',[' + context.to_s + ']' if context
+        result += ',' + semantic_context.to_s if semantic_context && semantic_context != SemanticContext::Empty::INSTANCE
+        result += ',up=' + get_outer_context_depth.to_s
+        result + ')'
       end
 
     end

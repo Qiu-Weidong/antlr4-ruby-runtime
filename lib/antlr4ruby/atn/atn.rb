@@ -58,7 +58,7 @@ module Antlr4ruby
 
       s = states[state_number]
       following = next_tokens(s)
-      # todo
+
       return following unless following.include?(Token::EPSILON)
 
       expected = RangeSet.new

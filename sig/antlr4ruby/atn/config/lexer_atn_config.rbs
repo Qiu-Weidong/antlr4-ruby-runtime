@@ -14,6 +14,6 @@ module Antlr4ruby
 
     private
 
-    attr_reader lexer_action_executor: LexerActionExecutor
+    attr_reader lexer_action_executor: LexerActionExecutor?
   end
 end
