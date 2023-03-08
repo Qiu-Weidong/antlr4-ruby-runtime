@@ -1,3 +1,6 @@
+require 'antlr4ruby/dfa/dfa_state'
+require 'antlr4ruby/atn/config/atn_config_set'
+
 module Antlr4ruby
   # @abstract
   class ATNSimulator

@@ -1,13 +1,18 @@
 =begin
-  版本(ANTLR Version): 4.11.1
-  语法(Grammar):       Hello.g4
+  ANTLR Version: 4.11.1
+  Grammar:       Hello.g4
 =end
 
+require 'antlr4ruby/lexer'
+require 'antlr4ruby/atn/lexer_atn_simulator'
+require 'antlr4ruby/vocabulary'
+require 'antlr4ruby/atn/atn_deserializer'
+require 'antlr4ruby/dfa/dfa'
+require 'antlr4ruby/atn/context/prediction_context_cache'
 
-require 'antlr4ruby'
+
 
 # cpp、JavaScript 没有打开名称空间 最好不要打开名称空间
-# include Antlr4ruby
 
 # todo LexerATNSimulator Lexer ATN PredictionContextCache DFA
 class HelloLexer < Antlr4ruby::Lexer

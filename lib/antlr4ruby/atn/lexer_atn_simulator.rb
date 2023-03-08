@@ -1,3 +1,5 @@
+require 'antlr4ruby/atn/atn_simulator'
+
 module Antlr4ruby
   class LexerATNSimulator < ATNSimulator
     MIN_DFA_EDGE = 0

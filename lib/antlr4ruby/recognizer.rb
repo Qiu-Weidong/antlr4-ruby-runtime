@@ -1,3 +1,6 @@
+require 'antlr4ruby/console_error_listener'
+
+
 
 module Antlr4ruby
   # @abstract
@@ -7,7 +10,7 @@ module Antlr4ruby
     def initialize
       super()
 
-      @listeners = [ConsoleErrorListener.INSTANCE]
+      @listeners = [ConsoleErrorListener::INSTANCE]
       @state_number = -1
     end
 
