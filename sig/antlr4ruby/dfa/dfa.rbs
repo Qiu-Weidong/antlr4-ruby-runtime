@@ -8,10 +8,11 @@ module Antlr4ruby
 
     @precedence_dfa: bool
 
-    attr_accessor atn_start_state: DecisionState
-    attr_accessor decision: Integer
+    attr_reader atn_start_state: DecisionState
+    attr_reader decision: Integer
+    attr_reader precedence_dfa: bool
     attr_accessor s0: DFAState
-    attr_accessor states: Hash[DFAState, DFAState]
+    attr_reader states: Hash[DFAState, DFAState]
 
     def initialize: (DecisionState, Integer) -> void
 
@@ -24,6 +25,8 @@ module Antlr4ruby
     def set_precedence_start_state: (Integer, DFAState) -> void
 
     def to_lexer_string: -> String
+
+    def to_s: (Vocabulary?) -> String
   end
 end
 

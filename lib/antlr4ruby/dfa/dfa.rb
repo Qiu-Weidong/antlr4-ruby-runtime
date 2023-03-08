@@ -1,9 +1,15 @@
+require 'antlr4ruby/dfa/dfa_serializer'
+require 'antlr4ruby/vocabulary'
+
 module Antlr4ruby
   class DFA
-    attr_accessor :states,
-                  :s0,
-                  :decision,
-                  :atn_start_state
+    private
+    attr_reader :precedence_dfa
+
+    public
+    attr_reader :states,:decision, :atn_start_state
+    attr_accessor :s0
+
 
     def initialize(atn_start_state, decision = 0)
       super()
@@ -32,21 +38,17 @@ module Antlr4ruby
     end
 
     def get_precedence_start_state(precedence)
-      unless is_precedence_dfa
-        # todo 抛出一个异常
-      end
+      raise "Only precedence DFAs may contain a precedence start state." unless is_precedence_dfa
+
+      return nil if precedence < 0 || precedence >= s0.edges.length
 
       s0.edges[precedence]
     end
 
     def set_precedence_start_state(precedence, start_state)
-      unless is_precedence_dfa
-        # todo 抛出一个异常
-      end
+      raise "Only precedence DFAs may contain a precedence start state." unless is_precedence_dfa
 
-      if precedence < 0
-        return
-      end
+      return if precedence < 0
 
       if precedence >= s0.edges.length
         # todo 再检查一下 Arrays.copyOf 是什么意思
@@ -60,7 +62,15 @@ module Antlr4ruby
     end
 
     def to_lexer_string
-      # todo
+      return '' unless s0
+      serializer = LexerDFASerializer.new(self )
+      serializer.to_s
+    end
+
+    def to_s(vocabulary = Vocabulary::EMPTY_VOCABULARY )
+      return '' unless  s0
+      serializer = DFASerializer.new(self, vocabulary)
+      serializer.to_s
     end
   end
 end
