@@ -1,17 +1,16 @@
 module Antlr4ruby
 
   class DFA
-    @states: Hash[DFAState, DFAState]
-    @s0: DFAState
-    @decision: Integer
-    @atn_start_state: DecisionState
+    # @states: Hash[DFAState, DFAState]
+    # @decision: Integer
+    # @atn_start_state: DecisionState
 
-    @precedence_dfa: bool
+    # @precedence_dfa: bool
 
     attr_reader atn_start_state: DecisionState
     attr_reader decision: Integer
     attr_reader precedence_dfa: bool
-    attr_accessor s0: DFAState
+    attr_accessor s0: DFAState?
     attr_reader states: Hash[DFAState, DFAState]
 
     def initialize: (DecisionState, Integer) -> void

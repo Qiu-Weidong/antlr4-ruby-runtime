@@ -15,6 +15,9 @@ module Antlr4ruby
       super()
       @atn_start_state = atn_start_state
       @decision = decision
+      @s0 = nil
+      @states = Hash.new
+
 
       precedence_dfa = false
       if @atn_start_state.kind_of?(StarLoopEntryState)
