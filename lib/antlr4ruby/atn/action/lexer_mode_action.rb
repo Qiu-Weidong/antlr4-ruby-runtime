@@ -1,3 +1,5 @@
+require 'antlr4ruby/misc/murmur_hash'
+
 module Antlr4ruby
 
   # @final LexerAction
@@ -25,11 +27,16 @@ module Antlr4ruby
     end
 
     def hash
-      # todo
+      int hash = MurmurHash.init
+      hash = MurmurHash.update(hash, get_action_type)
+      hash = MurmurHash.update(hash, mode)
+      MurmurHash.finish(hash, 2)
     end
 
     def eql?(other)
-      # todo
+      return true if equal?(other)
+      return false unless other.kind_of?(LexerModeAction)
+      mode == other.mode
     end
 
     def to_s

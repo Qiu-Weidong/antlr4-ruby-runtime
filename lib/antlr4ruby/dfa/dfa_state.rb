@@ -1,21 +1,10 @@
+require 'antlr4ruby/atn/config/atn_config_set'
+require 'antlr4ruby/misc/murmur_hash'
+
+
 module Antlr4ruby
 
   class DFAState
-    INITIAL_NUM_TRANSITIONS = 4
-
-    INVALID_TYPE = 0
-    BASIC = 1
-    RULE_START = 2
-    BLOCK_START = 3
-    PLUS_BLOCK_START = 4
-    STAR_BLOCK_START = 5
-    TOKEN_START = 6
-    RULE_STOP = 7
-    BLOCK_END = 8
-    STAR_LOOP_BACK = 9
-    STAR_LOOP_ENTRY = 10
-    PLUS_LOOP_BACK = 11
-    LOOP_END = 12
 
     attr_accessor :state_number,
                   :configs,
@@ -27,54 +16,58 @@ module Antlr4ruby
                   :predicates
 
     class PredPrediction
+
+      attr_accessor :pred, :alt
       def initialize(pred, alt)
         @alt = alt
         @pred = pred
       end
 
       def to_s
-        # todo
+        "(#{pred}, #{alt})"
       end
     end
 
-    def initialize(configs)
-      @configs = ATNConfigSet.new
-      @state_number = -1
+    def initialize(configs: nil, state_number: -1)
+      @configs = configs || ATNConfigSet.new
+      @state_number = state_number
       @edges = []
       @is_accept_state = false
       @prediction = 0
-      @predicates = []
-
-      if configs
-        if configs.kind_of?(Integer)
-          @state_number = configs
-        elsif configs.kind_of?(ATNConfigSet)
-          @configs = configs
-        end
-      end
+      @predicates = nil
+      @requires_full_context = false
     end
 
     def get_alt_set
       alts = Set.new
-      if @configs
+      if configs
         # todo
       end
-      if alts.empty?
-        return nil
-      end
+      return nil if alts.empty?
       alts
     end
 
     def hash
-      # todo
+      hashcode = MurmurHash.init(7)
+      hashcode = MurmurHash.update(hashcode, configs.hash)
+      MurmurHash.finish(hashcode, 1)
     end
 
     def eql?(other)
-      # todo
+      return true if self.equal?(other)
+      return false unless other.kind_of?(DFAState)
+
+      configs.eql?(other.configs)
     end
 
     def to_s
-      # todo
+      result = "#{state_number}:#{configs.to_s}"
+      if is_accept_state
+        result += '=>'
+        result += "#{predicates}" if predicates
+        result += "#{prediction}"
+      end
+      result
     end
   end
 end

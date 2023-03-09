@@ -6,7 +6,8 @@ module Antlr4ruby
 
     # @override
     def get_edge_label(index)
-      # todo
+      # 不能使用 chr
+      "'#{[index].pack('U*')}'"
     end
   end
 end

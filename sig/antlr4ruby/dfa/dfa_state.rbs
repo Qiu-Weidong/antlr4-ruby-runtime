@@ -28,21 +28,23 @@ module Antlr4ruby
       @pred: SemanticContext
       @alt: Integer
 
+      attr_accessor alt: Integer
+      attr_accessor pred: SemanticContext
+
       def initialize: (SemanticContext, Integer) -> void
     end
 
-    @predicates: Array[PredPrediction]
 
     attr_accessor configs: ATNConfigSet
     attr_accessor edges: Array[DFAState]
     attr_accessor is_accept_state: bool
     attr_accessor lexer_action_executor: LexerActionExecutor
-    attr_accessor predicates: Array[PredPrediction]
+    attr_accessor predicates: Array[PredPrediction]?
     attr_accessor prediction: Integer
     attr_accessor requires_full_context: bool
     attr_accessor state_number: Integer
 
-    def initialize: (Integer | ATNConfigSet | nil) -> void
+    def initialize: (configs: ATNConfigSet?, state_number: Integer) -> void
 
     def get_alt_set: -> Set[Integer]
 

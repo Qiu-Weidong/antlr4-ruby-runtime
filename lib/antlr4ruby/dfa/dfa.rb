@@ -21,7 +21,7 @@ module Antlr4ruby
         if @atn_start_state.is_precedence_decision
           precedence_dfa = true
 
-          precedence_state = DFAState.new(ATNConfigSet.new)
+          precedence_state = DFAState.new
           precedence_state.edges = []
           precedence_state.is_accept_state = false
           precedence_state.requires_full_context = false
@@ -50,15 +50,13 @@ module Antlr4ruby
 
       return if precedence < 0
 
-      if precedence >= s0.edges.length
-        # todo 再检查一下 Arrays.copyOf 是什么意思
-        s0.edges = Array.slice(0, precedence + 1)
-      end
       s0.edges[precedence] = start_state
     end
 
     def get_states
-      # todo
+      states.keys.sort do |o1, o2|
+        o1.state_number <=> o2.state_number
+      end
     end
 
     def to_lexer_string

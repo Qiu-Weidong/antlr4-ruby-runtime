@@ -4,7 +4,7 @@ require 'antlr4ruby/atn/config/atn_config_set'
 module Antlr4ruby
   # @abstract
   class ATNSimulator
-    ERROR = DFAState.new(ATNConfigSet.new)
+    ERROR = DFAState.new
     ERROR.state_number = 2147483647
 
     def initialize(atn, shared_context_cache)

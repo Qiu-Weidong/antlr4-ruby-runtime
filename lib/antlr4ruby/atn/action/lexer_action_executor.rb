@@ -61,11 +61,13 @@ module Antlr4ruby
     end
 
     def hash
-      # todo
+      @hash_code
     end
 
     def eql?(other)
-      # todo
+      return true if self.equal?(other)
+      return false unless other.kind_of?(LexerActionExecutor)
+      hash_code == other.hash_code && lexer_actions.eql?(other.lexer_actions)
     end
 
     private

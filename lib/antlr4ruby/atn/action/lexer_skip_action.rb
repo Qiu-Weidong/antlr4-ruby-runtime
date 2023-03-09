@@ -1,3 +1,5 @@
+require 'antlr4ruby/misc/murmur_hash'
+
 module Antlr4ruby
 
   # @final LexerAction
@@ -17,11 +19,13 @@ module Antlr4ruby
     end
 
     def hash
-      # todo
+      code = MurmurHash.init
+      code = MurmurHash.update(code, get_action_type)
+      MurmurHash.finish(code ,1)
     end
 
     def eql?(other)
-      # todo
+      equal?(other)
     end
 
     def to_s

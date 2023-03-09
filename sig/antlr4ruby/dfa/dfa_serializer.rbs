@@ -4,6 +4,10 @@ module Antlr4ruby
     @dfa: DFA
     @vocabulary: Vocabulary
 
+    attr_reader dfa: DFA
+
+    attr_reader vocabulary: Vocabulary
+
     def get_edge_label: (Integer) -> String
 
     def get_state_string: (DFAState) -> String
