@@ -22,5 +22,12 @@ module Antlr4ruby
     def get_stop_index: -> Integer
     def get_token_source: -> _TokenSource
     def get_input_stream: -> _CharStream
+
+    def set_text: (String) -> void
+    def set_type: (Integer) -> void
+    def set_line: (Integer) -> void
+    def set_char_position_in_line: (Integer) -> void
+    def set_channel: (Integer) -> void
+    def set_token_index: (Integer) -> void
   end
 end

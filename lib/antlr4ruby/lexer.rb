@@ -175,14 +175,13 @@ module Antlr4ruby
 
 
 
-    def initialize(input)
+    def initialize(input = nil )
       super()
       @token_start_char_index = -1
       @mode = Lexer::DEFAULT_MODE
       @mode_stack = []
       if input
         @input = input
-        # 不适用 pair，直接 [a, b].freeze
         @token_factory_source_pair = Pair.new(self, input)
       end
     end

@@ -8,7 +8,7 @@ module Antlr4ruby
     @first: A
     @second: B
 
-    def initialize: (A, B) -> void
+    # def initialize: (A, B) -> void
 
   end
 end

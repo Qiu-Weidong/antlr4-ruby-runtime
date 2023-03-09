@@ -24,10 +24,7 @@ module Antlr4ruby
     def get_multi: (Integer, Integer) -> Array[_Token]
 
     def get_tokens:
-      () -> Array[_Token]
-      | (Integer, Integer) -> Array[_Token]
-      | (Integer, Integer, Set[Integer]) -> Array[_Token]
-      | (Integer, Integer, Integer) -> Array[_Token]
+      (start: Integer?, stop: Integer?, types: Set[Integer]?, token_type: Integer?) -> Array[_Token]
 
     def lazy_init: -> void
 

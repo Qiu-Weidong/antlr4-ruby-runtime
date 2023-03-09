@@ -6,7 +6,6 @@ include Antlr4ruby
 
 stream = CharStreams.from_string('hello world 123456      89231 GH')
 p stream.get_source_name
-# p stream.data
 
 
 lexer = HelloLexer.new(stream)
@@ -14,6 +13,7 @@ tokens = CommonTokenStream.new(lexer)
 tokens.get_number_of_on_channel_tokens.times do |i|
   p tokens.get(i)
 end
+
 
 
 # 就在这里直接手写测试就好了

@@ -1,7 +1,7 @@
 
 module Antlr4ruby
   class CommonToken
-    include _WritableToken
+    include _Token
 
     @type: Integer
     @line: Integer

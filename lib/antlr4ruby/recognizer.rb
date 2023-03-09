@@ -8,8 +8,6 @@ module Antlr4ruby
     EOF = -1
 
     def initialize
-      super()
-
       @listeners = [ConsoleErrorListener::INSTANCE]
       @state_number = -1
     end
