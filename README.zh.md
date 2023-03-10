@@ -31,23 +31,34 @@ $ gem install antlr4ruby
 
 ## 進度
 - [ ] atn
-  - [ ] action
-  - [ ] atn.rb
-  - [ ] atn_deserialization_options.rb
-  - [ ] atn_deserializer.rb
-  - [ ] atn_serializer.rb
+  - [x] action
+    - [X] lexer_action_executor.rb
+    - [x] lexer_action_type.rb
+    - [x] lexer_channel_action.rb
+    - [x] lexer_custom_action.rb
+    - [x] lexer_indexed_custom_action.rb
+    - [x] lexer_mode_action.rb
+    - [x] lexer_more_action.rb
+    - [x] lexer_pop_mode_action.rb
+    - [x] lexer_push_mode_action.rb
+    - [x] lexer_skip_action.rb
+    - [x] lexer_type_action.rb
+  - [x] atn.rb
+  - [x] atn_deserialization_options.rb
+  - [x] atn_deserializer.rb
+  - [ ] ~~atn_serializer.rb~~
   - [ ] atn_simulator.rb
-  - [ ] atn_type.rb
+  - [ ] ~~atn_type.rb~~
   - [ ] config
   - [ ] context
-  - [ ] info
+  - [x] info
   - [ ] lexer_atn_simulator.rb
   - [ ] ll1_analyzer.rb
   - [ ] parser_atn_simulator.rb
   - [ ] prediction_mode.rb
   - [ ] profiling_atn_simulator.rb
-  - [ ] state
-  - [ ] transition
+  - [x] state
+  - [x] transition
 - [ ] bail_error_strategy.rb
 - [ ] base_error_listener.rb
 - [ ] buffered_token_stream.rb
@@ -59,11 +70,11 @@ $ gem install antlr4ruby
 - [ ] common_token_stream.rb
 - [ ] console_error_listener.rb
 - [ ] default_error_strategy.rb
-- [ ] dfa
-  - [ ] dfa.rb
-  - [ ] dfa_serializer.rb
-  - [ ] dfa_state.rb
-  - [ ] lexer_dfa_serializer.rb
+- [x] dfa
+  - [x] dfa.rb
+  - [x] dfa_serializer.rb
+  - [x] dfa_state.rb
+  - [x] lexer_dfa_serializer.rb
 - [ ] diagnostic_error_listener.rb
 - [x] exception
 - [ ] interpreter_rule_context.rb
@@ -97,6 +108,6 @@ $ gem install antlr4ruby
   - [ ] terminal_node.rb
   - [ ] trees.rb
 - [ ] unbuffered_char_stream.rb
-- [x] unbuffered_token_stream.rb
+- [ ] unbuffered_token_stream.rb
 - [x] version.rb
 - [x] vocabulary.rb
