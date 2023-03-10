@@ -31,34 +31,78 @@ $ gem install antlr4ruby
 
 ## 進度
 - [ ] atn
-  - [x] action
-    - [X] lexer_action_executor.rb
-    - [x] lexer_action_type.rb
-    - [x] lexer_channel_action.rb
-    - [x] lexer_custom_action.rb
-    - [x] lexer_indexed_custom_action.rb
-    - [x] lexer_mode_action.rb
-    - [x] lexer_more_action.rb
-    - [x] lexer_pop_mode_action.rb
-    - [x] lexer_push_mode_action.rb
-    - [x] lexer_skip_action.rb
-    - [x] lexer_type_action.rb
+  - [X] lexer_action_executor.rb
+  - [x] lexer_action_type.rb
+  - [x] lexer_channel_action.rb
+  - [x] lexer_custom_action.rb
+  - [x] lexer_indexed_custom_action.rb
+  - [x] lexer_mode_action.rb
+  - [x] lexer_more_action.rb
+  - [x] lexer_pop_mode_action.rb
+  - [x] lexer_push_mode_action.rb
+  - [x] lexer_skip_action.rb
+  - [x] lexer_type_action.rb
   - [x] atn.rb
   - [x] atn_deserialization_options.rb
   - [x] atn_deserializer.rb
   - [ ] ~~atn_serializer.rb~~
   - [ ] atn_simulator.rb
   - [ ] ~~atn_type.rb~~
-  - [ ] config
-  - [ ] context
-  - [x] info
+  - [ ] atn_config.rb
+  - [ ] atn_config_set.rb
+  - [ ] lexer_atn_config.rb
+  - [ ] ordered_atn_config_set.rb
+  - [ ] array_prediction_context.rb
+  - [ ] empty_prediction_context.rb
+  - [ ] prediction_context.rb
+  - [ ] prediction_context_cache.rb
+  - [ ] semantic_context.rb
+  - [ ] singleton_prediction_context.rb
+  - [ ] accept_state_info.rb
+  - [ ] ambiguity_info.rb
+  - [ ] conflict_info.rb
+  - [ ] context_sensitivity_info.rb
+  - [ ] decision_event_info.rb
+  - [ ] decision_info.rb
+  - [ ] error_info.rb
+  - [ ] lookahead_event_info.rb
+  - [ ] parse_info.rb
+  - [ ] predicate_eval_info.rb
   - [ ] lexer_atn_simulator.rb
   - [ ] ll1_analyzer.rb
   - [ ] parser_atn_simulator.rb
   - [ ] prediction_mode.rb
   - [ ] profiling_atn_simulator.rb
-  - [x] state
-  - [x] transition
+  - [ ] atn_state.rb
+  - [ ] basic_block_start_state.rb
+  - [ ] basic_state.rb
+  - [ ] block_end_state.rb
+  - [ ] block_start_state.rb
+  - [ ] decision_state.rb
+  - [ ] invalid_state.rb
+  - [ ] loop_end_state.rb
+  - [ ] plus_block_start_state.rb
+  - [ ] plus_loopback_state.rb
+  - [ ] rule_start_state.rb
+  - [ ] rule_stop_state.rb
+  - [ ] simulator_state.rb
+  - [ ] star_block_start_state.rb
+  - [ ] star_loopback_state.rb
+  - [ ] star_loop_entry_state.rb
+  - [ ] tokens_start_state.rb
+  - [ ] abstract_predicate_transition.rb
+  - [ ] action_transition.rb
+  - [ ] atom_transition.rb
+  - [ ] code_point_transitions.rb
+  - [ ] epsilon_transition.rb
+  - [ ] not_set_transition.rb
+  - [ ] precedence_predicate_transition.rb
+  - [ ] predicate_transition.rb
+  - [ ] range_transition.rb
+  - [ ] rule_transition.rb
+  - [ ] set_transition.rb
+  - [ ] transition.rb
+  - [ ] wildcard_transition.rb
 - [ ] bail_error_strategy.rb
 - [ ] base_error_listener.rb
 - [ ] buffered_token_stream.rb
@@ -88,7 +132,7 @@ $ gem install antlr4ruby
   - [ ] integer_stack.rb
   - [ ] murmur_hash.rb
   - [ ] pair.rb
-  - [ ] range_set.rb
+  - [x] range_set.rb
 - [ ] parser.rb
 - [ ] parser_interpreter.rb
 - [ ] parser_rule_context.rb
