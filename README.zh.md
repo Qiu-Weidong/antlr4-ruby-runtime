@@ -121,9 +121,9 @@ $ gem install antlr4ruby
   - [x] lexer_dfa_serializer.rb
 - [ ] diagnostic_error_listener.rb
 - [x] exception
-- [ ] interpreter_rule_context.rb
+- [x] interpreter_rule_context.rb
 - [x] int_stream.rb
-- [ ] lexer.rb
+- [x] lexer.rb
 - [ ] lexer_interpreter.rb
 - [ ] ~~list_token_source.rb~~
 - [ ] misc
