@@ -144,7 +144,7 @@ module Antlr4ruby
     end
 
     def get(index)
-      tokens[i]
+      tokens[index]
     end
 
     def la(i)

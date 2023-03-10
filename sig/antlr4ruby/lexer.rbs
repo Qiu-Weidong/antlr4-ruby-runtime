@@ -23,21 +23,22 @@ module Antlr4ruby
     attr_accessor hit_eof: bool
     attr_accessor input: _CharStream
     attr_accessor mode: Integer
-    attr_accessor mode_stack: IntegerStack
+    attr_accessor mode_stack: Array[Integer]
     attr_accessor text: String
-    attr_accessor token: _Token
+    attr_accessor token: _Token?
 
     attr_accessor token_factory_source_pair: Pair[_TokenSource, _CharStream]
     attr_accessor token_start_char_index: Integer
 
+    attr_accessor token_start_char_position_in_line: Integer
     attr_accessor token_start_line: Integer
     attr_accessor type: Integer
 
     def initialize: (_CharStream?) -> void
 
-    def emit: (_Token?) -> _Token?
+    def emit: (_Token?) -> void
 
-    def emit_eof: -> _Token
+    def emit_eof: -> void
 
     def get_all_tokens: -> Array[_Token]
 
@@ -49,13 +50,13 @@ module Antlr4ruby
 
     def get_char_index: -> Integer
 
-    def get_error_display: (String | Integer) -> String
+    def get_error_display: (String) -> String
 
     def get_mode_names: -> Array[String]
 
     def get_text: -> String
 
-    def get_token: -> _Token
+    def get_token: -> _Token?
 
     def get_type: -> Integer
 

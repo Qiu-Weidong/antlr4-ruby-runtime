@@ -1,5 +1,6 @@
 # finished
 require 'antlr4ruby/token'
+require 'antlr4ruby/misc/pair'
 
 
 module Antlr4ruby
