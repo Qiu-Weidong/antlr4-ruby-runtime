@@ -5,7 +5,6 @@ module Antlr4ruby
     attr_accessor :parent, :invoking_state
 
     def initialize(parent = nil, invoking_state = -1)
-      super()
       @parent, @invoking_state = parent, invoking_state
     end
 
@@ -60,7 +59,7 @@ module Antlr4ruby
     end
 
     def get_alt_number
-      ATN.INVALID_ALT_NUMBER
+      ATN::INVALID_ALT_NUMBER
     end
 
     def set_alt_number(alt_number) end

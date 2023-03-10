@@ -14,9 +14,7 @@ module Antlr4ruby
       result = default_result
       n = node.get_child_count
       n.times do |i|
-        unless should_visit_next_child(node, result)
-          break
-        end
+        break unless should_visit_next_child(node, result)
 
         child = node.get_child(i)
         if child
@@ -47,9 +45,7 @@ module Antlr4ruby
       next_result
     end
 
-    def should_visit_next_child(_node, _current_result)
-      true
-    end
+    def should_visit_next_child(_node, _current_result) true; end
   end
 end
 

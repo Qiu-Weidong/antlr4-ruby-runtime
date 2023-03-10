@@ -5,7 +5,6 @@ module Antlr4ruby
 
   class Vocabulary
     def initialize(literal_names, symbolic_names, display_names = [])
-      super()
       @literal_names = literal_names || EMPTY_NAMES
       @symbolic_names = symbolic_names || EMPTY_NAMES
       @display_names = display_names || EMPTY_NAMES

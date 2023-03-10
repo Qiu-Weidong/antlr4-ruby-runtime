@@ -77,22 +77,37 @@ module Antlr4ruby
     public
     # 重载函数
     def reset(recognizer)
-      # todo
+      end_error_condition(recognizer)
     end
 
     def in_error_recovery_mode(recognizer)
-      # todo
+      error_recovery_mode
     end
 
     def report_match(recognizer)
-      # todo
+      end_error_condition(recognizer)
     end
     def report_error(recognizer, e)
-      # todo
+      return if in_error_recovery_mode(recognizer)
+      begin_error_condition(recognizer)
+      return report_no_viable_alternative(recognizer, e) if e.kind_of?(NoViableAltException)
+      return report_input_mismatch(recognizer, e) if e.kind_of?(InputMismatchException)
+      return report_failed_predicate(recognizer, e) if e.kind_of?(FailedPredicateException)
+      print "unknown recognition error type: #{e.class.name}"
+      recognizer.notify_error_listeners(e.get_offending_token, e.message, e)
     end
 
     def recover(recognizer, e)
-      # todo
+      if last_error_index == recognizer.get_input_stream.index &&
+        last_error_states && last_error_states.include?(recognizer.get_state)
+        recognizer.consume
+      end
+
+      @last_error_index = recognizer.get_input_stream.index
+      @last_error_states = RangeSet.new unless last_error_states
+      last_error_states.add(recognizer.get_state..recognizer.get_state)
+      follow_set = get_error_recovery_set(recognizer)
+      consume_until(recognizer, follow_set)
     end
 
     def sync(recognizer)
@@ -100,7 +115,22 @@ module Antlr4ruby
     end
 
     def recover_in_line(recognizer)
-      # todo
+      matched_symbol = single_token_deletion(recognizer)
+      if matched_symbol
+        recognizer.consume; return matched_symbol
+      end
+      return get_missing_symbol(recognizer) if single_token_insertion(recognizer)
+
+      if next_tokens_context
+        e = InputMismatchException.new(recognizer, next_tokens_state, next_tokens_context)
+      else
+        e = InputMismatchException.new(recognizer)
+      end
+      raise e
+    end
+
+    def initialize
+      @error_recovery_mode, @last_error_index = false, -1
     end
 
 

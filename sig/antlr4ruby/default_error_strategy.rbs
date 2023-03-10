@@ -3,17 +3,17 @@ module Antlr4ruby
   class DefaultErrorStrategy
     include _ANTLRErrorStrategy
 
-    @error_recovery_mode: bool
-    @last_error_index: Integer
-    @last_error_states: IntervalSet
-    @next_tokens_context: ParserRuleContext
-    @next_tokens_state: Integer
+    # @error_recovery_mode: bool
+    # @last_error_index: Integer
+    # @last_error_states: IntervalSet
+    # @next_tokens_context: ParserRuleContext
+    # @next_tokens_state: Integer
 
     attr_accessor error_recovery_mode: bool
 
     attr_accessor last_error_index: Integer
 
-    attr_accessor last_error_states: IntervalSet
+    attr_accessor last_error_states: RangeSet[Integer]
 
     attr_accessor next_tokens_context: ParserRuleContext
 

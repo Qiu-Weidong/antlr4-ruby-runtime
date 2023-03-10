@@ -1,4 +1,5 @@
 # 已完成
+require 'antlr4ruby/rule_context'
 
 module Antlr4ruby
   class ParserRuleContext < RuleContext
@@ -66,12 +67,9 @@ module Antlr4ruby
     end
 
     # @override
-    def get_child(i, context_type)
+    def get_child(i, context_type = nil)
       @children[i] unless context_type
-      arr = []
-      children.each do |child|
-        arr.push(child) if child.kind_of?(context_type)
-      end
+      arr = children.filter { |child| child.kind_of?(context_type) }
       arr[i]
     end
 
@@ -80,30 +78,24 @@ module Antlr4ruby
     end
 
     def get_rule_contexts(context_type)
-      result = []
-      return result unless children
+      return [].freeze unless children
 
-      children.each do |child|
-        result.push(child) if child.kind_of?(context_type)
-      end
-      result
+      # children.each do |child|
+      #   result.push(child) if child.kind_of?(context_type)
+      # end
+      children.filter { |child| child.kind_of?(context_type) }
     end
 
     def get_token(token_type, i)
-      if !@children || i < 0 || i >= @children.length
-        return nil
-      end
+      return nil if !@children || i < 0 || i >= @children.length
 
       j = -1
-      @children.each do |o|
-        if o.kind_of?(TerminalNode)
-          node = o
+      children.each do |node|
+        if node.kind_of?(TerminalNode)
           symbol = node.get_symbol
           if symbol.get_type == token_type
             j += 1
-            if j == i
-              return node
-            end
+            return node if j == i
           end
         end
       end
@@ -112,17 +104,12 @@ module Antlr4ruby
     end
 
     def get_tokens(token_type)
-      unless children
-        return []
-      end
+      return [].freeze unless children
       tokens = []
       children.each do |child|
         if child.kind_of?(TerminalNode)
-          node = child
-          symbol = node.get_symbol
-          if symbol.get_type == token_type
-            tokens.push(node)
-          end
+          symbol = child.get_symbol
+          tokens.push(child) if symbol.get_type == token_type
         end
       end
       tokens
@@ -130,17 +117,13 @@ module Antlr4ruby
 
     # @override
     def get_child_count
-      @children.length || 0
+      children.length || 0
     end
 
     # @override
     def get_source_interval
-      unless @start
-        return (-1)..(-2)
-      end
-      if !@stop || stop.get_token_index < start.get_token_index
-        return start.get_token_index...stop.get_token_index
-      end
+      return (-1)..(-2) unless start
+      return start.get_token_index...stop.get_token_index if ! stop || stop.get_token_index < start.get_token_index
       start.get_token_index..stop.get_token_index
     end
 

@@ -1,7 +1,7 @@
 
 module Antlr4ruby
   # @abstract
-  class Recognizer[Symbol, ATNInterpreter]
+  class Recognizer[S, ATNInterpreter]
     EOF: Integer
 
     @@token_type_map_cache: Hash[Vocabulary, Hash[String, Integer]]
@@ -44,7 +44,7 @@ module Antlr4ruby
 
     def get_token_names: -> Array[String]
 
-    def get_token_type: -> Integer
+    def get_token_type: (String) -> Integer
 
     def get_token_type_map: -> Hash[String, Integer]
 

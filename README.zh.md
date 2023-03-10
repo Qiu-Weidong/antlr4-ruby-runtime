@@ -103,16 +103,16 @@ $ gem install antlr4ruby
   - [ ] set_transition.rb
   - [ ] transition.rb
   - [ ] wildcard_transition.rb
-- [ ] bail_error_strategy.rb
-- [ ] base_error_listener.rb
-- [ ] buffered_token_stream.rb
-- [ ] char_streams.rb
-- [ ] code_point_buffer.rb
-- [ ] code_point_char_stream.rb
-- [ ] common_token.rb
-- [ ] common_token_factory.rb
-- [ ] common_token_stream.rb
-- [ ] console_error_listener.rb
+- [x] bail_error_strategy.rb
+- [x] base_error_listener.rb
+- [x] buffered_token_stream.rb
+- [x] char_streams.rb
+- [ ] ~~code_point_buffer.rb~~
+- [x] code_point_char_stream.rb
+- [x] common_token.rb
+- [x] common_token_factory.rb
+- [x] common_token_stream.rb
+- [x] console_error_listener.rb
 - [ ] default_error_strategy.rb
 - [x] dfa
   - [x] dfa.rb
@@ -125,7 +125,7 @@ $ gem install antlr4ruby
 - [ ] int_stream.rb
 - [ ] lexer.rb
 - [ ] lexer_interpreter.rb
-- [ ] list_token_source.rb
+- [ ] ~~list_token_source.rb~~
 - [ ] misc
   - [ ] bit_set.rb
   - [ ] double_key_map.rb
@@ -135,23 +135,23 @@ $ gem install antlr4ruby
   - [x] range_set.rb
 - [ ] parser.rb
 - [ ] parser_interpreter.rb
-- [ ] parser_rule_context.rb
-- [ ] proxy_error_listener.rb
-- [ ] recognizer.rb
-- [ ] rule_context.rb
-- [ ] rule_context_with_alt_num.rb
-- [ ] runtime_meta_data.rb
-- [ ] token.rb
-- [ ] token_stream_rewriter.rb
+- [x] parser_rule_context.rb
+- [x] proxy_error_listener.rb
+- [x] recognizer.rb
+- [x] rule_context.rb
+- [x] ~~rule_context_with_alt_num.rb~~
+- [x] runtime_meta_data.rb
+- [x] token.rb
+- [ ] ~~token_stream_rewriter.rb~~
 - [ ] tree
-  - [ ] abstract_parse_tree_visitor.rb
-  - [ ] error_node.rb
-  - [ ] iterative_parse_tree_walker.rb
-  - [ ] parse_tree_property.rb
-  - [ ] parse_tree_walker.rb
-  - [ ] terminal_node.rb
+  - [x] abstract_parse_tree_visitor.rb
+  - [x] error_node.rb
+  - [ ] ~~iterative_parse_tree_walker.rb~~
+  - [ ] ~~parse_tree_property.rb~~
+  - [x] parse_tree_walker.rb
+  - [x] terminal_node.rb
   - [ ] trees.rb
-- [ ] unbuffered_char_stream.rb
-- [ ] unbuffered_token_stream.rb
+- [ ] ~~unbuffered_char_stream.rb~~
+- [ ] ~~unbuffered_token_stream.rb~~
 - [x] version.rb
 - [x] vocabulary.rb

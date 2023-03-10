@@ -18,7 +18,8 @@ module Antlr4ruby
       enter_rule(listener, tree)
       n = tree.get_child_count
       n.times do |i|
-        walk(listener, tree.get_child(i))
+        child = tree.get_child(i)
+        walk(listener, child) if child
       end
       exit_rule(listener, tree)
     end
@@ -28,13 +29,13 @@ module Antlr4ruby
     def enter_rule(listener, rule)
       ctx = rule.get_rule_context
       listener.enter_every_rule(ctx)
-      ctx.enter_rule(listener)
+      ctx.enter_rule(listener) if ctx
     end
 
     def exit_rule(listener, rule)
       ctx = rule.get_rule_context
       listener.exit_every_rule(ctx)
-      ctx.exit_rule(listener)
+      ctx.exit_rule(listener) if ctx
     end
   end
 end

@@ -3,7 +3,6 @@
 module Antlr4ruby
   class ProxyErrorListener
     def initialize(delegates)
-      super()
       @delegates = delegates
     end
 

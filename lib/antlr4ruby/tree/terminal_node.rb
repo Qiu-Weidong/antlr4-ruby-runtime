@@ -10,7 +10,6 @@ module Antlr4ruby
     attr_accessor :symbol, :parent
 
     def initialize(symbol)
-      super()
       @symbol = symbol
     end
 
@@ -40,17 +39,13 @@ module Antlr4ruby
 
     # @!override
     def get_source_interval
-      unless @symbol
-        return (-1)..(-2)
-      end
+      return (-1)..(-2) unless symbol
       token_index = self.symbol.get_token_index
       token_index..token_index
     end
 
     # @override
-    def get_child_count
-      0
-    end
+    def get_child_count ; 0; end
 
     # @override
     def accept(visitor)
@@ -69,9 +64,7 @@ module Antlr4ruby
 
     # @override
     def to_s
-      if @symbol.get_type == Token::EOF
-        return '<EOF>'
-      end
+      return '<EOF>' if @symbol.get_type == Token::EOF
       self.symbol.get_text
     end
 

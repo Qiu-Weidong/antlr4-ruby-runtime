@@ -14,8 +14,6 @@ module Antlr4ruby
 
 
     private
-    @@token_type_map_cache = {}
-    @@rule_index_map_cache = {}
     attr_accessor :listeners, :state_number
 
     protected
@@ -23,42 +21,41 @@ module Antlr4ruby
 
     public
     def get_rule_names
-      # todo 抛出异常
-    end
-
-    def get_token_names
-      # todo 抛出异常
+      raise NotImplementedError "#{self.class.name}#get_rule_names is abstract method"
     end
 
     def get_vocabulary
-      # todo
-      Vocabulary.from_token_names(get_token_names)
+      raise NotImplementedError "#{self.class.name}#get_vocabulary is abstract method"
     end
 
-    def get_token_type_map
-      # todo
-    end
+    # def get_token_type_map
+    #   # 暂时先不要
+    # end
+
 
     def get_rule_index_map
-      # todo
+      rule_names = get_rule_names
+      raise "The current recognizer does not provide a list of rule names." unless  rule_names
+
     end
 
-    def get_token_type(token_name)
-      # todo
-    end
+    # def get_token_type(token_name)
+    #   token_type = get_token_type_map[token_name]
+    #   token_type || Token::INVALID_TYPE
+    # end
 
     def get_serialized_atn
-      # todo
+      raise "there is no serialized ATN"
     end
 
     # @abstract
     def get_grammar_file_name
-      # todo 抛出异常
+      raise NotImplementedError "#{self.class.name}#get_grammar_file_name is abstract method"
     end
 
     # @abstract
     def get_atn
-      # todo 抛出异常
+      raise NotImplementedError "#{self.class.name}#get_atn is abstract method"
     end
 
     def get_interpreter
@@ -74,7 +71,9 @@ module Antlr4ruby
     end
 
     def get_error_header(e)
-      # todo
+      line = e.get_offending_token.get_line
+      position = e.get_offending_token.get_char_position_in_line
+      "line #{line}:#{position}"
     end
 
     def add_error_listener(listener)
@@ -97,11 +96,11 @@ module Antlr4ruby
       ProxyErrorListener.new(get_error_listeners)
     end
 
-    def sempred(localctx, rule_index, action_index) true; end
+    def sempred(_local_ctx, _rule_index, _action_index) true; end
 
-    def precpred(localctx, precedence) true; end
+    def precpred(_local_ctx, _precedence) true; end
 
-    def action(localctx, rule_index, action_index) end
+    def action(_local_ctx, _rule_index, _action_index) end
 
     def get_state
       @state_number
@@ -111,22 +110,22 @@ module Antlr4ruby
 
     # @abstract
     def get_input_stream
-      # todo 抛出异常
+      raise NotImplementedError "#{self.class.name}#get_input_stream is abstract method"
     end
 
     # @abstract
     def set_input_stream(input)
-      # todo 抛出异常
+      raise NotImplementedError "#{self.class.name}#set_input_stream is abstract method"
     end
 
     # @abstract
     def get_token_factory
-      # todo 抛出异常
+      raise NotImplementedError "#{self.class.name}#get_token_factory is abstract method"
     end
 
     # @abstract
     def set_token_factory(factory)
-      # todo 抛出异常
+      raise NotImplementedError "#{self.class.name}#set_token_factory is abstract method"
     end
 
 
