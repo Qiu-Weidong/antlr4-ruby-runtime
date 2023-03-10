@@ -31,13 +31,13 @@ module Antlr4ruby
                   :start, :stop
 
     public
-    def to_s(recognizer)
+    def to_s(recognizer = nil )
       channel_str = channel == 0 ? "":", channel=#{channel}"
       txt = get_text
       txt = '<no text>' unless txt
       type_string = type.to_s
-      type_string = recognizer.get_vocabulary.get_display_name(type) if recognizer
-      "[@#{get_token_index}, #{start}:#{stop}='#{txt}',<#{type_string}>, #{line}:#{char_position_in_line}]"
+      type_string = recognizer.get_display_name(type) if recognizer
+      "[@#{get_token_index}, #{start}:#{stop}='#{txt}',<#{type_string}>#{channel_str}, #{line}:#{char_position_in_line}]"
     end
 
     def get_type

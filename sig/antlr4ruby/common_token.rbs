@@ -30,6 +30,6 @@ module Antlr4ruby
 
     def set_stop_index: (Integer) -> void
 
-    def to_s: (Recognizer[untyped, untyped]?) -> String
+    def to_s: (Vocabulary?) -> String
   end
 end

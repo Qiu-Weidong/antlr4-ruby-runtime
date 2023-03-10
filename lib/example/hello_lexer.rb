@@ -14,7 +14,7 @@ require 'antlr4ruby/atn/context/prediction_context_cache'
 
 # cpp、JavaScript 没有打开名称空间 最好不要打开名称空间
 
-# todo LexerATNSimulator Lexer PredictionContextCache
+# todo LexerATNSimulator PredictionContextCache
 class HelloLexer < Antlr4ruby::Lexer
   def initialize(input)
     super(input)

@@ -1,5 +1,6 @@
 require 'antlr4ruby/token'
 require 'antlr4ruby/atn/atn'
+require 'antlr4ruby/misc/range_set'
 
 module Antlr4ruby
   class LL1Analyzer
@@ -13,7 +14,11 @@ module Antlr4ruby
     end
 
     def look(state, ctx, stop_state = nil)
-      # todo
+      r = RangeSet.new
+      see_thru_preds = true
+      look_context = (ctx != nil) ? PredictionContext.from_rule_context(state.atn, ctx): nil
+      _look(state, stop_state, look_context, r, Set.new, BitSet.new, see_thru_preds, true)
+      r
     end
 
     private

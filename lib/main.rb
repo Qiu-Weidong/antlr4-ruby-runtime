@@ -11,7 +11,7 @@ p stream.get_source_name
 lexer = HelloLexer.new(stream)
 tokens = CommonTokenStream.new(lexer)
 tokens.get_number_of_on_channel_tokens.times do |i|
-  p tokens.get(i)
+  p tokens.get(i).to_s
 end
 
 
