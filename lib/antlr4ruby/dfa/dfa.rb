@@ -12,10 +12,9 @@ module Antlr4ruby
 
 
     def initialize(atn_start_state, decision = 0)
-      super()
       @atn_start_state = atn_start_state
       @decision = decision
-      @s0 = nil
+      # @s0 = nil
       @states = Hash.new
 
 
