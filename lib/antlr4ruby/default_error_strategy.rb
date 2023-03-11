@@ -5,20 +5,32 @@ module Antlr4ruby
     attr_accessor :error_recovery_mode, :last_error_index, :last_error_states,
                   :next_tokens_context, :next_tokens_state
 
-    def begin_error_condition(recognizer)
-      # todo
+    def begin_error_condition(_recognizer)
+      @error_recovery_mode = true
     end
 
-    def end_error_condition(recognizer)
-      # todo
+    def end_error_condition(_recognizer)
+      @error_recovery_mode, @last_error_states, @last_error_index =
+        false, nil, -1
     end
 
     def report_no_viable_alternative(recognizer, e)
-      # todo
+      tokens = recognizer.get_input_stream
+      input = '<unknown input>'
+      if tokens
+        input =  if e.get_start_token.get_type == Token::EOF
+                   'EOF'
+                 else
+                   tokens.get_text(start:e.get_start_token, stop: e.get_offending_token)
+                 end
+      end
+      msg = "no viable alternative at input #{escape_ws_and_quote(input)}"
+      recognizer.notify_error_listeners(e.get_offending_token, msg, e)
     end
 
     def report_input_mismatch(recognizer, e)
-      # todo
+      msg = "mismatched input #{get_token_error_display(e.get_offending_token)} expecting #{e.get_expected_tokens.to_s}"
+      recognizer.notify_error_listeners(msg, e.get_offending_token, e)
     end
 
     def report_failed_predicate(recognizer, e)
@@ -50,27 +62,51 @@ module Antlr4ruby
     end
 
     def get_token_error_display(token)
-      # todo
+      return '<no token>' unless token
+      s = get_symbol_text token
+      unless s
+        s = get_symbol_type(token) == Token::EOF ? '<EOF>' : "<#{get_symbol_type(token)}>"
+      end
+      escape_ws_and_quote(s)
     end
 
     def get_symbol_text(symbol)
-      # todo
+      symbol.get_text
     end
 
     def get_symbol_type(symbol)
-      # todo
+      symbol.get_type
     end
 
     def escape_ws_and_quote(s)
-      # todo
+      s = s.gsub("\n", '\n').gsub("\r", '\r').gsub("\t", '\t')
+      "#{s}"
     end
 
     def get_error_recovery_set(recognizer)
-      # todo
+      atn = recognizer.get_interpreter.atn
+      ctx = recognizer.ctx
+      recover_set = RangeSet.new
+      while ctx && ctx.invoking_state >= 0
+        invoking_state = atn.states[ctx.invoking_state]
+        rt = invoking_state.get_transition(0)
+        if rt && rt.kind_of?(RuleTransition)
+          follow = atn.next_tokens(rt.follow_state)
+          recover_set.add_all(follow)
+        end
+        ctx = ctx.parent
+
+      end
+      recover_set.delete(Token::EPSILON..Token::EPSILON)
+      recover_set
     end
 
     def consume_until(recognizer, set)
-      # todo
+      token_type = recognizer.get_input_stream.la(1)
+      while token_type != Token::EOF && set.include?(token_type)
+        recognizer.consume
+        token_type = recognizer.get_input_stream.la(1)
+      end
     end
 
 

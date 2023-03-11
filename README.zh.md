@@ -119,7 +119,7 @@ $ gem install antlr4ruby
   - [x] dfa_serializer.rb
   - [x] dfa_state.rb
   - [x] lexer_dfa_serializer.rb
-- [ ] diagnostic_error_listener.rb
+- [x] diagnostic_error_listener.rb
 - [x] exception
 - [x] interpreter_rule_context.rb
 - [x] int_stream.rb
@@ -131,7 +131,7 @@ $ gem install antlr4ruby
   - [ ] ~~double_key_map.rb~~
   - [ ] ~~integer_stack.rb~~
   - [x] murmur_hash.rb
-  - [ ] pair.rb
+  - [x] pair.rb
   - [x] range_set.rb
 - [ ] parser.rb
 - [ ] parser_interpreter.rb
@@ -143,14 +143,14 @@ $ gem install antlr4ruby
 - [x] runtime_meta_data.rb
 - [x] token.rb
 - [ ] ~~token_stream_rewriter.rb~~
-- [ ] tree
+- [x] tree
   - [x] abstract_parse_tree_visitor.rb
   - [x] error_node.rb
   - [ ] ~~iterative_parse_tree_walker.rb~~
   - [ ] ~~parse_tree_property.rb~~
   - [x] parse_tree_walker.rb
   - [x] terminal_node.rb
-  - [ ] trees.rb
+  - [x] trees.rb
 - [ ] ~~unbuffered_char_stream.rb~~
 - [ ] ~~unbuffered_token_stream.rb~~
 - [x] version.rb

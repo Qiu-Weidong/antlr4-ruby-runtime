@@ -39,7 +39,7 @@ module Antlr4ruby
 
     def get_missing_symbol: (Parser) -> _Token
 
-    def get_expected_tokens: (Parser) -> IntervalSet
+    def get_expected_tokens: (Parser) -> RangeSet[Integer]
 
     def get_token_error_display: (_Token) -> String
 
@@ -49,8 +49,8 @@ module Antlr4ruby
 
     def escape_ws_and_quote: (String) -> String
 
-    def get_error_recovery_set: (Parser) -> IntervalSet
+    def get_error_recovery_set: (Parser) -> RangeSet[Integer]
 
-    def consume_until: (Parser, IntervalSet) -> void
+    def consume_until: (Parser, RangeSet[Integer]) -> void
   end
 end

@@ -16,7 +16,7 @@ module Antlr4ruby
     attr_accessor input: _TokenStream?
     attr_accessor matched_eof: bool
     attr_accessor parse_listeners: Array[_ParseTreeListener]
-    attr_reader precedence_stack: IntegerStack
+    attr_reader precedence_stack: Array[Integer]
 
     attr_accessor syntax_errors: Integer
 
@@ -29,6 +29,8 @@ module Antlr4ruby
     def create_terminal_node: (ParserRuleContext, _Token) -> _TerminalNode
 
     def dump_dfa: -> void
+
+    def get_input_stream: () -> _TokenStream
 
     def enter_recursion_rule: (ParserRuleContext, Integer, Integer, Integer) -> void
 
@@ -46,9 +48,9 @@ module Antlr4ruby
 
     def get_error_handler: -> _ANTLRErrorStrategy
 
-    def get_expected_tokens: -> IntervalSet
+    def get_expected_tokens: -> RangeSet[Integer]
 
-    def get_expected_tokens_within_current_rule: -> IntervalSet
+    def get_expected_tokens_within_current_rule: -> RangeSet[Integer]
 
     def get_invoking_context: (Integer) -> ParserRuleContext
 

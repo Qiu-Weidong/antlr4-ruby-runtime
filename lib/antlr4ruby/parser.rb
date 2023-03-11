@@ -109,7 +109,7 @@ module Antlr4ruby
       input.lt(1)
     end
 
-    def notify_error_listeners(msg, token, e)
+    def notify_error_listeners(msg, token = nil, e=nil)
       unless  token
         token = get_current_token
       end
